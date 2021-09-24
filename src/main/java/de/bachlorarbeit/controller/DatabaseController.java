@@ -1,9 +1,10 @@
 package de.bachlorarbeit.controller;
 
 import com.sun.istack.NotNull;
+import de.bachlorarbeit.model.ProcessStatusModel;
 import de.bachlorarbeit.service.DatabaseService;
 import org.json.simple.JSONObject;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -32,4 +33,17 @@ public class DatabaseController {
         }
         return null;
     }
-}
+
+    @RequestMapping(value = "/data/answer/check", produces = {MediaType.APPLICATION_JSON_VALUE, "application/vnd.pfc.app-v1.0+json"}, method = RequestMethod.GET)
+    public ResponseEntity<?> getProcessingStatus(@RequestParam(required = false) String fields,
+                                     HttpServletRequest request) {
+
+        int percent= databaseService.getProcessingStatus();
+        JSONObject obj = new JSONObject();
+        ProcessStatusModel processStatus= new ProcessStatusModel(percent);
+        //obj.put("percent", percent);
+        return ResponseEntity.ok()
+                .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
+                .body(processStatus);
+        }
+    }
