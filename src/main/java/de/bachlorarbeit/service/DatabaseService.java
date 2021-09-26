@@ -27,6 +27,7 @@ public class DatabaseService {
             String sql= this.prepareStatement(tableName);
             ResultSet s =query.executeQuery(sql);
             List<JSONObject> resultList= converter.convertToJson(s);
+            System.out.println(resultList.get(1).get("DESCRIPTION")+"ID:"+resultList.get(1).get("CAPABILITY_ID"));
             return resultList;
         }catch (SQLException throwables) {
             throwables.printStackTrace();
