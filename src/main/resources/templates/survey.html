@@ -2,25 +2,45 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <script type="text/javascript" src="survey.js"></script>
     <title>Privacy File Checker</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script type = "text/javascript" src="survey.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
 <body>
-    <input id="hello" type="button" value="Hallo" />
-    <input type="button" onclick="CreateTableFromJSON()" value="Create Table From JSON" />
-    <p id="showData"></p>
+<div class="jumbotron" id="survey">
+    <h1>Survey</h1>
+    <input type="button" onclick="createSurvey()" value="Start Survey"/>
 
+    <form action="/action_page.php">
+        <div class="card">
+            <div class="card-header">
+                Do you like fish?
+            </div>
+            <div class="card-body">
+                <input type="radio" name="yes_o" value="yes">Yes</input>
+                <input type="radio" name="yes_o" value="No">No</input>
+
+            </div>
+            <div class="card-header">
+                Do you like fish2?
+            </div>
+            <div class="card-body">
+                <input type="radio" name="yes_no" required>Yes</input>
+                <input type="radio" name="yes_no">No</input>
+
+            </div>
+        </div>
+        <input type="submit" value="Submit">
+    </form>
+
+</div>
+<p id="showSurvey"></p>
 </body>
 </html>
-<div id="wrapper">
-    <label for="wrapper">Do you agree to the terms?</label>
-    <p>
-        <input type="radio" name="yes_no" checked>Yes</input>
-        <input type="radio" name="yes_no">No</input>
-    </p>
-    <input type="submit" value="Submit">
+
 </div>
