@@ -75,6 +75,8 @@ function createSurvey() {
         success: function (data) {
             // Call this function on success
             createForm(data);
+            var button = document.getElementById("surveyButton");
+            button.style.display = 'none';
             return data;
         },
         error: function () {
@@ -87,6 +89,7 @@ function createForm(data){
     var form = document.createElement("form");
     form.setAttribute("method", "post");
     form.setAttribute("action", "submit.php");
+    form.setAttribute("enctype", "multipart/form-data");
 
     var card = document.createElement("div");
     card.setAttribute("class", "card");
@@ -135,6 +138,7 @@ function createForm(data){
 
 
     }
+
     // create a submit button
     var s = document.createElement("input");
     s.setAttribute("type", "submit");
@@ -142,10 +146,9 @@ function createForm(data){
     form.appendChild(card);
     form.appendChild(s);
 
+    <button class="btn btn-primary" type="submit" id="submitUpload">Upload</button>
     var divContainer = document.getElementById("survey");
     divContainer.appendChild(form);
-    var button= divContainer.getElementsByTagName("surveyButton");
-    button.setAttribute("display", "none");
 
 
 }
