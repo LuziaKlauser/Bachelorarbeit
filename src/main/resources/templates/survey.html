@@ -14,29 +14,8 @@
 <body>
 <div class="jumbotron" id="survey">
     <h1>Survey</h1>
-    <input type="button" onclick="createSurvey()" value="Start Survey"/>
+    <input type="button" onclick="createSurvey()" value="Start Survey" name="surveyButton"/>
 
-    <form action="/action_page.php">
-        <div class="card">
-            <div class="card-header">
-                Do you like fish?
-            </div>
-            <div class="card-body">
-                <input type="radio" name="yes_o" value="yes">Yes</input>
-                <input type="radio" name="yes_o" value="No">No</input>
-
-            </div>
-            <div class="card-header">
-                Do you like fish2?
-            </div>
-            <div class="card-body">
-                <input type="radio" name="yes_no" required>Yes</input>
-                <input type="radio" name="yes_no">No</input>
-
-            </div>
-        </div>
-        <input type="submit" value="Submit">
-    </form>
 
 </div>
 <p id="showSurvey"></p>
