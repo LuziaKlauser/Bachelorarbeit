@@ -42,8 +42,8 @@ public class SurveyController {
     @RequestMapping(value = "/survey/upload",
             produces = {MediaType.APPLICATION_JSON_VALUE, "application/vnd.pfc-v1.0+json"},
             method = RequestMethod.POST)
-    public ResponseEntity<?> uploadFiles(@RequestParam HashMap<String, Object> formData) {
-        System.out.println(formData);
+    public ResponseEntity<?> uploadFiles(@RequestParam HashMap<String, Object> formData) throws SQLException {
+        surveyService.postSurvey(formData);
         return ResponseEntity.status(HttpStatus.CREATED)
                 .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
                 .body("hello");

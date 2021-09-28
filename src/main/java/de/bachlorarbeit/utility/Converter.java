@@ -1,6 +1,7 @@
 package de.bachlorarbeit.utility;
 
 import com.fasterxml.jackson.databind.util.JSONPObject;
+import springfox.documentation.builders.MultipartFormDataParameterSpecificationProvider;
 import springfox.documentation.spring.web.json.Json;
 import org.json.simple.JSONObject;
 
@@ -8,6 +9,7 @@ import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class Converter {
@@ -35,5 +37,18 @@ public class Converter {
             e.printStackTrace();
         }
         return resultList;
+    }
+    public List<JSONObject> convertFormdataToJson(HashMap<String, Object> formData){
+        List<JSONObject> result= new ArrayList<JSONObject>();
+        for (String i : formData.keySet()) {
+            String indicator= "indicator_id";
+            //TODO change answer
+            String answer="answer";
+            JSONObject obj = new JSONObject();
+            obj.put(indicator,i);
+            obj.put(answer, formData.get(i));
+            result.add(obj);
+        }
+        return result;
     }
 }

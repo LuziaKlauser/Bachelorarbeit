@@ -1,8 +1,10 @@
 package de.bachlorarbeit.utility;
 
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.TimeZone;
 
@@ -39,5 +41,10 @@ public class DateTimeHelper {
     public static String formatDuration(Duration d) {
         return String.format("%dh %dm %ds %dms %dns", d.toHoursPart(), d.toMinutesPart(), d.toSecondsPart(),
                 d.toMillisPart(), d.toNanosPart() - (d.toMillisPart() * 1000000));
+    }
+
+    public static void currentDate(String args[]) {
+        LocalDate date = LocalDate.now();
+        System.out.println("Current Date: "+date);
     }
 }

@@ -23,7 +23,6 @@ function createForm(data){
     form.setAttribute("enctype", "multipart/form-data");
     form.setAttribute("action", "/survey/upload");
 
-
     var card = document.createElement("div");
     card.setAttribute("class", "card");
 
@@ -43,7 +42,7 @@ function createForm(data){
         cardBody.setAttribute("class", "card-body");
         //Input Yes
         var inputYes = document.createElement("input");
-        inputYes.required=true;
+        //inputYes.required=true;
         inputYes.setAttribute("type", "radio")
         inputYes.setAttribute("name", id)
         inputYes.setAttribute("id", "yes"+id);
