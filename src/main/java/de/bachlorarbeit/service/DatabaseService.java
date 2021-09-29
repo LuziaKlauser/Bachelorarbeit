@@ -2,6 +2,7 @@ package de.bachlorarbeit.service;
 
 
 import de.bachlorarbeit.error.ErrorMessages;
+import de.bachlorarbeit.exception.SurveyNotFoundException;
 import de.bachlorarbeit.exception.TableNotFoundException;
 import de.bachlorarbeit.helpers.DBConnection;
 import de.bachlorarbeit.utility.Converter;
@@ -85,10 +86,14 @@ public class DatabaseService {
         try {
             String sql = "SELECT indicator_id, question FROM indicator WHERE survey_id=" + SurveyId;
             ResultSet s = query.executeQuery(sql);
-            List<JSONObject> resultList = converter.convertToJson(s);
-            return resultList;
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
+            if(s.next()){
+                List<JSONObject> resultList = converter.convertToJson(s);
+                return resultList;
+            }else{
+                throw new SurveyNotFoundException(ErrorMessages.TableNotFound(SurveyId));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
         return null;
     }

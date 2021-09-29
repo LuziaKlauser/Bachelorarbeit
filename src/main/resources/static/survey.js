@@ -2,7 +2,7 @@
 function createSurvey() {
     $.ajax({
         type: "GET",
-        url: '/data/survey/1',
+        url: '/data/survey/'+getSurveyId(),
         success: function (data) {
             // Call this function on success
             createForm(data);
@@ -82,20 +82,12 @@ function createForm(data){
 
     var divContainer = document.getElementById("survey");
     divContainer.appendChild(form);
-    readUrl();
 }
 
-function readUrl(){
-    var para_str = '';
-    var url = location.search
-    // Checking url is defined or not
-    if(url == undefined) {
-        /* url variable is not defined */
-        // get url parameters
-        url = location.search; // e.g. ?num1=43&num2=23
-        var parts = url.substring(1).split('&');
-        para_str = parts[0];
-    }
-    console.log(url)
+function getSurveyId() {
+    var pathArray = window.location.pathname.split('/');
+    var surveyId=pathArray[2];
+    return surveyId;
 }
+
 
