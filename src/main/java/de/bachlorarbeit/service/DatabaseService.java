@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import java.sql.*;
 import java.sql.Connection;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
@@ -20,6 +21,7 @@ public class DatabaseService {
     DBConnection db = new DBConnection();
     Connection connection= db.getConnection();
     Converter converter = new Converter();
+
 
     //Gets the Data from the given tableName in the database and and returns it as a JSONOBject
     public List<JSONObject> getTable(String tableName) throws SQLException {
@@ -57,8 +59,6 @@ public class DatabaseService {
     public int getProcessingStatus(){
         int allAnswers=this.getLineCount("answer");
         int allIndicators=this.getLineCount("indicator");
-        System.out.println(allAnswers);
-        System.out.println(allIndicators);
         int percent= 100* allAnswers / allIndicators;
         return percent;
     }
@@ -80,7 +80,7 @@ public class DatabaseService {
         }
         return count;
     }
-
+    //Gets all indicators with the given surveyId
     public List<JSONObject> getIndicatorsForSurvey(String SurveyId) throws SQLException {
         Statement query = connection.createStatement();
         try {
@@ -90,12 +90,25 @@ public class DatabaseService {
                 List<JSONObject> resultList = converter.convertToJson(s);
                 return resultList;
             }else{
-                throw new SurveyNotFoundException(ErrorMessages.TableNotFound(SurveyId));
+                throw new SurveyNotFoundException(ErrorMessages.SurveyNotFound(SurveyId));
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return null;
     }
-
+    //Checks if a survey with the given surveyId is available
+    public void getSurveyId(String SurveyId) throws SQLException {
+        Statement query = connection.createStatement();
+        List<String> surveyIds = new ArrayList<String>();
+        try {
+            String sql = "SELECT survey_id FROM survey WHERE survey_id=" + SurveyId;
+            ResultSet s = query.executeQuery(sql);
+            if(!s.next()){
+                throw new SurveyNotFoundException(ErrorMessages.SurveyNotFound(SurveyId));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }

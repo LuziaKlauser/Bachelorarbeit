@@ -44,16 +44,13 @@ public class DatabaseController {
         int percent= databaseService.getProcessingStatus();
         JSONObject obj = new JSONObject();
         ProcessStatusModel processStatus= new ProcessStatusModel(percent);
-        //obj.put("percent", percent);
         return ResponseEntity.ok()
                 .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
                 .body(processStatus);
 
     }
     @RequestMapping(value = "/data/survey/{surveyId:.+}", produces = {MediaType.APPLICATION_JSON_VALUE, "application/vnd.pfc.app-v1.0+json"}, method = RequestMethod.GET)
-    public List<JSONObject> getSurvey(@PathVariable @NotNull String surveyId,
-                                     @RequestParam(required = false) String fields,
-                                     HttpServletRequest request) {
+    public List<JSONObject> getSurvey(@PathVariable @NotNull String surveyId) {
         try {
             return databaseService.getIndicatorsForSurvey(surveyId);
         } catch (SQLException throwables) {

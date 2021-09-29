@@ -1,7 +1,7 @@
 package de.bachlorarbeit.controller;
 
 import com.sun.istack.NotNull;
-import de.bachlorarbeit.service.SurveyService;
+import de.bachlorarbeit.service.TaskService;
 import org.json.simple.JSONObject;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -15,22 +15,34 @@ import java.util.HashMap;
 import java.util.List;
 
 @RestController
-public class SurveyController {
-    private SurveyService surveyService;
+public class TaskController {
+    private TaskService taskService;
 
-    public SurveyController(SurveyService surveyService){
+    public TaskController(TaskService taskService){
 
-        this.surveyService=surveyService;
+        this.taskService = taskService;
     }
 
     @RequestMapping(value = "/survey/upload",
             produces = {MediaType.APPLICATION_JSON_VALUE, "application/vnd.pfc-v1.0+json"},
             method = RequestMethod.POST)
     public ResponseEntity<?> uploadFiles(@RequestParam HashMap<String, Object> formData) throws SQLException {
-        surveyService.postSurvey(formData);
+        taskService.postSurvey(formData);
         return ResponseEntity.status(HttpStatus.CREATED)
                 .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
-                .body("hello");
+                //TODO body
+                .body("Survey successfully uploaded");
+    }
+
+    @RequestMapping(value = "/data/calculate", produces = {MediaType.APPLICATION_JSON_VALUE, "application/vnd.pfc.app-v1.0+json"}, method = RequestMethod.GET)
+    public int calculate(@RequestParam(required = false) String fields,
+                                     HttpServletRequest request) {
+        try {
+            return taskService.calculateMaturityLevel();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return 0;
     }
 }
 
