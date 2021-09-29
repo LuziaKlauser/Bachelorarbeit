@@ -41,8 +41,5 @@ public class MailController {
 		}
 		return "Congratulations! Your mail has been send to the user.";
 	}
-	@GetMapping("/surve")
-	public String getSurvey() {
-		return "survey";
-	}
+
 }

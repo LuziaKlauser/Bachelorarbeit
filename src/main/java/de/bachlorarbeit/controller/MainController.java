@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class MainController {
 
-    @GetMapping("/survey")
+    @GetMapping("/survey/{tableName:.+}")
     public String getSurvey() {
         return "survey";
     }

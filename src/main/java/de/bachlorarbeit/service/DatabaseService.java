@@ -80,4 +80,17 @@ public class DatabaseService {
         return count;
     }
 
+    public List<JSONObject> getIndicatorsForSurvey(String SurveyId) throws SQLException {
+        Statement query = connection.createStatement();
+        try {
+            String sql = "SELECT indicator_id, question FROM indicator WHERE survey_id=" + SurveyId;
+            ResultSet s = query.executeQuery(sql);
+            List<JSONObject> resultList = converter.convertToJson(s);
+            return resultList;
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return null;
+    }
+
 }

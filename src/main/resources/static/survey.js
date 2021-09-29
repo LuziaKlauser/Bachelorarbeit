@@ -2,7 +2,7 @@
 function createSurvey() {
     $.ajax({
         type: "GET",
-        url: '/survey/2',
+        url: '/data/survey/1',
         success: function (data) {
             // Call this function on success
             createForm(data);
@@ -21,6 +21,7 @@ function createForm(data){
     form.setAttribute("method", "post");
     form.setAttribute("id", "surveyForm");
     form.setAttribute("enctype", "multipart/form-data");
+    //API to upload the formdata
     form.setAttribute("action", "/survey/upload");
 
     var card = document.createElement("div");
@@ -42,7 +43,7 @@ function createForm(data){
         cardBody.setAttribute("class", "card-body");
         //Input Yes
         var inputYes = document.createElement("input");
-        //inputYes.required=true;
+        inputYes.required=true;
         inputYes.setAttribute("type", "radio")
         inputYes.setAttribute("name", id)
         inputYes.setAttribute("id", "yes"+id);
@@ -81,5 +82,20 @@ function createForm(data){
 
     var divContainer = document.getElementById("survey");
     divContainer.appendChild(form);
+    readUrl();
+}
+
+function readUrl(){
+    var para_str = '';
+    var url = location.search
+    // Checking url is defined or not
+    if(url == undefined) {
+        /* url variable is not defined */
+        // get url parameters
+        url = location.search; // e.g. ?num1=43&num2=23
+        var parts = url.substring(1).split('&');
+        para_str = parts[0];
+    }
+    console.log(url)
 }
 
