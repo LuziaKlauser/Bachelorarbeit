@@ -44,5 +44,13 @@ public class TaskController {
         }
         return 0;
     }
+
+    @RequestMapping(value = "/data/answer/{surveyId:.+}", method = RequestMethod.DELETE)
+    public ResponseEntity<?> clearDirectory(@PathVariable String surveyId) throws SQLException {
+        taskService.deleteAnswers(surveyId);
+
+        //All files have been deleted:
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).body(null);
+    }
 }
 

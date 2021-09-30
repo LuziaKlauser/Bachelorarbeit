@@ -2,6 +2,7 @@ package de.bachlorarbeit.service;
 
 
 import de.bachlorarbeit.error.ErrorMessages;
+import de.bachlorarbeit.exception.EnablerNotFoundException;
 import de.bachlorarbeit.exception.SurveyNotFoundException;
 import de.bachlorarbeit.exception.TableNotFoundException;
 import de.bachlorarbeit.helpers.DBConnection;
@@ -86,31 +87,18 @@ public class DatabaseService {
         try {
             String sql = "SELECT indicator_id, question FROM indicator WHERE survey_id=" + SurveyId;
             ResultSet s = query.executeQuery(sql);
-            if(s.next()){
-                List<JSONObject> resultList = converter.convertToJson(s);
-                return resultList;
-            }else{
+            List<JSONObject> resultList = converter.convertToJson(s);
+            if(resultList.size()==0){
                 throw new SurveyNotFoundException(ErrorMessages.SurveyNotFound(SurveyId));
+            }else{
+                return resultList;
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return null;
     }
-    //Checks if a survey with the given surveyId is available
-    public void getSurveyId(String SurveyId) throws SQLException {
-        Statement query = connection.createStatement();
-        List<String> surveyIds = new ArrayList<String>();
-        try {
-            String sql = "SELECT survey_id FROM survey WHERE survey_id=" + SurveyId;
-            ResultSet s = query.executeQuery(sql);
-            if(!s.next()){
-                throw new SurveyNotFoundException(ErrorMessages.SurveyNotFound(SurveyId));
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
+
     public List<JSONObject> getTableFromEnabler(int enabler_id) throws SQLException {
         Statement query = connection.createStatement();
         try {
@@ -119,15 +107,16 @@ public class DatabaseService {
                     "FROM indicator " +
                     "INNER JOIN answer ON indicator.indicator_id=answer.indicator_id WHERE indicator.enabler_id="+enabler_id;
             ResultSet s = query.executeQuery(sql);
-            if(s.next()){
-                List<JSONObject> resultList = converter.convertToJson(s);
-                return resultList;
+            List<JSONObject> resultList = converter.convertToJson(s);
+            if(resultList.size()==0){
+                throw new EnablerNotFoundException(ErrorMessages.EnablerNotFound(enabler_id));
             }else{
-                throw new SurveyNotFoundException(ErrorMessages.EnablerNotFound(enabler_id));
+                return resultList;
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return null;
     }
+
 }

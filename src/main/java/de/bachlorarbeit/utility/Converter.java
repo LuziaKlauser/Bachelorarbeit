@@ -1,6 +1,8 @@
 package de.bachlorarbeit.utility;
 
 import com.fasterxml.jackson.databind.util.JSONPObject;
+import de.bachlorarbeit.error.ErrorMessages;
+import de.bachlorarbeit.exception.SurveyNotFoundException;
 import springfox.documentation.builders.MultipartFormDataParameterSpecificationProvider;
 import springfox.documentation.spring.web.json.Json;
 import org.json.simple.JSONObject;
@@ -14,7 +16,7 @@ import java.util.List;
 
 public class Converter {
 
-    public List<JSONObject> convertToJson(ResultSet resultSet){
+    public List<JSONObject> convertToJson(ResultSet resultSet) throws SQLException {
         List<JSONObject> resultList = new ArrayList<JSONObject>();
         try {
             ResultSetMetaData metaData =resultSet.getMetaData();
@@ -43,7 +45,7 @@ public class Converter {
         for (String i : formData.keySet()) {
             String indicator= "indicator_id";
             //TODO change answer
-            String answer="answer";
+            String answer="answer";;
             JSONObject obj = new JSONObject();
             obj.put(indicator,i);
             obj.put(answer, formData.get(i));

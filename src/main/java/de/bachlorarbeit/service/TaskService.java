@@ -25,8 +25,10 @@ public class TaskService {
         List<JSONObject> surveyResult = converter.convertFormdataToJson(formData);
         for (int i = 0; i < surveyResult.size(); i++) {
             try {
+                System.out.println(surveyResult);
                 JSONObject entry = surveyResult.get(i);
                 String indicator_id = (String) entry.get("indicator_id");
+                System.out.println(indicator_id);
                 String answer = (String) entry.get("answer");
                 LocalDate date = LocalDate.now();
                 int numberOfRowsInserted = query.executeUpdate("INSERT into answer(answer_id,type, time, indicator_id)"
@@ -40,14 +42,20 @@ public class TaskService {
         return null;
     }
     //TODO delete method
-    public List<JSONObject> postSurve(HashMap<String, Object> formData) throws SQLException {
+    public List<JSONObject> deleteAnswers(String surveyId) throws SQLException {
         Statement query = connection.createStatement();
             try {
-                //int numberOfRowsInserted = query.executeUpdate("INSERT into survey(survey_id, description, department_id)"
-                //+"values (3, 'ffe', 1)");
-                int numberOfRowsInserted = query.executeUpdate("DELETE FROM survey WHERE survey_id=3");
+                DatabaseService databaseService= new DatabaseService();
+                List<JSONObject> json =databaseService.getIndicatorsForSurvey(surveyId);
+                System.out.println(json);
+                for(int i=0;i<json.size();i++){
+                    String indicator_id= (String) json.get(i).get("INDICATOR_ID");
+                    System.out.println(indicator_id);
+                    int numberOfRowsInserted = query.executeUpdate("DELETE FROM answer WHERE indicator_id="+indicator_id);
+                }
+                //int numberOfRowsInserted = query.executeUpdate("DELETE FROM survey WHERE survey_id=3");
 
-                System.out.println(numberOfRowsInserted);
+                //System.out.println(numberOfRowsInserted);
             } catch (SQLException throwables) {
                 throwables.printStackTrace();
             }
@@ -55,10 +63,8 @@ public class TaskService {
     }
 
     public int calculateMaturityLevel() throws SQLException {
-        Statement query = connection.createStatement();
         DatabaseService databaseService= new DatabaseService();
         List<JSONObject> enablers= databaseService.getTable("enabler");
-        List<JSONObject> capabilityLevels= databaseService.getTable("capability_level");
         List<JSONObject> capLevelsForEnabler = new ArrayList<JSONObject>();
         for(int enablerId=1; enablerId<=enablers.size();enablerId++){
             JSONObject capLevelForEnabler = new JSONObject();
@@ -68,7 +74,6 @@ public class TaskService {
             capLevelForEnabler.put("capabilityLevel",level);
             capLevelsForEnabler.add(capLevelForEnabler);
         }
-        System.out.println(capLevelsForEnabler);
         return calculate(capLevelsForEnabler);
     }
     //calculates the capability_level for the specific enabler
@@ -93,6 +98,8 @@ public class TaskService {
         }
         return capability_level;
     }
+
+    //Calculates the maturityLevel
     public int calculate(List<JSONObject> capLevelsForEnabler){
         int maturityLevel=1;
         int checkLevel =2;
@@ -142,7 +149,6 @@ public class TaskService {
                     break;
             }
         }
-        System.out.println("LEvel: "+maturityLevel);
         return maturityLevel;
     }
 }
