@@ -35,7 +35,7 @@ public class MailService {
 	 * @param message
 	 * @throws MailException
 	 */
-	public void sendEmail(User user, String subject, String message) throws MailException {
+	public void sendEmailToUser(User user, String subject, String message) throws MailException {
 
 		SimpleMailMessage mail = new SimpleMailMessage();
 		
@@ -45,5 +45,17 @@ public class MailService {
 
 		//Sends Mail
 		javaMailSender.send(mail);
+	}
+	public void sendMail(String subject, String surveyId, String departmentId)throws MailException{
+
+		String message="Send survey";
+		String emailAddress= "luzia.klauser@t-online.de";
+		SimpleMailMessage mail = new SimpleMailMessage();
+
+		//sends Mail
+		mail.setTo(emailAddress);
+		mail.setSubject(subject);
+		mail.setText(message);
+
 	}
 }
