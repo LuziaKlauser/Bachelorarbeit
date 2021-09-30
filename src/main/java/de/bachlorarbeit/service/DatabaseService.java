@@ -111,4 +111,23 @@ public class DatabaseService {
             e.printStackTrace();
         }
     }
+    public List<JSONObject> getTableFromEnabler(int enabler_id) throws SQLException {
+        Statement query = connection.createStatement();
+        try {
+            String sql = "SELECT max_contribution, indicator.indicator_id, answer.type AS answer_type, " +
+                    "indicator.indicator_type AS indicator_type, indicator.enabler_id  "+
+                    "FROM indicator " +
+                    "INNER JOIN answer ON indicator.indicator_id=answer.indicator_id WHERE indicator.enabler_id="+enabler_id;
+            ResultSet s = query.executeQuery(sql);
+            if(s.next()){
+                List<JSONObject> resultList = converter.convertToJson(s);
+                return resultList;
+            }else{
+                throw new SurveyNotFoundException(ErrorMessages.EnablerNotFound(enabler_id));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 }

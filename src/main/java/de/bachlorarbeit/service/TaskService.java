@@ -10,6 +10,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -58,38 +59,90 @@ public class TaskService {
         DatabaseService databaseService= new DatabaseService();
         List<JSONObject> enablers= databaseService.getTable("enabler");
         List<JSONObject> capabilityLevels= databaseService.getTable("capability_level");
-        List<JSONObject> answers= databaseService.getTable("answer");
-        List<JSONObject> indicators= databaseService.getTable("indicator");
-        JSONObject capabilityLevelForEnabler= new JSONObject();
-        for(int i=0;i<enablers.size();i++){
-            String enablerId = (String) enablers.get(i).get("ENABLER_ID");
-            calculateCapabilityLevelForEnabler(enabler, answers,);
+        List<JSONObject> capLevelsForEnabler = new ArrayList<JSONObject>();
+        for(int enablerId=1; enablerId<=enablers.size();enablerId++){
+            JSONObject capLevelForEnabler = new JSONObject();
+            List<JSONObject> indicators= databaseService.getTableFromEnabler(enablerId);
+            int level= calculateCapabilityLevelForEnabler(enablerId, indicators);
+            capLevelForEnabler.put("enabler",enablerId);
+            capLevelForEnabler.put("capabilityLevel",level);
+            capLevelsForEnabler.add(capLevelForEnabler);
         }
-        for (int i=0; i<answers.size();i++){
-            JSONObject answerEntity= answers.get(i);
-            String answerIndicatorId= (String) answerEntity.get("INDICATOR_ID");
-            for(int j=0;j<indicators.size();j++){
-                JSONObject indicatorEntity=indicators.get(j);
-                String indicatorId= (String) indicatorEntity.get("INDICATOR_ID");
-                if(indicatorId.equals(answerIndicatorId)){
-
-                    break;
+        System.out.println(capLevelsForEnabler);
+        return calculate(capLevelsForEnabler);
+    }
+    //calculates the capability_level for the specific enabler
+    public int calculateCapabilityLevelForEnabler(int enablerId,List<JSONObject> indicators) {
+        int capability_level = 0;
+        for (int i=1; i<4;i++){
+            boolean levelAchieved=true;
+            for(int j=0; j<indicators.size(); j++){
+                JSONObject indicator= indicators.get(j);
+                if(indicator.get("MAX_CONTRIBUTION").equals(Integer.toString(i))
+                        &&indicator.get("INDICATOR_TYPE").equals("verpflichtend")
+                        &&indicator.get("TYPE").equals("no")) {
+                            levelAchieved=false;
+                            break;
                 }
             }
-
-        }
-        return 0;
-    }
-    public int calculateCapabilityLevelForEnabler(String enablerId,List<JSONObject> answers,List<JSONObject> indicator) {
-        int capability_level = 0;
-        for (int i = 0; i < answers.size(); i++) {
-            JSONObject answerEntity = answers.get(i);
-            if (!answerEntity.get("ENABLER_ID").equals(enablerId)) {
+            if(levelAchieved){
+                capability_level++;
+            }else {
                 break;
-            } else {
-                String answerIndicatorId = (String) answerEntity.get("INDICATOR_ID");
             }
         }
         return capability_level;
+    }
+    public int calculate(List<JSONObject> capLevelsForEnabler){
+        int maturityLevel=1;
+        int checkLevel =2;
+        boolean maturityLevelAchieved=true;
+        while(maturityLevelAchieved&&checkLevel<6){
+            switch (checkLevel){
+                case 2:
+                case 5:
+                    for(int i=0;i<capLevelsForEnabler.size();i++){
+                        int level= (int) capLevelsForEnabler.get(i).get("capabilityLevel");
+                        if(checkLevel==2&&level<1||checkLevel==5&&level<3) {
+                            maturityLevelAchieved = false;
+                            break;
+                        }
+                    }if(maturityLevelAchieved){
+                        checkLevel++;
+                        maturityLevel++;
+                    }
+                    break;
+                case 3:
+                    for(int i=0;i<capLevelsForEnabler.size();i++){
+                        int level= (int) capLevelsForEnabler.get(i).get("capabilityLevel");
+                        if(level<2||level<1&&capLevelsForEnabler.get(i).get("enabler").equals("5")) {
+                            maturityLevelAchieved = false;
+                            break;
+                        }
+                    }
+                    if(maturityLevelAchieved){
+                        checkLevel++;
+                        maturityLevel++;
+                    }
+                    break;
+                case 4:
+                    for(int i=0;i<capLevelsForEnabler.size();i++){
+                        int level= (int) capLevelsForEnabler.get(i).get("capabilityLevel");
+                        if(level<3||
+                                level<2&&capLevelsForEnabler.get(i).get("enabler").equals("1")||
+                                level<2&&capLevelsForEnabler.get(i).get("enabler").equals("7")) {
+                            maturityLevelAchieved = false;
+                            break;
+                        }
+                    }
+                    if(maturityLevelAchieved){
+                        checkLevel++;
+                        maturityLevel++;
+                    }
+                    break;
+            }
+        }
+        System.out.println("LEvel: "+maturityLevel);
+        return maturityLevel;
     }
 }
