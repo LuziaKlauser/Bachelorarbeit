@@ -20,4 +20,14 @@ public class MainController {
         return "survey";
     }
 
+    @GetMapping("/DFRTool")
+    public String getStart() {
+        return "start";
+    }
+    @GetMapping("/DFRTool/evaluation")
+    public String getEvaluation() {
+        return "evaluation";
+    }
+
+
 }
