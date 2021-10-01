@@ -2,6 +2,7 @@ package de.bachlorarbeit.service;
 
 
 import de.bachlorarbeit.error.ErrorMessages;
+import de.bachlorarbeit.exception.EmployeeNotFoundException;
 import de.bachlorarbeit.exception.EnablerNotFoundException;
 import de.bachlorarbeit.exception.SurveyNotFoundException;
 import de.bachlorarbeit.exception.TableNotFoundException;
@@ -112,6 +113,42 @@ public class DatabaseService {
                 throw new EnablerNotFoundException(ErrorMessages.EnablerNotFound(enabler_id));
             }else{
                 return resultList;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public List<JSONObject> getEmployeeIdForSurvey(String surveyId) throws SQLException {
+        Statement query = connection.createStatement();
+        try {
+            String sql = "SELECT department.employee_id, survey.survey_id "+
+                    "FROM department " +
+                    "INNER JOIN survey ON survey.department_id=department.department_id WHERE survey.survey_id="+surveyId;
+            ResultSet s = query.executeQuery(sql);
+            List<JSONObject> resultList = converter.convertToJson(s);
+            if(resultList.size()==0){
+                throw new SurveyNotFoundException(ErrorMessages.SurveyNotFound(surveyId));
+            }else{
+                return resultList;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    public String getEmail(String employeeId) throws SQLException {
+        Statement query = connection.createStatement();
+        try {
+            String sql = "SELECT email FROM employee WHERE employee_id=" + employeeId;
+            ResultSet s = query.executeQuery(sql);
+            List<JSONObject> resultList = converter.convertToJson(s);
+            if(resultList.size()==0){
+                throw new EmployeeNotFoundException(ErrorMessages.EmployeeNotFound(employeeId));
+            }else{
+                String email= (String) resultList.get(0).get("EMAIL");
+                return email;
             }
         } catch (SQLException e) {
             e.printStackTrace();

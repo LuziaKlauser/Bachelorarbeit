@@ -38,6 +38,12 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
         return new ResponseEntity<>(errorDetail, null, HttpStatus.NOT_FOUND);
     }
 
+    @ExceptionHandler(EmployeeNotFoundException.class)
+    public ResponseEntity<?> handleEmployeeNotFoundException(EmployeeNotFoundException ex, HttpServletRequest request) {
+        ErrorDetail errorDetail = new ErrorDetail(HttpStatus.NOT_FOUND, ex, request);
+        return new ResponseEntity<>(errorDetail, null, HttpStatus.NOT_FOUND);
+    }
+
     @Override
     protected ResponseEntity<Object> handleHttpRequestMethodNotSupported(HttpRequestMethodNotSupportedException ex,
                                                                          HttpHeaders headers, HttpStatus status,

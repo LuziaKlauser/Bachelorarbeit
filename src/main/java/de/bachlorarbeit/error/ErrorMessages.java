@@ -16,5 +16,8 @@ public class ErrorMessages {
     public static String EnablerNotFound(int enabler_id) {
         return "There is no entry with the enabler_id: "+ enabler_id;
     }
+    public static String EmployeeNotFound(String employee_id) {
+        return "There is no employee with the employee_id: "+ employee_id;
+    }
 
 }
