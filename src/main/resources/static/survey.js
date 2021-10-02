@@ -32,7 +32,7 @@ function createForm(data){
         var cardHeader = document.createElement("div");
         cardHeader.setAttribute("class", "card-header");
         var id=questions[i].INDICATOR_ID;
-        var question=questions[i].QUESTION
+        var question=questions[i].QUESTION;
         cardHeader.setAttribute("id", id);
         cardHeader.setAttribute("value", question);
         cardHeader.innerHTML=(i+1)+". "+question;
