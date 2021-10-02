@@ -24,8 +24,10 @@ public class MainController {
     public String getStart() {
         return "start";
     }
+
+
     @GetMapping("/DFRTool/evaluation")
-    public String getEvaluation() {
+    public String getEvaluatio() {
         return "evaluation";
     }
 

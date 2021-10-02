@@ -25,10 +25,8 @@ public class TaskService {
         List<JSONObject> surveyResult = converter.convertFormdataToJson(formData);
         for (int i = 0; i < surveyResult.size(); i++) {
             try {
-                System.out.println(surveyResult);
                 JSONObject entry = surveyResult.get(i);
                 String indicator_id = (String) entry.get("indicator_id");
-                System.out.println(indicator_id);
                 String answer = (String) entry.get("answer");
                 LocalDate date = LocalDate.now();
                 int numberOfRowsInserted = query.executeUpdate("INSERT into answer(answer_id,type, time, indicator_id)"
@@ -50,7 +48,6 @@ public class TaskService {
                 System.out.println(json);
                 for(int i=0;i<json.size();i++){
                     String indicator_id= (String) json.get(i).get("INDICATOR_ID");
-                    System.out.println(indicator_id);
                     int numberOfRowsInserted = query.executeUpdate("DELETE FROM answer WHERE indicator_id="+indicator_id);
                 }
                 //int numberOfRowsInserted = query.executeUpdate("DELETE FROM survey WHERE survey_id=3");
