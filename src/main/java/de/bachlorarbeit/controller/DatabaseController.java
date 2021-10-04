@@ -59,5 +59,24 @@ public class DatabaseController {
         return null;
     }
 
+
+    @RequestMapping(value = "/data/survey/surveyIds", produces = {MediaType.APPLICATION_JSON_VALUE, "application/vnd.pfc.app-v1.0+json"}, method = RequestMethod.GET)
+    public List<JSONObject> getTable(HttpServletRequest request) {
+        try {
+            return databaseService.getSurveyId();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return null;
+    }
+    @RequestMapping(value = "/data/answer/time", produces = {MediaType.APPLICATION_JSON_VALUE, "application/vnd.pfc.app-v1.0+json"}, method = RequestMethod.GET)
+    public List<JSONObject> getIndicatorTime(HttpServletRequest request) {
+        try {
+            return databaseService.getTimeIndicator();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return null;
+    }
 }
 

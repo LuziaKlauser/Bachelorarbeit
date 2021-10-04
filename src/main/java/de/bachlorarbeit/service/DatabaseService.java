@@ -155,5 +155,40 @@ public class DatabaseService {
         }
         return null;
     }
+    public List<JSONObject> getSurveyId() throws SQLException {
+        Statement query = connection.createStatement();
+        try {
+            String sql = "SELECT survey_id FROM survey";
+            ResultSet resultSet = query.executeQuery(sql);
+            List<JSONObject> resultList = converter.convertToJson(resultSet);
+            if(resultList.size()==0){
+                throw new TableNotFoundException(ErrorMessages.TableNotFound("survey"));
+            }else{
+                return resultList;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 
+    public List<JSONObject> getTimeIndicator() throws SQLException {
+        Statement query = connection.createStatement();
+        try {
+            String sql = "SELECT answer.time, indicator.survey_id "+
+                    "FROM  answer " +
+                    "INNER JOIN indicator ON answer.indicator_id=indicator.indicator_id GROUP BY indicator.survey_id";
+            ResultSet s = query.executeQuery(sql);
+            List<JSONObject> resultList = converter.convertToJson(s);
+            if(resultList.size()==0){
+                //TODO change that exceoption and add
+                throw new TableNotFoundException(ErrorMessages.TableNotFound("indicator"));
+            }else{
+                return resultList;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 }

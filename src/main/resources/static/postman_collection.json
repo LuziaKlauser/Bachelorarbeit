@@ -1,0 +1,517 @@
+{
+	"info": {
+		"_postman_id": "77d3bf3d-9b5c-4874-ae41-a5548cfb9e97",
+		"name": "DFReadiness",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "data",
+			"item": [
+				{
+					"name": "/data/:tableName",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/data/:tableName",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"data",
+								":tableName"
+							],
+							"variable": [
+								{
+									"key": "tableName",
+									"value": "enabler"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200 OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "",
+										"value": "",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/data/:tableName",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"data",
+										":tableName"
+									],
+									"variable": [
+										{
+											"key": "tableName",
+											"value": "enable"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 29 Sep 2021 13:39:24 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"ENABLER_ID\": \"1\",\n        \"NAME\": \"Principles, Policies and Frameworks\"\n    },\n    {\n        \"ENABLER_ID\": \"2\",\n        \"NAME\": \"Processes\"\n    },\n    {\n        \"ENABLER_ID\": \"3\",\n        \"NAME\": \"Organizational structures\"\n    },\n    {\n        \"ENABLER_ID\": \"4\",\n        \"NAME\": \"Information\"\n    },\n    {\n        \"ENABLER_ID\": \"5\",\n        \"NAME\": \"Culture, ethics and behaviour\"\n    },\n    {\n        \"ENABLER_ID\": \"6\",\n        \"NAME\": \"Peoples, skills and competences\"\n    },\n    {\n        \"ENABLER_ID\": \"7\",\n        \"NAME\": \"Services, infrastructure and applications\"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "/data/survey/:surveyId",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/data/survey/:surveyId",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"data",
+								"survey",
+								":surveyId"
+							],
+							"variable": [
+								{
+									"key": "surveyId",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200 OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/data/survey/:surveyId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"data",
+										"survey",
+										":surveyId"
+									],
+									"variable": [
+										{
+											"key": "surveyId",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 29 Sep 2021 13:44:20 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"INDICATOR_ID\": \"2\",\n        \"QUESTION\": \"Are initiatives to raise awareness for DF activities in place and continuously monitored ?\"\n    },\n    {\n        \"INDICATOR_ID\": \"3\",\n        \"QUESTION\": \"Do Governance and Management understand DFR initiatives?\"\n    },\n    {\n        \"INDICATOR_ID\": \"4\",\n        \"QUESTION\": \"Are Principles and policies according to a DF investigation present?\"\n    },\n    {\n        \"INDICATOR_ID\": \"5\",\n        \"QUESTION\": \"Do Governance and Management pursue DFR initiatives?\"\n    },\n    {\n        \"INDICATOR_ID\": \"6\",\n        \"QUESTION\": \"Do Governance and Management are completely involved in planning DFR initiatives?\"\n    },\n    {\n        \"INDICATOR_ID\": \"7\",\n        \"QUESTION\": \"Do Governance and Management support DFR related organisational changes?\"\n    },\n    {\n        \"INDICATOR_ID\": \"8\",\n        \"QUESTION\": \"Is a change management in place?\"\n    },\n    {\n        \"INDICATOR_ID\": \"9\",\n        \"QUESTION\": \"Does the Staff take principles to DF related actions seriously?\"\n    },\n    {\n        \"INDICATOR_ID\": \"10\",\n        \"QUESTION\": \"Are principles clearly formulated?\"\n    },\n    {\n        \"INDICATOR_ID\": \"11\",\n        \"QUESTION\": \"Are the responsibilities for the case of a DF investigation known?\"\n    },\n    {\n        \"INDICATOR_ID\": \"12\",\n        \"QUESTION\": \"Are responsibilities for the case of a DF investigation defined?\"\n    },\n    {\n        \"INDICATOR_ID\": \"13\",\n        \"QUESTION\": \"Are DF related decision making guidelines included in job-descriptions or roles?\"\n    },\n    {\n        \"INDICATOR_ID\": \"14\",\n        \"QUESTION\": \"Are Rights within Information Systems defined?\"\n    },\n    {\n        \"INDICATOR_ID\": \"15\",\n        \"QUESTION\": \"Are rights within Information Systems defined and adjusted to prevent potential destroying or tamp\"\n    },\n    {\n        \"INDICATOR_ID\": \"16\",\n        \"QUESTION\": \"Is the Identity management system in place?\"\n    },\n    {\n        \"INDICATOR_ID\": \"17\",\n        \"QUESTION\": \"Are escalation rules defined?\"\n    },\n    {\n        \"INDICATOR_ID\": \"18\",\n        \"QUESTION\": \"Are escalation rules defined, reviewed and monitored?\"\n    },\n    {\n        \"INDICATOR_ID\": \"19\",\n        \"QUESTION\": \"Is a basic understanding of the DF investigation process present?\"\n    },\n    {\n        \"INDICATOR_ID\": \"20\",\n        \"QUESTION\": \"Is a deep understanding of the DF investigation process is present?\"\n    },\n    {\n        \"INDICATOR_ID\": \"21\",\n        \"QUESTION\": \"Is the support for the DF investigation process continuously improved?\"\n    },\n    {\n        \"INDICATOR_ID\": \"22\",\n        \"QUESTION\": \"Are related sub-processes to DF documented?\"\n    },\n    {\n        \"INDICATOR_ID\": \"23\",\n        \"QUESTION\": \"Is a guideline to prevent business interruption in the case of a DF investigation defined?\"\n    },\n    {\n        \"INDICATOR_ID\": \"24\",\n        \"QUESTION\": \"Are process models of business processes present?\"\n    },\n    {\n        \"INDICATOR_ID\": \"25\",\n        \"QUESTION\": \"Are DF related processes partially automated?\"\n    },\n    {\n        \"INDICATOR_ID\": \"26\",\n        \"QUESTION\": \"Are DF related processes partially automated?\"\n    },\n    {\n        \"INDICATOR_ID\": \"27\",\n        \"QUESTION\": \"Are documents about the right handling of digital evidences in general present?\"\n    },\n    {\n        \"INDICATOR_ID\": \"28\",\n        \"QUESTION\": \"Are documents about the right handling of digital evidences of all devices and systems within the organization present?\"\n    },\n    {\n        \"INDICATOR_ID\": \"29\",\n        \"QUESTION\": \"Are documents about the right handling of digital evidences of all devices and systems within the organization present and frequently reviewed?\"\n    },\n    {\n        \"INDICATOR_ID\": \"30\",\n        \"QUESTION\": \"Are information about DF investigations available and accessible?\"\n    },\n    {\n        \"INDICATOR_ID\": \"31\",\n        \"QUESTION\": \"Can employee contribute findings and knowledge regarding DF?\"\n    },\n    {\n        \"INDICATOR_ID\": \"32\",\n        \"QUESTION\": \"Can employee contribute findings and knowledge regarding DF?\"\n    },\n    {\n        \"INDICATOR_ID\": \"33\",\n        \"QUESTION\": \"Is the usage of tools for DF is documented?\"\n    },\n    {\n        \"INDICATOR_ID\": \"34\",\n        \"QUESTION\": \"Is the usage of tools for DF documented and continuously reviewed?\"\n    },\n    {\n        \"INDICATOR_ID\": \"35\",\n        \"QUESTION\": \"Is information about the usage of digital evidences in a law court present?\"\n    },\n    {\n        \"INDICATOR_ID\": \"36\",\n        \"QUESTION\": \"Is information about the usage of digital evidences in a law court present and frequently updated?\"\n    },\n    {\n        \"INDICATOR_ID\": \"37\",\n        \"QUESTION\": \"Do employees get frequent updates according DF related topics (e.g.: e-Mail, letter)?\"\n    },\n    {\n        \"INDICATOR_ID\": \"38\",\n        \"QUESTION\": \"Do employees get timely updates according DF related topics (e.g.: e-Mail, letter)?\"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "/data/answer/check",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/data/answer/check",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"data",
+								"answer",
+								"check"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200 OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/data/answer/check",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"data",
+										"answer",
+										"check"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 29 Sep 2021 13:45:52 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"100 percent of all indicators are already answered\",\n    \"allanswers\": 100\n}"
+						}
+					]
+				},
+				{
+					"name": "/data/calculate",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/data/calculate",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"data",
+								"calculate"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/data/answer/:surveyId",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/data/answer/:surveyId",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"data",
+								"answer",
+								":surveyId"
+							],
+							"variable": [
+								{
+									"key": "surveyId",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "survey",
+			"item": [
+				{
+					"name": "/survey/:surveyId",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/survey/:surveyId",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"survey",
+								":surveyId"
+							],
+							"variable": [
+								{
+									"key": "surveyId",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200 OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/survey/:surveyId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"survey",
+										":surveyId"
+									],
+									"variable": [
+										{
+											"key": "surveyId",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "html",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/html;charset=UTF-8"
+								},
+								{
+									"key": "Content-Language",
+									"value": "de-DE"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 29 Sep 2021 13:48:04 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "<!DOCTYPE html>\n<html lang=\"en\">\n    <head>\n        <meta charset=\"UTF-8\">\n        <script type=\"text/javascript\" src=\"..//survey.js\"></script>\n        <title>Survey</title>\n        <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n        <link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css\">\n        <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js\"></script>\n        <script src=\"https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js\"></script>\n        <script src=\"https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js\"></script>\n    </head>\n    <body>\n        <div class=\"jumbotron\" id=\"survey\">\n            <h1>Survey</h1>\n            <input type=\"button\" onclick=\"createSurvey()\" value=\"Start Survey\" id=\"surveyButton\"/>\n        </div>\n    </body>\n</html>"
+						}
+					]
+				},
+				{
+					"name": "/survey/upload",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/survey/upload",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"survey",
+								"upload"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200 OK",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/survey/upload",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"survey",
+										"upload"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "28"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 29 Sep 2021 13:52:39 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "Survey successfully uploaded"
+						}
+					]
+				},
+				{
+					"name": "/send/1",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/survey/:surveyId/send",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"survey",
+								":surveyId",
+								"send"
+							],
+							"variable": [
+								{
+									"key": "surveyId",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200 OK",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/survey/:surveyId/send",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"survey",
+										":surveyId",
+										"send"
+									],
+									"query": [
+										{
+											"key": "",
+											"value": "",
+											"disabled": true
+										}
+									],
+									"variable": [
+										{
+											"key": "surveyId",
+											"value": "2"
+										}
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "53"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 01 Oct 2021 09:55:44 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "Congratulations! Your mail has been send to the user."
+						}
+					]
+				}
+			]
+		}
+	]
+}

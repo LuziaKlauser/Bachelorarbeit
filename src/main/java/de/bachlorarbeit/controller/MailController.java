@@ -1,6 +1,5 @@
 package de.bachlorarbeit.controller;
 
-import de.bachlorarbeit.model.User;
 import de.bachlorarbeit.service.MailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -10,9 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.mail.MailException;
 import org.springframework.web.bind.annotation.*;
 
-import javax.mail.MessagingException;
 import java.sql.SQLException;
-import java.util.HashMap;
 
 @RestController
 public class MailController {

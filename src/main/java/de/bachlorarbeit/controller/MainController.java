@@ -32,4 +32,13 @@ public class MainController {
     }
 
 
+    @GetMapping("/documentation")
+    public String documentation() {
+        return "documentation";
+    }
+
+    @GetMapping("/openapi")
+    public String openapi() {
+        return "openapi.json";
+    }
 }

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <title>Privacy File Checker</title>
+    <title>DFReadinessTool</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript" src="..//evaluation.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
@@ -11,7 +11,7 @@
 </head>
 <body>
 
-<body onload="getStatus()">
+<body onload="start()">
 <div class="jumbotron" id="evalutation">
     <h1>DigitalForensicReadinessTool</h1>
     </br>
@@ -19,13 +19,15 @@
     <input type="button" onclick="getStatus()" value="Check status" id="surveyButton"/>
     </br>
 
-    <div class="progress"  style="height:50px">
+    <div class="progress" style="height:50px">
         <div id="progress" class="progress-bar bg-danger" style="width:100%;height:50px">100%</div>
     </div>
     </br>
     </br>
     <div>
-        <button id="calculateMaturity" type="button" class="btn btn-outline-danger btn-lg" style="font-size:1em;" onclick="window.location.href='/DFRTool/evaluation'">Calculate Maturity Level</button>
+        <button id="calculateMaturity" type="button" class="btn btn-outline-danger btn-lg" style="font-size:1em;"
+                onclick="window.location.href='/DFRTool/evaluation'">Calculate Maturity Level
+        </button>
     </div>
     <div class="mb-4">
         </br>
@@ -35,6 +37,29 @@
     <div id="col" class="collapse">
         </br>
         <div class="container">
+            <h3>Get time of last update of each indicator:</h3>
+            <br/>
+            <div id="lastUpdate"></div>
+            
+            <button class="btn btn-dark" type="submit" id="getTimeButton">Get time</button>
+            <div class="mb-4">
+                </br>
+                <hr class="solid">
+            </div>
+
+            <h3>Send Surveys:</h3>
+            <br/>
+            <form method="POST" enctype="multipart/form-data" id="sendMail">
+                <div id="surveyToSend"></div>
+                <br>
+
+                <button class="btn btn-dark" type="submit" id="sendSurveyButton">Send</button>
+            </form>
+            <div class="mb-4">
+                </br>
+                <hr class="solid">
+            </div>
+
             <h3>Delete all answers to a survey:</h3>
             <br/>
             <form method="POST" enctype="multipart/form-data" id="deleteEntryForm">
@@ -44,7 +69,6 @@
                 <br/>
                 <button class="btn btn-dark" type="submit" id="deleteButton">Delete</button>
             </form>
-            <br/>
         </div>
     </div>
 </div>
