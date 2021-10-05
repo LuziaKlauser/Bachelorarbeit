@@ -4,10 +4,8 @@ $(document).ready(function () {
         event.preventDefault();
         getEnablerInformation();
     });
-    $(".nav-pills a").click(function(){
+    $(".nav-tabs a").click(function(){
         $(this).tab('show');
-        informationMaturityLevel();
-
     });
 });
 
@@ -148,7 +146,9 @@ function MaturityLevelInformation(){
 }
 function createMaturityLevelInformation(data){
     var allLevels=document.getElementById("allLevels");
-    allLevels.innerHTML="";
+    //allLevels.innerHTML="";
+    var show=document.getElementById("showLevel");
+    //show.innerHTML="";
     console.log(data);
     for(var i=0; i<data.length;i++){
         var li =document.createElement("li");
@@ -161,5 +161,12 @@ function createMaturityLevelInformation(data){
         a.innerHTML="Level "+name;
         li.appendChild(a);
         allLevels.appendChild(li);
+
+        var div =document.createElement("div");
+        div.setAttribute("class", "container tab-pane fade")
+        div.setAttribute("id",name);
+        div.innerHTML="hheee";
+        show.appendChild(div);
+
     }
 }
