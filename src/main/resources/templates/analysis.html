@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>DFReadinessTool</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="..//analysis.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
+    </script>
+
+</head>
+<body onload="start()">
+</br>
+<h1>DigitalForensicReadinessTool</h1>
+</br>
+<div>
+    <canvas id="myChart" style="width:80%;max-width:1000px; margin:0 auto;"></canvas>
+</div>
+<a href="#col" class="btn btn-dark" data-toggle="collapse" id="moreInfo">More information</a>
+<div id="col" class="collapse">
+    <div class="jumbotron" id="analysis">
+        <div id="information"></div>
+    </div>
+</div>
+<div class="mb-4">
+    </br>
+    <hr class="solid">
+</div>
+<h2 id="Welcome" class="text-danger">Maturity Level</h2>
+
+<div class="card-group">
+    <div class="card bg-danger ">
+        <div class="card-body text-center">
+            <div class="display-5 text-light">Your achieved Level:</div>
+            <p class="display-3 text-light" id="achievedLevel">4</p>
+        </div>
+    </div>
+    <div class="card bg-light">
+
+        <div class="col-ms">
+            <ul class="nav nav-pills nav-stacked" id="allLevels">
+                <li class="nav-item">
+                    <a class="nav-link active" data-toggle="tab" href="#home">Home</a>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+    <div class="card bg-light">
+        <div class="card-body text-center">
+            <!-- Tab panes -->
+            <div class="tab-content">
+                <div id="hom3e" class="container tab-pane fade"><br>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                </div>
+                <div id="menu1" class="container tab-pane fade"><br>
+                    <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                </div>
+                <div id="menu2" class="container tab-pane fade"><br>
+                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

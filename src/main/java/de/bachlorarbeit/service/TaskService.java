@@ -1,5 +1,7 @@
 package de.bachlorarbeit.service;
 
+import de.bachlorarbeit.error.ErrorMessages;
+import de.bachlorarbeit.exception.TableNotFoundException;
 import de.bachlorarbeit.helpers.DBConnection;
 import de.bachlorarbeit.utility.Converter;
 import org.json.simple.JSONObject;
@@ -61,18 +63,35 @@ public class TaskService {
 
     public int calculateMaturityLevel() throws SQLException {
         DatabaseService databaseService= new DatabaseService();
+            List<JSONObject> capLevelsForEnabler = this.calculateCapabilityLevel();
+            System.out.println(capLevelsForEnabler);
+            return calculate(capLevelsForEnabler);
+
+    }
+
+    public List<JSONObject> calculateCapabilityLevel() throws SQLException {
+        DatabaseService databaseService= new DatabaseService();
         List<JSONObject> enablers= databaseService.getTable("enabler");
         List<JSONObject> capLevelsForEnabler = new ArrayList<JSONObject>();
         for(int enablerId=1; enablerId<=enablers.size();enablerId++){
             JSONObject capLevelForEnabler = new JSONObject();
             List<JSONObject> indicators= databaseService.getTableFromEnabler(enablerId);
+            List<JSONObject> enabler= databaseService.getTable("enabler");
+            for(int i=0;i<enabler.size();i++){
+                String en_id= (String) enabler.get(i).get("ENABLER_ID");
+                int id=Integer.parseInt(en_id);
+                if(enablerId==id){
+                    capLevelForEnabler.put("name", enabler.get(i).get("NAME"));
+                }
+            }
             int level= calculateCapabilityLevelForEnabler(enablerId, indicators);
             capLevelForEnabler.put("enabler",enablerId);
             capLevelForEnabler.put("capabilityLevel",level);
             capLevelsForEnabler.add(capLevelForEnabler);
         }
-        return calculate(capLevelsForEnabler);
+        return capLevelsForEnabler;
     }
+
     //calculates the capability_level for the specific enabler
     public int calculateCapabilityLevelForEnabler(int enablerId,List<JSONObject> indicators) {
         int capability_level = 0;

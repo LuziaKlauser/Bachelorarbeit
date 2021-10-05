@@ -52,5 +52,15 @@ public class TaskController {
         //All files have been deleted:
         return ResponseEntity.status(HttpStatus.NO_CONTENT).body(null);
     }
+    @RequestMapping(value = "/data/enabler/calculate", produces = {MediaType.APPLICATION_JSON_VALUE, "application/vnd.pfc.app-v1.0+json"}, method = RequestMethod.GET)
+    public List<JSONObject> calculateEnabler(@RequestParam(required = false) String fields,
+                         HttpServletRequest request) {
+        try {
+            return taskService.calculateCapabilityLevel();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return null;
+    }
 }
 

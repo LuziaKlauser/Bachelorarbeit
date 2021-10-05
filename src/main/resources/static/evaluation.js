@@ -144,7 +144,6 @@ function getTime(){
         success: function (data) {
             // Call this function on success
             createTable(data);
-            console.log(data);
             return data;
         },
         error: function () {
@@ -154,6 +153,7 @@ function getTime(){
 }
 function createTable(data){
     var div=document.getElementById("lastUpdate");
+    div.innerHTML="";
     var table=document.createElement("table");
     table.setAttribute("class", "table");
     var thead=document.createElement("thead");

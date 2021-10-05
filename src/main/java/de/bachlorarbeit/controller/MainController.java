@@ -27,10 +27,14 @@ public class MainController {
 
 
     @GetMapping("/DFRTool/evaluation")
-    public String getEvaluatio() {
+    public String getEvaluation() {
         return "evaluation";
     }
 
+    @GetMapping("/DFRTool/analysis")
+    public String getAnalysis() {
+        return "analysis";
+    }
 
     @GetMapping("/documentation")
     public String documentation() {
