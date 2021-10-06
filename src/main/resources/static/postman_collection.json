@@ -9,7 +9,7 @@
 			"name": "data",
 			"item": [
 				{
-					"name": "/data/:tableName",
+					"name": "/data/{tableName}",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -96,7 +96,7 @@
 					]
 				},
 				{
-					"name": "/data/survey/:surveyId",
+					"name": "/data/survey/{surveyId}",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -256,7 +256,7 @@
 					"response": []
 				},
 				{
-					"name": "/data/answer/:surveyId",
+					"name": "/data/answer/{surveyId}",
 					"request": {
 						"method": "DELETE",
 						"header": [],
@@ -279,6 +279,201 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "/data/answer/time",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/data/answer/time",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"data",
+								"answer",
+								"time"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200 OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/data/answer/time",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"data",
+										"answer",
+										"time"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 06 Oct 2021 11:55:26 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"SURVEY_ID\": \"1\",\n        \"TIME\": \"2021-10-04\"\n    },\n    {\n        \"SURVEY_ID\": \"2\",\n        \"TIME\": \"2021-10-05\"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "/data/enabler/calculate",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/data/enabler/calculate",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"data",
+								"enabler",
+								"calculate"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200 OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/data/enabler/calculate",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"data",
+										"enabler",
+										"calculate"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 06 Oct 2021 11:56:28 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"enabler\": 1,\n        \"name\": \"Principles, Policies and Frameworks\",\n        \"capabilityLevel\": 3\n    },\n    {\n        \"enabler\": 2,\n        \"name\": \"Processes\",\n        \"capabilityLevel\": 3\n    },\n    {\n        \"enabler\": 3,\n        \"name\": \"Organizational structures\",\n        \"capabilityLevel\": 3\n    },\n    {\n        \"enabler\": 4,\n        \"name\": \"Information\",\n        \"capabilityLevel\": 3\n    },\n    {\n        \"enabler\": 5,\n        \"name\": \"Culture, ethics and behaviour\",\n        \"capabilityLevel\": 3\n    },\n    {\n        \"enabler\": 6,\n        \"name\": \"Peoples, skills and competences\",\n        \"capabilityLevel\": 3\n    },\n    {\n        \"enabler\": 7,\n        \"name\": \"Services, infrastructure and applications\",\n        \"capabilityLevel\": 3\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "/data/survey/surveyIds",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/data/survey/surveyIds",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"data",
+								"survey",
+								"surveyIds"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200 OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/data/survey/surveyIds",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"data",
+										"survey",
+										"surveyIds"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 06 Oct 2021 11:57:23 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"SURVEY_ID\": \"1\"\n    },\n    {\n        \"SURVEY_ID\": \"2\"\n    }\n]"
+						}
+					]
 				}
 			]
 		},
@@ -286,7 +481,7 @@
 			"name": "survey",
 			"item": [
 				{
-					"name": "/survey/:surveyId",
+					"name": "/survey/{surveyId}",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -428,7 +623,7 @@
 					]
 				},
 				{
-					"name": "/send/1",
+					"name": "/survey/{surveyId}/send",
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -508,6 +703,210 @@
 							],
 							"cookie": [],
 							"body": "Congratulations! Your mail has been send to the user."
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "DFRTool",
+			"item": [
+				{
+					"name": "/DFRTool",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/DFRTool",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"DFRTool"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200 OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/DFRTool",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"DFRTool"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "html",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/html;charset=UTF-8"
+								},
+								{
+									"key": "Content-Language",
+									"value": "de-DE"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 06 Oct 2021 11:52:57 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "<!DOCTYPE html>\n<html>\n    <head>\n        <meta charset=\"UTF-8\">\n        <title>DFReadinessTool</title>\n        <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n        <link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css\">\n        <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js\"></script>\n        <script src=\"https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js\"></script>\n        <script src=\"https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js\"></script>\n    </head>\n    <body>\n        <div class=\"card\">\n            <img class=\"card-img-top\" src=\"forensic.jpg\" alt=\"Card image\">\n            <div class=\"card-img-overlay\">\r\n        \n                </br>\r\n        \n                </br>\n                <h1 id=\"Welcome2\" class=\"display-3 text-light\">Welcome</h1>\n                </br>\n                <p class=\"lead\">\n                    <a id=\"a_button_id2\" class=\"btn btn-light btn-lg\" href=\"#\" style=\"font-size:1em;\" onclick=\"window.location.href='/DFRTool/evaluation'\" role=\"button\">Start DFReadiness Tool</a>\n                </p>\n            </div>\n        </div>\n    </body>\n</html>"
+						}
+					]
+				},
+				{
+					"name": "/DFRTool/analysis",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/DFRTool/analysis",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"DFRTool",
+								"analysis"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200 OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/DFRTool/analysis",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"DFRTool",
+										"analysis"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "html",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/html;charset=UTF-8"
+								},
+								{
+									"key": "Content-Language",
+									"value": "de-DE"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 06 Oct 2021 11:53:44 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "<!DOCTYPE html>\n<html lang=\"en\">\n    <head>\n        <meta charset=\"UTF-8\">\n        <link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css\">\n        <title>DFReadinessTool</title>\n        <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js\"></script>\n        <script type=\"text/javascript\" src=\"..//analysis.js\"></script>\n        <script src=\"https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js\"></script>\n        <script src=\"https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js\"></script>\n        <script\r\n            src=\"https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js\">\r\n    </script>\n    </head>\n    <body onload=\"start()\">\r\n\n        </br>\n        <h1>DigitalForensicReadinessTool</h1>\n        </br>\n        <div>\n            <canvas id=\"myChart\" style=\"width:80%;max-width:1000px; margin:0 auto;\"></canvas>\n        </div>\n        <a href=\"#col\" class=\"btn btn-dark\" data-toggle=\"collapse\" id=\"moreInfo\">More information</a>\n        <div id=\"col\" class=\"collapse\">\n            <div class=\"jumbotron\" id=\"analysis\">\n                <div id=\"information\"></div>\n            </div>\n        </div>\n        <div class=\"mb-4\">\r\n    \n            </br>\n            <hr class=\"solid\">\r\n\n        </div>\n        <h2 id=\"Welcome\" class=\"text-danger\">Maturity Level</h2>\n        <div class=\"card-group\">\n            <div class=\"card bg-danger \">\n                <div class=\"card-body text-center\">\n                    <div class=\"display-5 text-light\">Your achieved Level:</div>\n                    <p class=\"display-2 text-light\" id=\"achievedLevel\">4</p>\n                </div>\n            </div>\n            <div class=\"card bg-light\">\n                <div class=\"col-ms\">\n                    <ul class=\"nav nav-tabs\" id=\"allLevels\">\n                        <li class=\"nav-item\">\n                            <a id=\"navLevel1\" class=\"nav-link text-dark\" href=\"#level1\">level 1</a>\n                        </li>\n                        <li class=\"nav-item\">\n                            <a id=\"navLevel2\" class=\"nav-link text-dark\" href=\"#level2\">Level 2</a>\n                        </li>\n                        <li class=\"nav-item\">\n                            <a id=\"navLevel3\" class=\"nav-link text-dark\" href=\"#level3\">Level 3</a>\n                        </li>\n                        <li class=\"nav-item\">\n                            <a  id=\"navLevel4\" class=\"nav-link text-dark\" href=\"#level4\">Level 4</a>\n                        </li>\n                        <li class=\"nav-item\">\n                            <a id=\"navLevel5\" class=\"nav-link text-dark\" href=\"#level5\">Level 5</a>\n                        </li>\n                    </ul>\n                </div>\n            </div>\n            <div class=\"card bg-light\">\n                <div class=\"card-body text-center\">\n                    <!-- Tab panes -->\n                    <div class=\"tab-content\" id=\"showLevel\">\n                        <div id=\"level1\" class=\"container tab-pane fade\"></div>\n                        <div id=\"level2\" class=\"container tab-pane fade\">\r\n                    </div>\n                        <div id=\"level3\" class=\"container tab-pane fade\"></div>\n                        <div id=\"level4\" class=\"container tab-pane fade\">\r\n                    </div>\n                        <div id=\"level5\" class=\"container tab-pane fade\">\r\n                    </div>\n                    </div>\n                </div>\n            </div>\n        </div>\n    </div>\n</div>\n</body>\n</html>"
+						}
+					]
+				},
+				{
+					"name": "/DFRTool/evaluation",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/DFRTool/evaluation",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"DFRTool",
+								"evaluation"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200 OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/DFRTool/evaluation",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"DFRTool",
+										"evaluation"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "html",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/html;charset=UTF-8"
+								},
+								{
+									"key": "Content-Language",
+									"value": "de-DE"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 06 Oct 2021 11:54:25 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "<!DOCTYPE html>\n<html lang=\"en\">\n    <head>\n        <meta charset=\"UTF-8\">\n        <link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css\">\n        <title>DFReadinessTool</title>\n        <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js\"></script>\n        <script type=\"text/javascript\" src=\"..//evaluation.js\"></script>\n        <script src=\"https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js\"></script>\n        <script src=\"https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js\"></script>\n    </head>\n    <body>\n        <body onload=\"start()\">\n            <div class=\"jumbotron\" id=\"evalutation\">\n                <h1>DigitalForensicReadinessTool</h1>\n                </br>\n                <h2>Progress Bar</h2>\n                <input type=\"button\" onclick=\"getStatus()\" value=\"Check status\" id=\"surveyButton\"/>\n                </br>\n                <div class=\"progress\" style=\"height:50px\">\n                    <div id=\"progress\" class=\"progress-bar bg-danger\" style=\"width:100%;height:50px\">100%</div>\n                </div>\n                </br>\r\n    \n                </br>\n                <div>\n                    <button id=\"calculateMaturity\" type=\"button\" class=\"btn btn-outline-danger btn-lg\" style=\"font-size:1em;\"\r\n                onclick=\"window.location.href='/DFRTool/analysis'\">Calculate Maturity Level\r\n        </button>\n                </div>\n                <div class=\"mb-4\">\r\n        \n                    </br>\n                    <hr class=\"solid\">\r\n    \n                </div>\n                <a href=\"#col\" class=\"btn btn-dark\" data-toggle=\"collapse\">More options</a>\n                <div id=\"col\" class=\"collapse\">\r\n        \n                    </br>\n                    <div class=\"container\">\n                        <h3>Get time of last update of each indicator:</h3>\n                        <br/>\n                        <div id=\"lastUpdate\"></div>\n                        <button class=\"btn btn-dark\" type=\"submit\" id=\"getTimeButton\">Get time</button>\n                        <div class=\"mb-4\">\r\n                \n                            </br>\n                            <hr class=\"solid\">\r\n            \n                        </div>\n                        <h3>Send Surveys:</h3>\n                        <br/>\n                        <form method=\"POST\" enctype=\"multipart/form-data\" id=\"sendMail\">\n                            <div id=\"surveyToSend\"></div>\n                            <br>\n                            <button class=\"btn btn-dark\" type=\"submit\" id=\"sendSurveyButton\">Send</button>\n                        </form>\n                        <div class=\"mb-4\">\r\n                \n                            </br>\n                            <hr class=\"solid\">\r\n            \n                        </div>\n                        <h3>Delete all answers to a survey:</h3>\n                        <br/>\n                        <form method=\"POST\" enctype=\"multipart/form-data\" id=\"deleteEntryForm\">\n                            <label for=\"deleteSurvey\">Id of the survey:</label>\n                            <br/>\n                            <input type=\"text\" name=\"deleteSurvey\" id=\"deleteSurvey\" placeholder=\"1\"/>\n                            <br/>\n                            <button class=\"btn btn-dark\" type=\"submit\" id=\"deleteButton\">Delete</button>\n                        </form>\n                    </div>\n                </div>\n            </div>\n            <br/>\n            <br/>\n            <br/>\n            <br/>\n        </body>\n    </html>"
 						}
 					]
 				}

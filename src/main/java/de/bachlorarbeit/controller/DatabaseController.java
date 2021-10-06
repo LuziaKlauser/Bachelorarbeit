@@ -78,5 +78,14 @@ public class DatabaseController {
         }
         return null;
     }
+    @RequestMapping(value = "/data/answers", produces = {MediaType.APPLICATION_JSON_VALUE, "application/vnd.pfc.app-v1.0+json"}, method = RequestMethod.GET)
+    public List<JSONObject> getAnswerAndDescription(HttpServletRequest request) {
+        try {
+            return databaseService.getAnswerDescription();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return null;
+    }
 }
 

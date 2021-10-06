@@ -62,5 +62,16 @@ public class TaskController {
         }
         return null;
     }
+
+    @RequestMapping(value = "/answer/upload",
+            produces = {MediaType.APPLICATION_JSON_VALUE, "application/vnd.pfc-v1.0+json"},
+            method = RequestMethod.POST)
+    public ResponseEntity<?> uploadAnswer(@RequestParam List<JSONObject> answers) throws SQLException {
+        taskService.postAnswer(answers);
+        return ResponseEntity.status(HttpStatus.CREATED)
+                .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
+                //TODO body
+                .body("Survey successfully uploaded");
+    }
 }
 

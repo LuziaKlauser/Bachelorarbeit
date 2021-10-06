@@ -4,13 +4,15 @@ $(document).ready(function () {
         event.preventDefault();
         getEnablerInformation();
     });
-    $(".nav-tabs a").click(function(){
-        $(this).tab('show');
+    $("#checkIndicators").click(function (event) {
+        event.preventDefault();
+        getAnswers();
     });
+
 });
 
 function fill(xValues, yValues){
-    var barColors = ["red", "green","blue","orange", "green","blue","orange"];
+    var barColors = ["Aquamarine", "LightGreen","YellowGreen","green", "PaleTurquoise","LightSeaGreen","SteelBlue"];
 
     var myChart = document.getElementById("myChart");
     myChart.height=200;
@@ -47,7 +49,6 @@ function fill(xValues, yValues){
 function start(){
     getEnabler();
     getMaturityLevel();
-    MaturityLevelInformation();
 }
 
 function getMaturityLevel(){
@@ -57,6 +58,8 @@ function getMaturityLevel(){
         success: function (data) {
             var level=document.getElementById("achievedLevel");
             level.innerHTML=data;
+            var maturityLevel=data;
+            MaturityLevelInformation(maturityLevel);
             return data;
         },
         error: function () {
@@ -118,7 +121,6 @@ function createTable(data) {
     var tbody= document.createElement("tbody");
     for(var i=0; i<data.length;i++){
         var tr=document.createElement("tr");
-        console.log(data[i]);
         var th1=document.createElement("th");
         th1.innerHTML= data[i]["LEVEL"];
         tr.appendChild(th1);
@@ -131,12 +133,12 @@ function createTable(data) {
     table.appendChild(tbody);
     div.appendChild(table);
 }
-function MaturityLevelInformation(){
+function MaturityLevelInformation(maturityLevel){
     $.ajax({
         type: "GET",
         url: '/data/maturity_level',
         success: function (data) {
-            createMaturityLevelInformation(data);
+            createMaturityLevelInformation(data, maturityLevel);
             return data;
         },
         error: function () {
@@ -144,29 +146,160 @@ function MaturityLevelInformation(){
         }
     });
 }
-function createMaturityLevelInformation(data){
-    var allLevels=document.getElementById("allLevels");
-    //allLevels.innerHTML="";
-    var show=document.getElementById("showLevel");
-    //show.innerHTML="";
-    console.log(data);
+function createMaturityLevelInformation(data, maturityLevel){
     for(var i=0; i<data.length;i++){
-        var li =document.createElement("li");
-        li.setAttribute("class", "nav-item")
-        var a =document.createElement("a");
-        a.setAttribute("class", "nav-link active");
-        a.setAttribute("data-toggle", "tab")
-        var name= data[i]["LEVEL"];
-        a.setAttribute("href","#"+name);
-        a.innerHTML="Level "+name;
-        li.appendChild(a);
-        allLevels.appendChild(li);
-
-        var div =document.createElement("div");
-        div.setAttribute("class", "container tab-pane fade")
-        div.setAttribute("id",name);
-        div.innerHTML="hheee";
-        show.appendChild(div);
-
+        var id=i+1;
+        var a =document.getElementById("navLevel"+id);
+        var div =document.getElementById("level"+id);
+        if(id==maturityLevel){
+            a.setAttribute("class", "nav-link text-dark active");
+            div.setAttribute("class", "container tab-pane active")
+        }
+        if(id==data[i]["LEVEL"]){
+            var ul =document.createElement("ul");
+            var description= data[i]["DESCRIPTION"];
+            var descriptions= description.split("/");
+            for(var j=0; j<descriptions.length;j++){
+                var li=document.createElement("li");
+                li.innerHTML=descriptions[j];
+                ul.appendChild(li);
+            }
+            div.appendChild(ul);
+        }
+        if(i==data.length-1){
+            $(".nav-tabs a").click(function(){
+                $(this).tab('show');
+            });
+        }
     }
+}
+function getAnswers(){
+    $.ajax({
+        type: "GET",
+        url: '/data/answers',
+        success: function (data) {
+            createAnswersTables(data);
+            return data;
+        },
+        error: function () {
+            alert('Error occured');
+        }
+    });
+}
+function createAnswersTables(data){
+    var divNo = document.getElementById("tableNo");
+    var divYes = document.getElementById("tableYes");
+    divYes.innerHTML = "";
+    divNo.innerHTML = "";
+    var jumbotronYes=document.createElement("div");
+    jumbotronYes.setAttribute("class", "jumbotron");
+    var jumbotronNo=document.createElement("div");
+    jumbotronNo.setAttribute("class", "jumbotron");
+    var tableYes=document.createElement("table");
+    tableYes.setAttribute("class", "table-light table-bordered table-hover");
+    var tableNo=document.createElement("table");
+    tableNo.setAttribute("class", "table-light table-bordered table-hover");
+
+    //data is sorted by type, if there is type "no", it is always on the top
+    if(!data[0]["TYPE"]===("no")){
+        createYesTable(data, divYes, tableYes, jumbotronYes);
+    }else{
+        createYesTable(data, divYes, tableYes, jumbotronYes);
+        createNoTable(data, divNo, tableNo, jumbotronNo);
+    }
+}
+function createYesTable(data, divYes, tableYes, jumbotronYes){
+    var tr=document.createElement("tr");
+    var th1=document.createElement("th");
+    th1.innerHTML="Enabler";
+    var th2=document.createElement("th");
+    th2.innerHTML="Description";
+    var th3=document.createElement("th");
+    th3.innerHTML="Type";
+    tr.appendChild(th1);
+    tr.appendChild(th2);
+    tr.appendChild(th3);
+    tableYes.appendChild(tr);
+
+    var tbody= document.createElement("tbody");
+    for (var i=0; i<data.length;i++){
+        console.log(i);
+        if(data[i]["TYPE"]===("yes")){
+            var tr=document.createElement("tr");
+            var th1= createColorsForEnabler(data[i]["ENABLER_NAME"]);
+            tr.appendChild(th1);
+            var th2=document.createElement("th");
+            th2.innerHTML= data[i]["DESCRIPTION"];
+            tr.appendChild(th2);
+            var th3=document.createElement("th");
+            th3.innerHTML= data[i]["TYPE"];
+            tr.appendChild(th3);
+            tbody.appendChild(tr);
+            tableYes.appendChild(tbody);
+        }
+    }
+    var tableTitle=document.createElement("h3");
+    tableTitle.innerHTML="Fulfilled indicators";
+    jumbotronYes.appendChild(tableTitle);
+    jumbotronYes.appendChild(tableYes);
+    divYes.appendChild(jumbotronYes);
+}
+function createNoTable(data, divNo, tableNo, jumbotronNo){
+    var tr=document.createElement("tr");
+    var th1=document.createElement("th");
+    th1.innerHTML="Enabler";
+    var th2=document.createElement("th");
+    th2.innerHTML="Description";
+    var th3=document.createElement("th");
+    th3.innerHTML="Type";
+    tr.appendChild(th1);
+    tr.appendChild(th2);
+    tr.appendChild(th3);
+    tableNo.appendChild(tr);
+    var tbody= document.createElement("tbody");
+    for (var i=0; i<data.length;i++){
+        if(data[i]["TYPE"]===("no")){
+            var tr=document.createElement("tr");
+            var th1= createColorsForEnabler(data[i]["ENABLER_NAME"]);
+            tr.appendChild(th1);
+            var th2=document.createElement("th");
+            th2.innerHTML= data[i]["DESCRIPTION"];
+            tr.appendChild(th2);
+            var th3=document.createElement("th");
+            th3.innerHTML= data[i]["TYPE"];
+            tr.appendChild(th3);
+            tbody.appendChild(tr);
+            tableNo.appendChild(tbody);
+        }
+    }
+    var tableTitle=document.createElement("h3");
+    var br=document.createElement("br");
+    tableTitle.innerHTML="Unfulfilled indicators"
+    jumbotronNo.appendChild(br);
+    jumbotronNo.appendChild(tableTitle);
+    jumbotronNo.appendChild(tableNo);
+    divNo.appendChild(jumbotronNo);
+}
+function createColorsForEnabler(name){
+    var th=document.createElement("th");
+    th.innerHTML= name;
+    var backgroundcolor="background-color:";
+    if(name==="Principles, Policies and Frameworks"){
+        backgroundcolor+="Aquamarine";
+    }else if(name==="Processes") {
+        backgroundcolor+="LightGreen";
+    }else if(name==="Organizational structures") {
+        backgroundcolor+="YellowGreen";
+    }else if(name==="Information") {
+        backgroundcolor+="green";
+    }else if(name==="Culture, ethics and behaviour") {
+        backgroundcolor+="PaleTurquoise";
+    }else if(name==="Peoples, skills and competences") {
+        backgroundcolor+="LightSeaGreen";
+    }else if(name==="Services, infrastructure and applications") {
+        backgroundcolor+="SteelBlue";
+    }
+    th.setAttribute("style",backgroundcolor);
+    console.log(th);
+    return th;
 }

@@ -191,4 +191,33 @@ public class DatabaseService {
         }
         return null;
     }
+    public List<JSONObject> getAnswerDescription() throws SQLException {
+        Statement query = connection.createStatement();
+        try {
+            String sql = "SELECT answer.type, indicator.description, indicator.enabler_id "+
+                    "FROM  answer " +
+                    "INNER JOIN indicator ON answer.indicator_id=indicator.indicator_id ORDER BY answer.type DESC, indicator.enabler_id ";
+            ResultSet s = query.executeQuery(sql);
+            List<JSONObject> resultList = converter.convertToJson(s);
+            String sql2 = "SELECT enabler_id, name FROM enabler";
+            ResultSet s2 = query.executeQuery(sql2);
+            List<JSONObject> resultList2 = converter.convertToJson(s2);
+            if(resultList.size()==0&&resultList2.size()==0){
+                //TODO change that exceoption and add
+                throw new TableNotFoundException(ErrorMessages.TableNotFound("indicator"));
+            }else{
+                for(int i=0;i<resultList.size();i++){
+                    for(int j=0; j<resultList2.size();j++){
+                        if(resultList.get(i).get("ENABLER_ID").equals(resultList2.get(j).get("ENABLER_ID"))){
+                            resultList.get(i).put("ENABLER_NAME",resultList2.get(j).get("NAME"));
+                        }
+                    }
+                }
+                return resultList;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 }

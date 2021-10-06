@@ -60,12 +60,28 @@
                 <hr class="solid">
             </div>
 
+            <h3>Add Json-File which holds answers for indicators:</h3>
+            <br>
+            <form method="POST" enctype="multipart/form-data" id="fileUploadForm">
+                <label for="inputUploads"></label>
+                <input type="file" name="files" multiple id="inputUploads"/>
+                <br>
+                <br>
+                <button class="btn btn-dark" type="submit" id="submitUpload">Upload</button>
+            </form>
+
+            <div class="mb-4">
+                </br>
+                <hr class="solid">
+            </div>
+
             <h3>Delete all answers to a survey:</h3>
             <br/>
             <form method="POST" enctype="multipart/form-data" id="deleteEntryForm">
                 <label for="deleteSurvey">Id of the survey:</label>
                 <br/>
                 <input type="text" name="deleteSurvey" id="deleteSurvey" placeholder="1"/>
+                <br/>
                 <br/>
                 <button class="btn btn-dark" type="submit" id="deleteButton">Delete</button>
             </form>

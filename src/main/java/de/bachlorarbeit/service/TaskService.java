@@ -167,4 +167,24 @@ public class TaskService {
         }
         return maturityLevel;
     }
+
+    public List<JSONObject> postAnswer(List<JSONObject> answers) throws SQLException {
+        Statement query = connection.createStatement();
+        for (int i = 0; i < answers.size(); i++) {
+            try {
+                JSONObject entry = answers.get(i);
+                String indicator_id = (String) entry.get("indicator_id");
+                String answer = (String) entry.get("answer");
+                LocalDate date = LocalDate.now();
+                int numberOfRowsInserted = query.executeUpdate("INSERT into answer(answer_id,type, time, indicator_id)"
+                        + "SELECT * FROM (SELECT " + indicator_id + " AS answer_id, '" + answer + "' as type, '" + date + "'AS time,"
+                        + indicator_id + " as indicator_id) AS temp " +
+                        "WHERE NOT EXISTS (SELECT  indicator_id FROM answer WHERE indicator_id=" + indicator_id + ")");
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+        }
+        return null;
+    }
+
 }
