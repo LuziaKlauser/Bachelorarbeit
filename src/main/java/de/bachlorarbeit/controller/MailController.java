@@ -18,7 +18,9 @@ public class MailController {
 	private MailService mailService;
 
 	/**
-	 * 
+	 * Sends an e-mail with a link to the survey with the given surveyId
+	 * Surveys are connect to a department, which are lead by a employee, whose email is in the database
+	 *
 	 * @return String
 	 */
 	@RequestMapping(value="/survey/{surveyId:.+}/send", produces = {MediaType.APPLICATION_JSON_VALUE, "application/vnd.pfc.app-v1.0+json"}, method = RequestMethod.POST)

@@ -23,6 +23,13 @@ public class TaskController {
         this.taskService = taskService;
     }
 
+    /**
+     * Uploads the answers to a survey into the database
+     *
+     * @param formData
+     * @return ResponseEntity
+     * @throws SQLException
+     */
     @RequestMapping(value = "/survey/upload",
             produces = {MediaType.APPLICATION_JSON_VALUE, "application/vnd.pfc-v1.0+json"},
             method = RequestMethod.POST)
@@ -34,6 +41,12 @@ public class TaskController {
                 .body("Survey successfully uploaded");
     }
 
+    /**
+     * Calculates the maturity level with the indicators from the database
+     * @param fields
+     * @param request
+     * @return maturitylevel
+     */
     @RequestMapping(value = "/data/calculate", produces = {MediaType.APPLICATION_JSON_VALUE, "application/vnd.pfc.app-v1.0+json"}, method = RequestMethod.GET)
     public int calculate(@RequestParam(required = false) String fields,
                                      HttpServletRequest request) {
@@ -45,6 +58,12 @@ public class TaskController {
         return 0;
     }
 
+    /**
+     * Delets all answers to indicators with the given surveyId
+     * @param surveyId
+     * @return
+     * @throws SQLException
+     */
     @RequestMapping(value = "/data/answer/{surveyId:.+}", method = RequestMethod.DELETE)
     public ResponseEntity<?> clearDirectory(@PathVariable String surveyId) throws SQLException {
         taskService.deleteAnswers(surveyId);
@@ -52,6 +71,13 @@ public class TaskController {
         //All files have been deleted:
         return ResponseEntity.status(HttpStatus.NO_CONTENT).body(null);
     }
+
+    /**
+     * 
+     * @param fields
+     * @param request
+     * @return
+     */
     @RequestMapping(value = "/data/enabler/calculate", produces = {MediaType.APPLICATION_JSON_VALUE, "application/vnd.pfc.app-v1.0+json"}, method = RequestMethod.GET)
     public List<JSONObject> calculateEnabler(@RequestParam(required = false) String fields,
                          HttpServletRequest request) {
