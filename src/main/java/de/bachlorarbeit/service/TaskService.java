@@ -28,6 +28,7 @@ public class TaskService {
      * @throws SQLException
      */
     public void postSurvey(HashMap<String, Object> formData) throws SQLException {
+        System.out.println(formData);
         Statement query = connection.createStatement();
         List<JSONObject> surveyResult = converter.convertFormdataToJson(formData);
         for (int i = 0; i < surveyResult.size(); i++) {
@@ -36,10 +37,10 @@ public class TaskService {
                 String indicator_id = (String) entry.get("indicator_id");
                 String answer = (String) entry.get("answer");
                 LocalDate date = LocalDate.now();
-                int numberOfRowsInserted = query.executeUpdate("INSERT into answer(answer_id,type, time, indicator_id)"
-                        + "SELECT * FROM (SELECT " + indicator_id + " AS answer_id, '" + answer + "' as type, '" + date + "'AS time,"
+                int numberOfRowsInserted = query.executeUpdate("INSERT into indicator_value(value_id,type, time, indicator_id)"
+                        + "SELECT * FROM (SELECT " + indicator_id + " AS value_id, '" + answer + "' as type, '" + date + "'AS time,"
                         + indicator_id + " as indicator_id) AS temp " +
-                        "WHERE NOT EXISTS (SELECT  indicator_id FROM answer WHERE indicator_id=" + indicator_id + ")");
+                        "WHERE NOT EXISTS (SELECT  indicator_id FROM indicator_value WHERE indicator_id=" + indicator_id + ")");
             } catch (SQLException throwables) {
                 throwables.printStackTrace();
             }
@@ -59,7 +60,7 @@ public class TaskService {
                 System.out.println(json);
                 for(int i=0;i<json.size();i++){
                     String indicator_id= (String) json.get(i).get("INDICATOR_ID");
-                    int numberOfRowsInserted = query.executeUpdate("DELETE FROM answer WHERE indicator_id="+indicator_id);
+                    int numberOfRowsInserted = query.executeUpdate("DELETE FROM indicator_value WHERE indicator_id="+indicator_id);
                 }
             } catch (SQLException throwables) {
                 throwables.printStackTrace();

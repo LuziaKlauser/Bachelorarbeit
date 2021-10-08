@@ -62,7 +62,7 @@ public class DatabaseService {
      */
     public boolean checkForTable(String tableName){
         tableName=tableName.toLowerCase();
-        if(tableName.equals("enabler")||tableName.equals("answer")||tableName.equals("department")
+        if(tableName.equals("enabler")||tableName.equals("indicator_value")||tableName.equals("department")
                 ||tableName.equals("employee") ||tableName.equals("indicator")||tableName.equals("maturity_level")||tableName.equals("survey")
                 ||tableName.equals("capability_level")){
             return true;
@@ -77,7 +77,7 @@ public class DatabaseService {
      * @return the percentage of the answered indicators compared to all indicators
      */
     public int getProcessingStatus(){
-        int allAnswers=this.getLineCount("answer");
+        int allAnswers=this.getLineCount("indicator_value");
         int allIndicators=this.getLineCount("indicator");
         int percent= 100* allAnswers / allIndicators;
         return percent;
@@ -139,10 +139,10 @@ public class DatabaseService {
     public List<JSONObject> getTableFromEnabler(int enabler_id) throws SQLException {
         Statement query = connection.createStatement();
         try {
-            String sql = "SELECT max_contribution, indicator.indicator_id, answer.type AS answer_type, " +
+            String sql = "SELECT max_contribution, indicator.indicator_id, indicator_value.type AS answer_type, " +
                     "indicator.indicator_type AS indicator_type, indicator.enabler_id  "+
                     "FROM indicator " +
-                    "INNER JOIN answer ON indicator.indicator_id=answer.indicator_id WHERE indicator.enabler_id="+enabler_id;
+                    "INNER JOIN indicator_value ON indicator.indicator_id=indicator_value.indicator_id WHERE indicator.enabler_id="+enabler_id;
             ResultSet s = query.executeQuery(sql);
             List<JSONObject> resultList = converter.convertToJson(s);
             if(resultList.size()==0){
@@ -236,9 +236,10 @@ public class DatabaseService {
     public List<JSONObject> getTimeIndicator() throws SQLException {
         Statement query = connection.createStatement();
         try {
-            String sql = "SELECT answer.time, indicator.survey_id "+
-                    "FROM  answer " +
-                    "INNER JOIN indicator ON answer.indicator_id=indicator.indicator_id GROUP BY indicator.survey_id";
+            String sql = "SELECT indicator_value.time, indicator.survey_id "+
+                    "FROM  indicator_value " +
+                    "INNER JOIN indicator ON indicator_value.indicator_id=indicator.indicator_id " +
+                    "GROUP BY indicator.survey_id";
             ResultSet s = query.executeQuery(sql);
             List<JSONObject> resultList = converter.convertToJson(s);
             if(resultList.size()==0){
@@ -262,9 +263,9 @@ public class DatabaseService {
     public List<JSONObject> getAnswerDescription() throws SQLException {
         Statement query = connection.createStatement();
         try {
-            String sql = "SELECT answer.type, indicator.description, indicator.enabler_id "+
-                    "FROM  answer " +
-                    "INNER JOIN indicator ON answer.indicator_id=indicator.indicator_id ORDER BY answer.type DESC, indicator.enabler_id ";
+            String sql = "SELECT indicator_value.type, indicator.description, indicator.enabler_id "+
+                    "FROM  indicator_value " +
+                    "INNER JOIN indicator ON indicator_value.indicator_id=indicator.indicator_id ORDER BY indicator_value.type DESC, indicator.enabler_id ";
             ResultSet s = query.executeQuery(sql);
             List<JSONObject> resultList = converter.convertToJson(s);
             String sql2 = "SELECT enabler_id, name FROM enabler";
