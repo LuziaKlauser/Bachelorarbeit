@@ -33,24 +33,4 @@ public class StringFormatHelper {
         }
         return s.toString();
     }
-
-    /**
-     * Parses fields string to get a list of all individual values separated by commas in a query string value list.
-     *
-     * @param s the string containing attributes
-     * @return a list of attributes to include
-     */
-    public static List<String> extractValueListFromQueryValueString(String s) {
-        if (s == null || s.length() == 0) return new ArrayList<>();
-        try {
-            s = new String(s.getBytes("UTF-8"), "UTF-8");
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        }
-        if (s.charAt(0) == '(') s = s.substring(1); //Remove brace
-        if (s.charAt(s.length() - 1) == ')') s = s.substring(0, s.length() - 1); //Remove brace
-        s = s.replaceAll(" ", ""); //Remove spaces
-        String[] filtersComma = s.split(",");
-        return new ArrayList<>(List.of(filtersComma));
-    }
 }
