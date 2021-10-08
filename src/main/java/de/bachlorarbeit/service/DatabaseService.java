@@ -1,6 +1,5 @@
 package de.bachlorarbeit.service;
 
-
 import de.bachlorarbeit.error.ErrorMessages;
 import de.bachlorarbeit.exception.EmployeeNotFoundException;
 import de.bachlorarbeit.exception.EnablerNotFoundException;
@@ -14,9 +13,7 @@ import org.springframework.stereotype.Service;
 
 import java.sql.*;
 import java.sql.Connection;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
 @Service
 public class DatabaseService {
@@ -24,8 +21,13 @@ public class DatabaseService {
     Connection connection= db.getConnection();
     Converter converter = new Converter();
 
-
-    //Gets the Data from the given tableName in the database and and returns it as a JSONOBject
+    /**
+     * Gets the Data from the given tableName in the database and and returns it as a JSONOBject
+     *
+     * @param tableName
+     * @return table from the database
+     * @throws SQLException
+     */
     public List<JSONObject> getTable(String tableName) throws SQLException {
         Statement query = connection.createStatement();
         try {
@@ -37,7 +39,13 @@ public class DatabaseService {
             throwables.printStackTrace();
         }return null;
     }
-    //prepared Statement for selecting the tables
+
+    /**
+     * Prepared Statement for selecting the tables
+     *
+     * @param tableName
+     * @return the prepared statement
+     */
     public String prepareStatement(String tableName){
         String statement= "SELECT * FROM ";
         if(checkForTable(tableName)){
@@ -45,7 +53,13 @@ public class DatabaseService {
         }
         return statement;
     }
-    //Checks if the parameter tableName equals to the tables in the database
+
+    /**
+     * Checks if the parameter tableName equals to the tables in the database
+     *
+     * @param tableName
+     * @return boolean, whether the table with the given tableName is in the database
+     */
     public boolean checkForTable(String tableName){
         tableName=tableName.toLowerCase();
         if(tableName.equals("enabler")||tableName.equals("answer")||tableName.equals("department")
@@ -57,7 +71,11 @@ public class DatabaseService {
         }
     }
 
-    //Gets processing status in percent of the indicators
+    /**
+     * Gets processing status in percent of the indicators
+     *
+     * @return the percentage of the answered indicators compared to all indicators
+     */
     public int getProcessingStatus(){
         int allAnswers=this.getLineCount("answer");
         int allIndicators=this.getLineCount("indicator");
@@ -65,7 +83,12 @@ public class DatabaseService {
         return percent;
     }
 
-    //Gets the number of lines of the given table
+    /**
+     * Gets the number of lines of the given table
+     *
+     * @param tableName
+     * @return the number of lines
+     */
     public int getLineCount(String tableName){
         int count=0;
         if(this.checkForTable(tableName)){
@@ -82,7 +105,14 @@ public class DatabaseService {
         }
         return count;
     }
-    //Gets all indicators with the given surveyId
+
+    /**
+     * Gets all indicators with the given surveyId
+     *
+     * @param SurveyId
+     * @return jsoon with all indicators with the given surveyId
+     * @throws SQLException
+     */
     public List<JSONObject> getIndicatorsForSurvey(String SurveyId) throws SQLException {
         Statement query = connection.createStatement();
         try {
@@ -100,6 +130,12 @@ public class DatabaseService {
         return null;
     }
 
+    /**
+     * Gets indicators and also their value(fullfilled/unfullfilled) for the given enabler_id
+     * @param enabler_id
+     * @return json filled with indicators, their value
+     * @throws SQLException
+     */
     public List<JSONObject> getTableFromEnabler(int enabler_id) throws SQLException {
         Statement query = connection.createStatement();
         try {
@@ -120,6 +156,12 @@ public class DatabaseService {
         return null;
     }
 
+    /**
+     * Gets the employee_id which is connected to the given surveyId
+     * @param surveyId
+     * @return json with employee_id, surveyId
+     * @throws SQLException
+     */
     public List<JSONObject> getEmployeeIdForSurvey(String surveyId) throws SQLException {
         Statement query = connection.createStatement();
         try {
@@ -138,6 +180,13 @@ public class DatabaseService {
         }
         return null;
     }
+
+    /**
+     * Gets the email with is connected to the employee in the database for the given employeeId
+     * @param employeeId
+     * @return email from the employee
+     * @throws SQLException
+     */
     public String getEmail(String employeeId) throws SQLException {
         Statement query = connection.createStatement();
         try {
@@ -155,6 +204,12 @@ public class DatabaseService {
         }
         return null;
     }
+
+    /**
+     * Gets alls surveys from the database
+     * @return all surveyIds
+     * @throws SQLException
+     */
     public List<JSONObject> getSurveyId() throws SQLException {
         Statement query = connection.createStatement();
         try {
@@ -172,6 +227,12 @@ public class DatabaseService {
         return null;
     }
 
+    /**
+     * Gets the time to the surveys when they were filled into the database
+     *
+     * @return surveyId with their times
+     * @throws SQLException
+     */
     public List<JSONObject> getTimeIndicator() throws SQLException {
         Statement query = connection.createStatement();
         try {
@@ -191,6 +252,13 @@ public class DatabaseService {
         }
         return null;
     }
+
+    /**
+     * Gets indicators ordered by their value(fullfilled/unfullfilled)
+     *
+     * @return json with indicators, their description, enaber_id and type
+     * @throws SQLException
+     */
     public List<JSONObject> getAnswerDescription() throws SQLException {
         Statement query = connection.createStatement();
         try {

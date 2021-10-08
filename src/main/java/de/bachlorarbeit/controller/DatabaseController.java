@@ -47,16 +47,12 @@ public class DatabaseController {
      * Checks if all indicators are checked if they are fulfilled or not
      * Compares the number of actually answered indicators to all indicators
      *
-     * @param fields
-     * @param request
      * @return percentage of the answered indicators to all indicators
      */
     @RequestMapping(value = "/data/answer/check", produces = {MediaType.APPLICATION_JSON_VALUE, "application/vnd.pfc.app-v1.0+json"}, method = RequestMethod.GET)
-    public ResponseEntity<?> getProcessingStatus(@RequestParam(required = false) String fields,
-                                     HttpServletRequest request) {
+    public ResponseEntity<?> getProcessingStatus() {
 
         int percent= databaseService.getProcessingStatus();
-        JSONObject obj = new JSONObject();
         ProcessStatusModel processStatus= new ProcessStatusModel(percent);
         return ResponseEntity.ok()
                 .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)

@@ -22,7 +22,12 @@ public class TaskService {
     Connection connection = db.getConnection();
     Converter converter = new Converter();
 
-    public List<JSONObject> postSurvey(HashMap<String, Object> formData) throws SQLException {
+    /**
+     * Uploads the values(fulfilled/unfulfilled) for the indicators to the database
+     * @param formData
+     * @throws SQLException
+     */
+    public void postSurvey(HashMap<String, Object> formData) throws SQLException {
         Statement query = connection.createStatement();
         List<JSONObject> surveyResult = converter.convertFormdataToJson(formData);
         for (int i = 0; i < surveyResult.size(); i++) {
@@ -39,10 +44,14 @@ public class TaskService {
                 throwables.printStackTrace();
             }
         }
-        return null;
     }
-    //TODO delete method
-    public List<JSONObject> deleteAnswers(String surveyId) throws SQLException {
+
+    /**
+     * Deletes all in values(fulfilled/ unfulfilled) for the indicators with the given surveyId
+     * @param surveyId
+     * @throws SQLException
+     */
+    public void deleteAnswers(String surveyId) throws SQLException {
         Statement query = connection.createStatement();
             try {
                 DatabaseService databaseService= new DatabaseService();
@@ -52,15 +61,16 @@ public class TaskService {
                     String indicator_id= (String) json.get(i).get("INDICATOR_ID");
                     int numberOfRowsInserted = query.executeUpdate("DELETE FROM answer WHERE indicator_id="+indicator_id);
                 }
-                //int numberOfRowsInserted = query.executeUpdate("DELETE FROM survey WHERE survey_id=3");
-
-                //System.out.println(numberOfRowsInserted);
             } catch (SQLException throwables) {
                 throwables.printStackTrace();
             }
-        return null;
     }
 
+    /**
+     * Calculates the MaturityLevel from the values in the database
+     * @return the maturityLevel
+     * @throws SQLException
+     */
     public int calculateMaturityLevel() throws SQLException {
         DatabaseService databaseService= new DatabaseService();
             List<JSONObject> capLevelsForEnabler = this.calculateCapabilityLevel();
@@ -69,6 +79,12 @@ public class TaskService {
 
     }
 
+    /**
+     * Calculates the the capabilityLevel for each enabler
+     *
+     * @return json with each enabler and their calculated capabilityLevel
+     * @throws SQLException
+     */
     public List<JSONObject> calculateCapabilityLevel() throws SQLException {
         DatabaseService databaseService= new DatabaseService();
         List<JSONObject> enablers= databaseService.getTable("enabler");
@@ -92,7 +108,13 @@ public class TaskService {
         return capLevelsForEnabler;
     }
 
-    //calculates the capability_level for the specific enabler
+    /**
+     * Calculates the capability_level for the specific enabler with the given enablerId
+     *
+     * @param enablerId
+     * @param indicators
+     * @return the calculated capabilityLevel
+     */
     public int calculateCapabilityLevelForEnabler(int enablerId,List<JSONObject> indicators) {
         int capability_level = 0;
         for (int i=1; i<4;i++){
@@ -115,7 +137,12 @@ public class TaskService {
         return capability_level;
     }
 
-    //Calculates the maturityLevel
+    /**
+     * Calculates the maturityLevel with the help of the capabilityLevels from each enabler
+     *
+     * @param capLevelsForEnabler
+     * @return the calculated maturityLevel
+     */
     public int calculate(List<JSONObject> capLevelsForEnabler){
         int maturityLevel=1;
         int checkLevel =2;
@@ -168,6 +195,13 @@ public class TaskService {
         return maturityLevel;
     }
 
+    /**
+     *
+     * @param answers
+     * @return
+     * @throws SQLException
+     */
+    //TODO complete
     public List<JSONObject> postAnswer(List<JSONObject> answers) throws SQLException {
         Statement query = connection.createStatement();
         for (int i = 0; i < answers.size(); i++) {

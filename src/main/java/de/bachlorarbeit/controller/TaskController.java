@@ -1,6 +1,8 @@
 package de.bachlorarbeit.controller;
 
 import com.sun.istack.NotNull;
+import de.bachlorarbeit.model.GeneralAnswerModel;
+import de.bachlorarbeit.model.ProcessStatusModel;
 import de.bachlorarbeit.service.TaskService;
 import org.json.simple.JSONObject;
 import org.springframework.http.HttpHeaders;
@@ -35,10 +37,10 @@ public class TaskController {
             method = RequestMethod.POST)
     public ResponseEntity<?> uploadFiles(@RequestParam HashMap<String, Object> formData) throws SQLException {
         taskService.postSurvey(formData);
-        return ResponseEntity.status(HttpStatus.CREATED)
+        GeneralAnswerModel answer= new GeneralAnswerModel("Survey successfully uploaded");
+        return ResponseEntity.ok()
                 .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
-                //TODO body
-                .body("Survey successfully uploaded");
+                .body(answer);
     }
 
     /**
@@ -59,7 +61,7 @@ public class TaskController {
     }
 
     /**
-     * Delets all answers to indicators with the given surveyId
+     * Deletes all answers to indicators with the given surveyId
      * @param surveyId
      * @return
      * @throws SQLException
@@ -67,16 +69,18 @@ public class TaskController {
     @RequestMapping(value = "/data/answer/{surveyId:.+}", method = RequestMethod.DELETE)
     public ResponseEntity<?> clearDirectory(@PathVariable String surveyId) throws SQLException {
         taskService.deleteAnswers(surveyId);
-
-        //All files have been deleted:
-        return ResponseEntity.status(HttpStatus.NO_CONTENT).body(null);
+        GeneralAnswerModel answer= new GeneralAnswerModel("Deletion successfull");
+        return ResponseEntity.ok()
+                .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
+                .body(answer);
     }
 
     /**
-     * 
+     * Calculates the capabilityLevel for each enabler
+     *
      * @param fields
      * @param request
-     * @return
+     * @return json with the calculated capabilityLevel and the enabler_ id, enabler_name
      */
     @RequestMapping(value = "/data/enabler/calculate", produces = {MediaType.APPLICATION_JSON_VALUE, "application/vnd.pfc.app-v1.0+json"}, method = RequestMethod.GET)
     public List<JSONObject> calculateEnabler(@RequestParam(required = false) String fields,
@@ -89,15 +93,22 @@ public class TaskController {
         return null;
     }
 
+    /**
+     * Uploads a json file, which holds values for the indicators
+     *
+     * @param answers
+     * @return ResponseEntity
+     * @throws SQLException
+     */
     @RequestMapping(value = "/answer/upload",
             produces = {MediaType.APPLICATION_JSON_VALUE, "application/vnd.pfc-v1.0+json"},
             method = RequestMethod.POST)
     public ResponseEntity<?> uploadAnswer(@RequestParam List<JSONObject> answers) throws SQLException {
         taskService.postAnswer(answers);
-        return ResponseEntity.status(HttpStatus.CREATED)
+        GeneralAnswerModel answer= new GeneralAnswerModel("Survey successfully uploaded");
+        return ResponseEntity.ok()
                 .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
-                //TODO body
-                .body("Survey successfully uploaded");
+                .body(answer);
     }
 }
 

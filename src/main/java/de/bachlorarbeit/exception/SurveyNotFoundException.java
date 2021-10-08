@@ -3,6 +3,9 @@ package de.bachlorarbeit.exception;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
+/**
+ * Exception thrown when the indicator entry with the survey_id is not found
+ */
 @ResponseStatus(HttpStatus.NOT_FOUND)
 public class SurveyNotFoundException extends RuntimeException {
     /**

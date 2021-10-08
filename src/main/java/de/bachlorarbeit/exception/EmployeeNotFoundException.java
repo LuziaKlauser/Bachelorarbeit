@@ -3,6 +3,9 @@ package de.bachlorarbeit.exception;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
+/**
+ * Exception thrown when there is no Employee Entry with the employeeId
+ */
 @ResponseStatus(HttpStatus.NOT_FOUND)
 public class EmployeeNotFoundException extends RuntimeException{
     /**

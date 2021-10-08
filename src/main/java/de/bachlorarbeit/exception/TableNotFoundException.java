@@ -4,8 +4,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 /**
- * This class contains the exception that is returned if a table was not found.
- *
+ * Exception thrown when the table with a given name is not found in the database
  */
 @ResponseStatus(HttpStatus.NOT_FOUND)
 public class TableNotFoundException extends RuntimeException {

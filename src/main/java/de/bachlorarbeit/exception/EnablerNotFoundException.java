@@ -3,6 +3,9 @@ package de.bachlorarbeit.exception;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
+/**
+ * Exception thrown when there the enabler entry with a enabler_id is not found
+ */
 @ResponseStatus(HttpStatus.NOT_FOUND)
 public class EnablerNotFoundException extends RuntimeException{
     /**

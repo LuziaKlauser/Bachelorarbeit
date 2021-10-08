@@ -16,6 +16,12 @@ import java.util.List;
 
 public class Converter {
 
+    /**
+     * Converts the given ResultSet to a json with keys and values
+     * @param resultSet
+     * @return the converted json
+     * @throws SQLException
+     */
     public List<JSONObject> convertToJson(ResultSet resultSet) throws SQLException {
         List<JSONObject> resultList = new ArrayList<JSONObject>();
         try {
@@ -40,6 +46,12 @@ public class Converter {
         }
         return resultList;
     }
+
+    /**
+     * Converts the given Formdata to a json
+     * @param formData
+     * @return json, converted Fromdata
+     */
     public List<JSONObject> convertFormdataToJson(HashMap<String, Object> formData){
         List<JSONObject> result= new ArrayList<JSONObject>();
         for (String i : formData.keySet()) {

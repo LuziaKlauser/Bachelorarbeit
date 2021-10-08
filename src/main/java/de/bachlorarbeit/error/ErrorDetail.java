@@ -7,7 +7,6 @@ import de.bachlorarbeit.utility.StringFormatHelper;
 import org.springframework.http.HttpStatus;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.List;
 
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
