@@ -1,12 +1,20 @@
 package de.bachlorarbeit.service;
 
 import de.bachlorarbeit.error.ErrorMessages;
+import de.bachlorarbeit.exception.StorageException;
 import de.bachlorarbeit.exception.TableNotFoundException;
 import de.bachlorarbeit.helpers.DBConnection;
 import de.bachlorarbeit.utility.Converter;
 import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -57,7 +65,6 @@ public class TaskService {
             try {
                 DatabaseService databaseService= new DatabaseService();
                 List<JSONObject> json =databaseService.getIndicatorsForSurvey(surveyId);
-                System.out.println(json);
                 for(int i=0;i<json.size();i++){
                     String indicator_id= (String) json.get(i).get("INDICATOR_ID");
                     int numberOfRowsInserted = query.executeUpdate("DELETE FROM indicator_value WHERE indicator_id="+indicator_id);
@@ -75,9 +82,7 @@ public class TaskService {
     public int calculateMaturityLevel() throws SQLException {
         DatabaseService databaseService= new DatabaseService();
             List<JSONObject> capLevelsForEnabler = this.calculateCapabilityLevel();
-            System.out.println(capLevelsForEnabler);
             return calculate(capLevelsForEnabler);
-
     }
 
     /**
@@ -198,26 +203,54 @@ public class TaskService {
 
     /**
      *
-     * @param answers
      * @return
      * @throws SQLException
      */
     //TODO complete
-    public List<JSONObject> postAnswer(List<JSONObject> answers) throws SQLException {
-        Statement query = connection.createStatement();
-        for (int i = 0; i < answers.size(); i++) {
-            try {
-                JSONObject entry = answers.get(i);
-                String indicator_id = (String) entry.get("indicator_id");
-                String answer = (String) entry.get("answer");
-                LocalDate date = LocalDate.now();
-                int numberOfRowsInserted = query.executeUpdate("INSERT into answer(answer_id,type, time, indicator_id)"
-                        + "SELECT * FROM (SELECT " + indicator_id + " AS answer_id, '" + answer + "' as type, '" + date + "'AS time,"
-                        + indicator_id + " as indicator_id) AS temp " +
-                        "WHERE NOT EXISTS (SELECT  indicator_id FROM answer WHERE indicator_id=" + indicator_id + ")");
-            } catch (SQLException throwables) {
-                throwables.printStackTrace();
+    public List<JSONObject> postAnswer(MultipartFile file) throws SQLException {
+        String filename = StringUtils.cleanPath(file.getOriginalFilename());
+        JSONParser parser= new JSONParser();
+        try {
+            JSONObject  obj = (JSONObject )parser.parse(new InputStreamReader(file.getInputStream(), "UTF-8"));
+            System.out.println(obj);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+
+
+        System.out.println(filename);
+        try {
+            if (file.isEmpty()) {
+                throw new StorageException("Failed to store empty file " + filename);
             }
+            InputStream fis = file.getInputStream();
+
+            for (int i = 0; i < fis.available(); i++) {
+                System.out.println("" + fis.read());
+            }
+            System.out.println(file.getSize());
+            Statement query = connection.createStatement();
+            for (int i = 0; i < file.getSize(); i++) {
+                try {
+                    //JSONObject entry = answers.get(i);
+                    JSONObject entry = new JSONObject();
+                    String indicator_id = (String) entry.get("indicator_id");
+                    String answer = (String) entry.get("answer");
+                    LocalDate date = LocalDate.now();
+                    int numberOfRowsInserted = query.executeUpdate("INSERT into answer(answer_id,type, time, indicator_id)"
+                            + "SELECT * FROM (SELECT " + indicator_id + " AS answer_id, '" + answer + "' as type, '" + date + "'AS time,"
+                            + indicator_id + " as indicator_id) AS temp " +
+                            "WHERE NOT EXISTS (SELECT  indicator_id FROM answer WHERE indicator_id=" + indicator_id + ")");
+                } catch (SQLException throwables) {
+                    throwables.printStackTrace();
+                }
+            }
+        }
+        catch (Exception e){
+            throw new StorageException("Failed to store file "+ filename);
         }
         return null;
     }

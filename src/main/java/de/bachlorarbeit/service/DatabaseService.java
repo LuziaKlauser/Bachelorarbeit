@@ -110,7 +110,7 @@ public class DatabaseService {
      * Gets all indicators with the given surveyId
      *
      * @param SurveyId
-     * @return jsoon with all indicators with the given surveyId
+     * @return json with all indicators with the given surveyId
      * @throws SQLException
      */
     public List<JSONObject> getIndicatorsForSurvey(String SurveyId) throws SQLException {
@@ -131,7 +131,7 @@ public class DatabaseService {
     }
 
     /**
-     * Gets indicators and also their value(fullfilled/unfullfilled) for the given enabler_id
+     * Gets indicators and also their value(fulfilled/unfulfilled) for the given enabler_id
      * @param enabler_id
      * @return json filled with indicators, their value
      * @throws SQLException
@@ -206,7 +206,7 @@ public class DatabaseService {
     }
 
     /**
-     * Gets alls surveys from the database
+     * Gets all surveys from the database
      * @return all surveyIds
      * @throws SQLException
      */
@@ -255,7 +255,7 @@ public class DatabaseService {
     }
 
     /**
-     * Gets indicators ordered by their value(fullfilled/unfullfilled)
+     * Gets indicators ordered by their value(fulfilled/unfulfilled)
      *
      * @return json with indicators, their description, enaber_id and type
      * @throws SQLException

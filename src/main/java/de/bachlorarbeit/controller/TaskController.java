@@ -1,6 +1,5 @@
 package de.bachlorarbeit.controller;
 
-import com.sun.istack.NotNull;
 import de.bachlorarbeit.model.GeneralAnswerModel;
 import de.bachlorarbeit.model.ProcessStatusModel;
 import de.bachlorarbeit.service.TaskService;
@@ -10,8 +9,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.constraints.NotNull;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.List;
@@ -61,13 +62,14 @@ public class TaskController {
     }
 
     /**
-     * Deletes all answers to indicators with the given surveyId
+     * Deletes all indicator_values to their indicators with the given surveyId
      * @param surveyId
      * @return
      * @throws SQLException
      */
-    @RequestMapping(value = "/data/answer/{surveyId:.+}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/data/indicator_value/{surveyId:.+}", method = RequestMethod.DELETE)
     public ResponseEntity<?> clearDirectory(@PathVariable String surveyId) throws SQLException {
+        System.out.println("hhh");
         taskService.deleteAnswers(surveyId);
         GeneralAnswerModel answer= new GeneralAnswerModel("Deletion successfull");
         return ResponseEntity.ok()
@@ -96,15 +98,14 @@ public class TaskController {
     /**
      * Uploads a json file, which holds values for the indicators
      *
-     * @param answers
      * @return ResponseEntity
      * @throws SQLException
      */
     @RequestMapping(value = "/answer/upload",
             produces = {MediaType.APPLICATION_JSON_VALUE, "application/vnd.pfc-v1.0+json"},
             method = RequestMethod.POST)
-    public ResponseEntity<?> uploadAnswer(@RequestParam List<JSONObject> answers) throws SQLException {
-        taskService.postAnswer(answers);
+    public ResponseEntity<?> uploadAnswer(@RequestParam("file") MultipartFile file) throws SQLException {
+        taskService.postAnswer(file);
         GeneralAnswerModel answer= new GeneralAnswerModel("Survey successfully uploaded");
         return ResponseEntity.ok()
                 .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)

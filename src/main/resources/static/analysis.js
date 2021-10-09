@@ -176,7 +176,7 @@ function createMaturityLevelInformation(data, maturityLevel){
 function getAnswers(){
     $.ajax({
         type: "GET",
-        url: '/data/answers',
+        url: '/data/indicator_value/enabler',
         success: function (data) {
             createAnswersTables(data);
             return data;
@@ -223,7 +223,6 @@ function createYesTable(data, divYes, tableYes, jumbotronYes){
 
     var tbody= document.createElement("tbody");
     for (var i=0; i<data.length;i++){
-        console.log(i);
         if(data[i]["TYPE"]===("yes")){
             var tr=document.createElement("tr");
             var th1= createColorsForEnabler(data[i]["ENABLER_NAME"]);
@@ -300,6 +299,5 @@ function createColorsForEnabler(name){
         backgroundcolor+="SteelBlue";
     }
     th.setAttribute("style",backgroundcolor);
-    console.log(th);
     return th;
 }

@@ -49,7 +49,7 @@ public class DatabaseController {
      *
      * @return percentage of the answered indicators to all indicators
      */
-    @RequestMapping(value = "/data/answer/check", produces = {MediaType.APPLICATION_JSON_VALUE, "application/vnd.pfc.app-v1.0+json"}, method = RequestMethod.GET)
+    @RequestMapping(value = "/data/indicator/check", produces = {MediaType.APPLICATION_JSON_VALUE, "application/vnd.pfc.app-v1.0+json"}, method = RequestMethod.GET)
     public ResponseEntity<?> getProcessingStatus() {
 
         int percent= databaseService.getProcessingStatus();
@@ -98,7 +98,7 @@ public class DatabaseController {
      * @param request
      * @return a json file with the date and the surveyId
      */
-    @RequestMapping(value = "/data/answer/time", produces = {MediaType.APPLICATION_JSON_VALUE, "application/vnd.pfc.app-v1.0+json"}, method = RequestMethod.GET)
+    @RequestMapping(value = "/data/indicator_value/time", produces = {MediaType.APPLICATION_JSON_VALUE, "application/vnd.pfc.app-v1.0+json"}, method = RequestMethod.GET)
     public List<JSONObject> getIndicatorTime(HttpServletRequest request) {
         try {
             return databaseService.getTimeIndicator();
@@ -115,7 +115,7 @@ public class DatabaseController {
      * @param request
      * @return json with fulfilled or not fullfilled indicators, their description, enabler_id and enabler_name
      */
-    @RequestMapping(value = "/data/answers", produces = {MediaType.APPLICATION_JSON_VALUE, "application/vnd.pfc.app-v1.0+json"}, method = RequestMethod.GET)
+    @RequestMapping(value = "/data/indicator_value/enabler", produces = {MediaType.APPLICATION_JSON_VALUE, "application/vnd.pfc.app-v1.0+json"}, method = RequestMethod.GET)
     public List<JSONObject> getAnswerAndDescription(HttpServletRequest request) {
         try {
             return databaseService.getAnswerDescription();
