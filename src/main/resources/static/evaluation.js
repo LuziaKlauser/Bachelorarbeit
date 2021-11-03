@@ -15,8 +15,11 @@ $(document).ready(function () {
         event.preventDefault();
         getTime();
     });
-
-
+    $("#submitUpload").click(function (event) {
+        event.preventDefault();
+        //TODO
+    });
+    
 });
 
 function start(){

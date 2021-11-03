@@ -101,15 +101,11 @@ public class TaskController {
      * @throws SQLException
      */
     //TODO class
-    @RequestMapping(value = "/answer/upload",
+    @RequestMapping(value = "/indicator-value/upload",
             produces = {MediaType.APPLICATION_JSON_VALUE, "application/vnd.pfc-v1.0+json"},
-            method = RequestMethod.POST)
-    public ResponseEntity<?> uploadAnswer(@RequestParam("file") MultipartFile file) throws SQLException {
-        taskService.postAnswer(file);
-        GeneralAnswerModel answer= new GeneralAnswerModel("Survey successfully uploaded");
-        return ResponseEntity.ok()
-                .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
-                .body(answer);
+            method = RequestMethod.GET)
+    public ResponseEntity<?> uploadIndicatorValue(@RequestParam("file") MultipartFile file) throws SQLException {
+        return null;
     }
 }
 
