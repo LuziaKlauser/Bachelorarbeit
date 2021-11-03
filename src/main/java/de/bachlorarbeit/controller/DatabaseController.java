@@ -49,7 +49,7 @@ public class DatabaseController {
      *
      * @return percentage of the answered indicators to all indicators
      */
-    @RequestMapping(value = "/data/indicator/check", produces = {MediaType.APPLICATION_JSON_VALUE, "application/vnd.pfc.app-v1.0+json"}, method = RequestMethod.GET)
+    @RequestMapping(value = "/data/indicator-value/check", produces = {MediaType.APPLICATION_JSON_VALUE, "application/vnd.pfc.app-v1.0+json"}, method = RequestMethod.GET)
     public ResponseEntity<?> getProcessingStatus() {
 
         int percent= databaseService.getProcessingStatus();
@@ -82,7 +82,7 @@ public class DatabaseController {
      * @param request
      * @return all surveys from the database with their surveyd in a json format
      */
-    @RequestMapping(value = "/data/survey/surveyIds", produces = {MediaType.APPLICATION_JSON_VALUE, "application/vnd.pfc.app-v1.0+json"}, method = RequestMethod.GET)
+    @RequestMapping(value = "/data/survey/surveyId", produces = {MediaType.APPLICATION_JSON_VALUE, "application/vnd.pfc.app-v1.0+json"}, method = RequestMethod.GET)
     public List<JSONObject> getTable(HttpServletRequest request) {
         try {
             return databaseService.getSurveyId();
@@ -92,13 +92,14 @@ public class DatabaseController {
         return null;
     }
 
+
     /**
      * Checks the date when a survey was answered
      *
      * @param request
      * @return a json file with the date and the surveyId
      */
-    @RequestMapping(value = "/data/indicator_value/time", produces = {MediaType.APPLICATION_JSON_VALUE, "application/vnd.pfc.app-v1.0+json"}, method = RequestMethod.GET)
+    @RequestMapping(value = "/data/indicator-value/surveyId/time", produces = {MediaType.APPLICATION_JSON_VALUE, "application/vnd.pfc.app-v1.0+json"}, method = RequestMethod.GET)
     public List<JSONObject> getIndicatorTime(HttpServletRequest request) {
         try {
             return databaseService.getTimeIndicator();
@@ -115,7 +116,7 @@ public class DatabaseController {
      * @param request
      * @return json with fulfilled or not fullfilled indicators, their description, enabler_id and enabler_name
      */
-    @RequestMapping(value = "/data/indicator_value/enabler", produces = {MediaType.APPLICATION_JSON_VALUE, "application/vnd.pfc.app-v1.0+json"}, method = RequestMethod.GET)
+    @RequestMapping(value = "/data/indicator-value/enabler", produces = {MediaType.APPLICATION_JSON_VALUE, "application/vnd.pfc.app-v1.0+json"}, method = RequestMethod.GET)
     public List<JSONObject> getAnswerAndDescription(HttpServletRequest request) {
         try {
             return databaseService.getAnswerDescription();

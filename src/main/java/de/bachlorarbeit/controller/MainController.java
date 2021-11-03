@@ -1,23 +1,39 @@
 package de.bachlorarbeit.controller;
 
 
+import de.bachlorarbeit.error.ErrorMessages;
+import de.bachlorarbeit.exception.SurveyNotFoundException;
+import de.bachlorarbeit.service.DatabaseService;
+import org.json.simple.JSONObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import java.sql.SQLException;
+import java.util.List;
+
 @Controller
 public class MainController {
-    private DatabaseController databaseController;
+    private DatabaseService databaseService;
 
-    public MainController(DatabaseController databaseController){
-        this.databaseController=databaseController;
+    public MainController(DatabaseService databaseService){
+        this.databaseService=databaseService;
     }
 
     @GetMapping("/survey/{surveyId}")
     public String getSurvey(@PathVariable String surveyId) {
         String id= surveyId;
-        databaseController.getSurvey(id);
-        return "survey";
+        try {
+            List<JSONObject> resultList= databaseService.getSurveyId();
+            for(int i=0; i<resultList.size();i++){
+                if(id.equals(resultList.get(i).get("SURVEY_ID"))) {
+                    return "survey";
+                }
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        throw new SurveyNotFoundException(ErrorMessages.SurveyNotFound(id));
     }
 
     @GetMapping("/DFRTool")

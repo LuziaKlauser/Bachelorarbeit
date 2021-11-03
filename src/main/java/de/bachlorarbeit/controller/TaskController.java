@@ -50,7 +50,7 @@ public class TaskController {
      * @param request
      * @return maturitylevel
      */
-    @RequestMapping(value = "/data/calculate", produces = {MediaType.APPLICATION_JSON_VALUE, "application/vnd.pfc.app-v1.0+json"}, method = RequestMethod.GET)
+    @RequestMapping(value = "/data/indicator-value/calculate", produces = {MediaType.APPLICATION_JSON_VALUE, "application/vnd.pfc.app-v1.0+json"}, method = RequestMethod.GET)
     public int calculate(@RequestParam(required = false) String fields,
                                      HttpServletRequest request) {
         try {
@@ -67,9 +67,8 @@ public class TaskController {
      * @return
      * @throws SQLException
      */
-    @RequestMapping(value = "/data/indicator_value/{surveyId:.+}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/data/indicator-value/{surveyId:.+}/delete", method = RequestMethod.DELETE)
     public ResponseEntity<?> clearDirectory(@PathVariable String surveyId) throws SQLException {
-        System.out.println("hhh");
         taskService.deleteAnswers(surveyId);
         GeneralAnswerModel answer= new GeneralAnswerModel("Deletion successfull");
         return ResponseEntity.ok()
@@ -84,7 +83,7 @@ public class TaskController {
      * @param request
      * @return json with the calculated capabilityLevel and the enabler_ id, enabler_name
      */
-    @RequestMapping(value = "/data/enabler/calculate", produces = {MediaType.APPLICATION_JSON_VALUE, "application/vnd.pfc.app-v1.0+json"}, method = RequestMethod.GET)
+    @RequestMapping(value = "/data/indicator-value/enabler/calculate", produces = {MediaType.APPLICATION_JSON_VALUE, "application/vnd.pfc.app-v1.0+json"}, method = RequestMethod.GET)
     public List<JSONObject> calculateEnabler(@RequestParam(required = false) String fields,
                          HttpServletRequest request) {
         try {
@@ -101,6 +100,7 @@ public class TaskController {
      * @return ResponseEntity
      * @throws SQLException
      */
+    //TODO class
     @RequestMapping(value = "/answer/upload",
             produces = {MediaType.APPLICATION_JSON_VALUE, "application/vnd.pfc-v1.0+json"},
             method = RequestMethod.POST)

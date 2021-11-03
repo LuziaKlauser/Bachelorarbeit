@@ -131,6 +131,28 @@ public class DatabaseService {
     }
 
     /**
+     * Gets all surveys from the database
+     * @return all surveyIds
+     * @throws SQLException
+     */
+    public List<JSONObject> getSurveyId() throws SQLException {
+        Statement query = connection.createStatement();
+        try {
+            String sql = "SELECT survey_id FROM survey";
+            ResultSet resultSet = query.executeQuery(sql);
+            List<JSONObject> resultList = converter.convertToJson(resultSet);
+            if(resultList.size()==0){
+                throw new TableNotFoundException(ErrorMessages.TableNotFound("survey"));
+            }else{
+                return resultList;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    /**
      * Gets indicators and also their value(fulfilled/unfulfilled) for the given enabler_id
      * @param enabler_id
      * @return json filled with indicators, their value
@@ -205,27 +227,6 @@ public class DatabaseService {
         return null;
     }
 
-    /**
-     * Gets all surveys from the database
-     * @return all surveyIds
-     * @throws SQLException
-     */
-    public List<JSONObject> getSurveyId() throws SQLException {
-        Statement query = connection.createStatement();
-        try {
-            String sql = "SELECT survey_id FROM survey";
-            ResultSet resultSet = query.executeQuery(sql);
-            List<JSONObject> resultList = converter.convertToJson(resultSet);
-            if(resultList.size()==0){
-                throw new TableNotFoundException(ErrorMessages.TableNotFound("survey"));
-            }else{
-                return resultList;
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
 
     /**
      * Gets the time to the surveys when they were filled into the database

@@ -35,7 +35,7 @@ function deleteSurveyAnswers() {
     $.ajax({
         type: "DELETE",
         enctype: 'multipart/form-data',
-        url: "/data/indicator_value/" + surveyId,
+        url: "/data/indicator-value/" + surveyId+"/delete",
 
         processData: false,
         contentType: false,
@@ -54,7 +54,7 @@ function deleteSurveyAnswers() {
 function getStatus(){
     $.ajax({
         type: "GET",
-        url: '/data/indicator/check',
+        url: '/data/indicator-value/check',
         success: function (data) {
             // Call this function on success
             var status=data.allanswers;
@@ -78,7 +78,7 @@ function addSurveySend(){
     var form = document.getElementById("surveyToSend");
     $.ajax({
         type: "GET",
-        url: '/data/survey/surveyIds',
+        url: '/data/survey/surveyId',
         success: function (data) {
             // Call this function on success
             var br = document.createElement("br");
@@ -140,7 +140,7 @@ function sendMail(){
 function getTime(){
     $.ajax({
         type: "GET",
-        url: '/data/indicator_value/time',
+        url: '/data/indicator-value/surveyId/time',
         success: function (data) {
             // Call this function on success
             createTable(data);

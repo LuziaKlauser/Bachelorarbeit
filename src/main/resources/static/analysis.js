@@ -54,7 +54,7 @@ function start(){
 function getMaturityLevel(){
     $.ajax({
         type: "GET",
-        url: '/data/calculate',
+        url: '/data/indicator-value/calculate',
         success: function (data) {
             var level=document.getElementById("achievedLevel");
             level.innerHTML=data;
@@ -73,7 +73,7 @@ function getEnabler(){
     var yValues = [];
     $.ajax({
         type: "GET",
-        url: '/data/enabler/calculate',
+        url: '/data/indicator-value/enabler/calculate',
         success: function (data) {
             for(var i =0; i<data.length;i++){
                 xValues.push(data[i]["name"]);
@@ -176,7 +176,7 @@ function createMaturityLevelInformation(data, maturityLevel){
 function getAnswers(){
     $.ajax({
         type: "GET",
-        url: '/data/indicator_value/enabler',
+        url: '/data/indicator-value/enabler',
         success: function (data) {
             createAnswersTables(data);
             return data;
