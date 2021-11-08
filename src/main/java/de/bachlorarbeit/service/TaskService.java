@@ -1,20 +1,12 @@
 package de.bachlorarbeit.service;
 
 import de.bachlorarbeit.error.ErrorMessages;
-import de.bachlorarbeit.exception.StorageException;
-import de.bachlorarbeit.exception.TableNotFoundException;
+import de.bachlorarbeit.exception.MissingDataException;
 import de.bachlorarbeit.helpers.DBConnection;
-import de.bachlorarbeit.utility.Converter;
+import de.bachlorarbeit.helpers.Converter;
 import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
 import org.springframework.stereotype.Service;
-import org.springframework.util.StringUtils;
-import org.springframework.web.multipart.MultipartFile;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -36,7 +28,9 @@ public class TaskService {
      * @throws SQLException
      */
     public void postSurvey(HashMap<String, Object> formData) throws SQLException {
-        System.out.println(formData);
+        if(formData.isEmpty()){
+            throw new MissingDataException(ErrorMessages.MissingData());
+        }
         Statement query = connection.createStatement();
         List<JSONObject> surveyResult = converter.convertFormdataToJson(formData);
         for (int i = 0; i < surveyResult.size(); i++) {
@@ -60,18 +54,21 @@ public class TaskService {
      * @param surveyId
      * @throws SQLException
      */
-    public void deleteAnswers(String surveyId) throws SQLException {
+    public int deleteIndicatorValue(String surveyId) throws SQLException {
         Statement query = connection.createStatement();
+        int rowsDeleted=0;
             try {
                 DatabaseService databaseService= new DatabaseService();
                 List<JSONObject> json =databaseService.getIndicatorsForSurvey(surveyId);
                 for(int i=0;i<json.size();i++){
                     String indicator_id= (String) json.get(i).get("INDICATOR_ID");
                     int numberOfRowsInserted = query.executeUpdate("DELETE FROM indicator_value WHERE indicator_id="+indicator_id);
+                    rowsDeleted=rowsDeleted+numberOfRowsInserted;
                 }
             } catch (SQLException throwables) {
                 throwables.printStackTrace();
             }
+            return rowsDeleted;
     }
 
     /**
@@ -199,5 +196,41 @@ public class TaskService {
             }
         }
         return maturityLevel;
+    }
+
+
+    /**
+     * Gets processing status in percent of the indicators
+     *
+     * @return the percentage of the answered indicators compared to all indicators
+     */
+    public int getProcessingStatus(){
+        int allAnswers=this.getLineCount("indicator_value");
+        int allIndicators=this.getLineCount("indicator");
+        int percent= 100* allAnswers / allIndicators;
+        return percent;
+    }
+
+    /**
+     * Gets the number of lines of the given table
+     *
+     * @param tableName
+     * @return the number of lines
+     */
+    public int getLineCount(String tableName){
+        int count=0;
+        if(db.checkForTable(tableName)){
+            try {
+                Statement query = connection.createStatement();
+                String sql="SELECT * FROM "+tableName;
+                ResultSet resultSet =query.executeQuery(sql);
+                List<JSONObject> json= converter.convertToJson(resultSet);
+                count= json.size();
+
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+        }
+        return count;
     }
 }

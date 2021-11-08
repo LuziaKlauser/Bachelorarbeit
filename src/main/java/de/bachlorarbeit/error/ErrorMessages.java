@@ -19,5 +19,8 @@ public class ErrorMessages {
     public static String EmployeeNotFound(String employee_id) {
         return "There is no employee with the employee_id: "+ employee_id;
     }
+    public static String MissingData() {
+        return "Request can't be executed because data is missing";
+    }
 
 }

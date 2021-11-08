@@ -26,6 +26,12 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
         return new ResponseEntity<>(errorDetail, null, HttpStatus.NOT_FOUND);
     }
 
+    @ExceptionHandler(MissingDataException.class)
+    public ResponseEntity<?> handleMissingDataException(MissingDataException ex, HttpServletRequest request) {
+        ErrorDetail errorDetail = new ErrorDetail(HttpStatus.BAD_REQUEST, ex, request);
+        return new ResponseEntity<>(errorDetail, null, HttpStatus.BAD_REQUEST);
+    }
+
     @ExceptionHandler(SurveyNotFoundException.class)
     public ResponseEntity<?> handleSurveyNotFoundException(SurveyNotFoundException ex, HttpServletRequest request) {
         ErrorDetail errorDetail = new ErrorDetail(HttpStatus.NOT_FOUND, ex, request);

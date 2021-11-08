@@ -6,7 +6,7 @@ import de.bachlorarbeit.exception.EnablerNotFoundException;
 import de.bachlorarbeit.exception.SurveyNotFoundException;
 import de.bachlorarbeit.exception.TableNotFoundException;
 import de.bachlorarbeit.helpers.DBConnection;
-import de.bachlorarbeit.utility.Converter;
+import de.bachlorarbeit.helpers.Converter;
 import org.json.simple.JSONObject;
 import org.springframework.stereotype.Service;
 
@@ -48,62 +48,10 @@ public class DatabaseService {
      */
     public String prepareStatement(String tableName){
         String statement= "SELECT * FROM ";
-        if(checkForTable(tableName)){
+        if(db.checkForTable(tableName)){
             statement+=tableName;
         }
         return statement;
-    }
-
-    /**
-     * Checks if the parameter tableName equals to the tables in the database
-     *
-     * @param tableName
-     * @return boolean, whether the table with the given tableName is in the database
-     */
-    public boolean checkForTable(String tableName){
-        tableName=tableName.toLowerCase();
-        if(tableName.equals("enabler")||tableName.equals("indicator_value")||tableName.equals("department")
-                ||tableName.equals("employee") ||tableName.equals("indicator")||tableName.equals("maturity_level")||tableName.equals("survey")
-                ||tableName.equals("capability_level")){
-            return true;
-        }else{
-            throw new TableNotFoundException(ErrorMessages.TableNotFound(tableName));
-        }
-    }
-
-    /**
-     * Gets processing status in percent of the indicators
-     *
-     * @return the percentage of the answered indicators compared to all indicators
-     */
-    public int getProcessingStatus(){
-        int allAnswers=this.getLineCount("indicator_value");
-        int allIndicators=this.getLineCount("indicator");
-        int percent= 100* allAnswers / allIndicators;
-        return percent;
-    }
-
-    /**
-     * Gets the number of lines of the given table
-     *
-     * @param tableName
-     * @return the number of lines
-     */
-    public int getLineCount(String tableName){
-        int count=0;
-        if(this.checkForTable(tableName)){
-            try {
-                Statement query = connection.createStatement();
-                String sql="SELECT * FROM "+tableName;
-                ResultSet resultSet =query.executeQuery(sql);
-                List<JSONObject> json= converter.convertToJson(resultSet);
-                count= json.size();
-
-            } catch (SQLException throwables) {
-                throwables.printStackTrace();
-            }
-        }
-        return count;
     }
 
     /**
@@ -261,7 +209,7 @@ public class DatabaseService {
      * @return json with indicators, their description, enaber_id and type
      * @throws SQLException
      */
-    public List<JSONObject> getAnswerDescription() throws SQLException {
+    public List<JSONObject> getIndicatorValueDescription() throws SQLException {
         Statement query = connection.createStatement();
         try {
             String sql = "SELECT indicator_value.type, indicator.description, indicator.enabler_id "+
@@ -273,7 +221,6 @@ public class DatabaseService {
             ResultSet s2 = query.executeQuery(sql2);
             List<JSONObject> resultList2 = converter.convertToJson(s2);
             if(resultList.size()==0&&resultList2.size()==0){
-                //TODO change that exceoption and add
                 throw new TableNotFoundException(ErrorMessages.TableNotFound("indicator"));
             }else{
                 for(int i=0;i<resultList.size();i++){
@@ -291,3 +238,5 @@ public class DatabaseService {
         return null;
     }
 }
+
+

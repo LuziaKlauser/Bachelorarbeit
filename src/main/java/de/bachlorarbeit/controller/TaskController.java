@@ -5,9 +5,9 @@ import de.bachlorarbeit.model.ProcessStatusModel;
 import de.bachlorarbeit.service.TaskService;
 import org.json.simple.JSONObject;
 import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -18,6 +18,7 @@ import java.util.HashMap;
 import java.util.List;
 
 @RestController
+@Validated
 public class TaskController {
     private TaskService taskService;
 
@@ -25,6 +26,7 @@ public class TaskController {
 
         this.taskService = taskService;
     }
+
 
     /**
      * Uploads the answers to a survey into the database
@@ -36,7 +38,7 @@ public class TaskController {
     @RequestMapping(value = "/survey/upload",
             produces = {MediaType.APPLICATION_JSON_VALUE, "application/vnd.pfc-v1.0+json"},
             method = RequestMethod.POST)
-    public ResponseEntity<?> uploadFiles(@RequestParam HashMap<String, Object> formData) throws SQLException {
+    public ResponseEntity<?> uploadData(@RequestParam @NotNull HashMap<String, Object> formData) throws SQLException {
         taskService.postSurvey(formData);
         GeneralAnswerModel answer= new GeneralAnswerModel("Survey successfully uploaded");
         return ResponseEntity.ok()
@@ -67,10 +69,11 @@ public class TaskController {
      * @return
      * @throws SQLException
      */
-    @RequestMapping(value = "/data/indicator-value/{surveyId:.+}/delete", method = RequestMethod.DELETE)
-    public ResponseEntity<?> clearDirectory(@PathVariable String surveyId) throws SQLException {
-        taskService.deleteAnswers(surveyId);
-        GeneralAnswerModel answer= new GeneralAnswerModel("Deletion successfull");
+    @RequestMapping(value = "/data/indicator-value/{surveyId:.+}/delete",
+            method = RequestMethod.DELETE)
+    public ResponseEntity<?> clearIndicatorValue(@PathVariable String surveyId) throws SQLException {
+        int deletedRows= taskService.deleteIndicatorValue(surveyId);
+        GeneralAnswerModel answer= new GeneralAnswerModel("Deletion successful. "+deletedRows+" entries deleted");
         return ResponseEntity.ok()
                 .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
                 .body(answer);
@@ -94,6 +97,24 @@ public class TaskController {
         return null;
     }
 
+
+    /**
+     * Checks if all indicators are checked if they are fulfilled or not
+     * Compares the number of actually answered indicators to all indicators
+     *
+     * @return percentage of the answered indicators to all indicators
+     */
+    @RequestMapping(value = "/data/indicator-value/check", produces = {MediaType.APPLICATION_JSON_VALUE, "application/vnd.pfc.app-v1.0+json"}, method = RequestMethod.GET)
+    public ResponseEntity<?> getProcessingStatus() {
+
+        int percent= taskService.getProcessingStatus();
+        ProcessStatusModel processStatus= new ProcessStatusModel(percent);
+        return ResponseEntity.ok()
+                .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
+                .body(processStatus);
+
+    }
+
     /**
      * Uploads a json file, which holds values for the indicators
      *
@@ -107,5 +128,7 @@ public class TaskController {
     public ResponseEntity<?> uploadIndicatorValue(@RequestParam("file") MultipartFile file) throws SQLException {
         return null;
     }
+
+
 }
 

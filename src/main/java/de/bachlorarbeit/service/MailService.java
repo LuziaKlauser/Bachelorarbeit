@@ -38,11 +38,9 @@ public class MailService {
 		message+="Link: http://localhost:8080/survey/"+surveyId;
 		String employee= (String) databaseService.getEmployeeIdForSurvey(surveyId).get(0).get("EMPLOYEE_ID");
 		String email=databaseService.getEmail(employee);
-
 		mail.setTo(email);
 		mail.setSubject(subject);
 		mail.setText(message);
-
 		//Sends Mail
 		javaMailSender.send(mail);
 

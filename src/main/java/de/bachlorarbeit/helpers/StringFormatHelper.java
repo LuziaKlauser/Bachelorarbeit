@@ -1,4 +1,4 @@
-package de.bachlorarbeit.utility;
+package de.bachlorarbeit.helpers;
 
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;

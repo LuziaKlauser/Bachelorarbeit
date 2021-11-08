@@ -2,8 +2,8 @@ package de.bachlorarbeit.error;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
-import de.bachlorarbeit.utility.DateTimeHelper;
-import de.bachlorarbeit.utility.StringFormatHelper;
+import de.bachlorarbeit.helpers.DateTimeHelper;
+import de.bachlorarbeit.helpers.StringFormatHelper;
 import org.springframework.http.HttpStatus;
 
 import javax.servlet.http.HttpServletRequest;

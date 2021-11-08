@@ -1,5 +1,8 @@
 package de.bachlorarbeit.helpers;
 
+import de.bachlorarbeit.error.ErrorMessages;
+import de.bachlorarbeit.exception.TableNotFoundException;
+
 import java.sql.*;
 
 /**
@@ -22,5 +25,22 @@ public class DBConnection {
     }
     public Connection getConnection() {
         return connection;
+    }
+
+    /**
+     * Checks if the parameter tableName equals to the tables in the database
+     *
+     * @param tableName
+     * @return boolean, whether the table with the given tableName is in the database
+     */
+    public boolean checkForTable(String tableName){
+        tableName=tableName.toLowerCase();
+        if(tableName.equals("enabler")||tableName.equals("indicator_value")||tableName.equals("department")
+                ||tableName.equals("employee") ||tableName.equals("indicator")||tableName.equals("maturity_level")||tableName.equals("survey")
+                ||tableName.equals("capability_level")){
+            return true;
+        }else{
+            throw new TableNotFoundException(ErrorMessages.TableNotFound(tableName));
+        }
     }
 }

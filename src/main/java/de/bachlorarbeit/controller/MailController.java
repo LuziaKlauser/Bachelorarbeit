@@ -7,11 +7,14 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.mail.MailException;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.constraints.NotNull;
 import java.sql.SQLException;
 
 @RestController
+@Validated
 public class MailController {
 
 	@Autowired
@@ -24,7 +27,7 @@ public class MailController {
 	 * @return String
 	 */
 	@RequestMapping(value="/survey/{surveyId:.+}/send", produces = {MediaType.APPLICATION_JSON_VALUE, "application/vnd.pfc.app-v1.0+json"}, method = RequestMethod.POST)
-	public ResponseEntity<?> send(@PathVariable String surveyId) {
+	public ResponseEntity<?> send(@PathVariable @NotNull String surveyId) {
 		String subject= "Survey for digital forensic readiness";
 
 		//Call sendEmail() from Class MailService for Sending mail to the sender.
@@ -35,7 +38,6 @@ public class MailController {
 		}
 		return ResponseEntity.status(HttpStatus.CREATED)
 				.header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
-				//TODO body
 				.body("Congratulations! Your mail has been send to the user.");
 	}
 
