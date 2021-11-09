@@ -60,7 +60,7 @@ function getStatus(){
         url: '/data/indicator-value/check',
         success: function (data) {
             // Call this function on success
-            var status=data.allanswers;
+            var status=data.percent;
             var progress = document.getElementById("progress");
             progress.style.width = status + '%';
             progress.innerHTML=status+"%";

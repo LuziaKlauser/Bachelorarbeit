@@ -56,8 +56,7 @@ public class Converter {
         List<JSONObject> result= new ArrayList<JSONObject>();
         for (String i : formData.keySet()) {
             String indicator= "indicator_id";
-            //TODO change answer
-            String answer="answer";;
+            String answer="indicator_value";;
             JSONObject obj = new JSONObject();
             obj.put(indicator,i);
             obj.put(answer, formData.get(i));

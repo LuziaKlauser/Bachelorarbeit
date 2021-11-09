@@ -1,5 +1,6 @@
 package de.bachlorarbeit.service;
 
+import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.MailException;
 import org.springframework.mail.SimpleMailMessage;
@@ -7,6 +8,7 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
 import java.sql.SQLException;
+import java.util.List;
 
 @Service
 public class MailService {
@@ -34,10 +36,11 @@ public class MailService {
 	public void sendMail(String subject, String surveyId) throws MailException, SQLException {
 		SimpleMailMessage mail = new SimpleMailMessage();
 		DatabaseService databaseService = new DatabaseService();
-		String message="Please fill out the following survey"+"\n";
-		message+="Link: http://localhost:8080/survey/"+surveyId;
-		String employee= (String) databaseService.getEmployeeIdForSurvey(surveyId).get(0).get("EMPLOYEE_ID");
-		String email=databaseService.getEmail(employee);
+		String message = "Please fill out the following survey" + "\n";
+		message += "Link: http://localhost:8080/survey/" + surveyId;
+		List<JSONObject> employee = databaseService.getEmployeeIdForSurvey(surveyId);
+		String employeeId = (String) employee.get(0).get("EMPLOYEE_ID");
+		String email = databaseService.getEmail(employeeId);
 		mail.setTo(email);
 		mail.setSubject(subject);
 		mail.setText(message);
@@ -46,3 +49,4 @@ public class MailService {
 
 	}
 }
+

@@ -192,7 +192,6 @@ public class DatabaseService {
             ResultSet s = query.executeQuery(sql);
             List<JSONObject> resultList = converter.convertToJson(s);
             if(resultList.size()==0){
-                //TODO change that exceoption and add
                 throw new TableNotFoundException(ErrorMessages.TableNotFound("indicator"));
             }else{
                 return resultList;

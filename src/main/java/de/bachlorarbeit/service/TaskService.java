@@ -37,10 +37,10 @@ public class TaskService {
             try {
                 JSONObject entry = surveyResult.get(i);
                 String indicator_id = (String) entry.get("indicator_id");
-                String answer = (String) entry.get("answer");
+                String indicator_value = (String) entry.get("indicator_value");
                 LocalDate date = LocalDate.now();
                 int numberOfRowsInserted = query.executeUpdate("INSERT into indicator_value(value_id,type, time, indicator_id)"
-                        + "SELECT * FROM (SELECT " + indicator_id + " AS value_id, '" + answer + "' as type, '" + date + "'AS time,"
+                        + "SELECT * FROM (SELECT " + indicator_id + " AS value_id, '" + indicator_value + "' as type, '" + date + "'AS time,"
                         + indicator_id + " as indicator_id) AS temp " +
                         "WHERE NOT EXISTS (SELECT  indicator_id FROM indicator_value WHERE indicator_id=" + indicator_id + ")");
             } catch (SQLException throwables) {
