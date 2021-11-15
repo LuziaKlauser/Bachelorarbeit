@@ -5,7 +5,7 @@ $(document).ready(function () {
 
     $("#deleteButton").click(function (event) {
         event.preventDefault();
-        deleteSurveyAnswers();
+        deleteSurveyIndicators();
     });
     $("#sendSurveyButton").click(function (event) {
         event.preventDefault();
@@ -28,7 +28,7 @@ function start(){
 
 }
 
-function deleteSurveyAnswers() {
+function deleteSurveyIndicators() {
     var form = $('#deleteForm')[0];
     var data = new FormData(form);
     var surveyId=$("#deleteSurvey").val();

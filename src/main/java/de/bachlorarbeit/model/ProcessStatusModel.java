@@ -6,7 +6,7 @@ public class ProcessStatusModel {
 
     public ProcessStatusModel(int percent){
         this.percent=percent;
-        this.message=percent+" percent of all indicators are already answered";
+        this.message=percent+" percent of all indicators already have an indicator-value";
     }
     public int getPercent() {
         return percent;

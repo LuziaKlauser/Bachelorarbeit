@@ -100,31 +100,7 @@ public class DatabaseService {
         return null;
     }
 
-    /**
-     * Gets indicators and also their value(fulfilled/unfulfilled) for the given enabler_id
-     * @param enabler_id
-     * @return json filled with indicators, their value
-     * @throws SQLException
-     */
-    public List<JSONObject> getTableFromEnabler(int enabler_id) throws SQLException {
-        Statement query = connection.createStatement();
-        try {
-            String sql = "SELECT max_contribution, indicator.indicator_id, indicator_value.type AS answer_type, " +
-                    "indicator.indicator_type AS indicator_type, indicator.enabler_id  "+
-                    "FROM indicator " +
-                    "INNER JOIN indicator_value ON indicator.indicator_id=indicator_value.indicator_id WHERE indicator.enabler_id="+enabler_id;
-            ResultSet s = query.executeQuery(sql);
-            List<JSONObject> resultList = converter.convertToJson(s);
-            if(resultList.size()==0){
-                throw new EnablerNotFoundException(ErrorMessages.EnablerNotFound(enabler_id));
-            }else{
-                return resultList;
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
+
 
     /**
      * Gets the employee_id which is connected to the given surveyId

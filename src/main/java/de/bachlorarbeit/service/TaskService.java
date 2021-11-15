@@ -1,6 +1,7 @@
 package de.bachlorarbeit.service;
 
 import de.bachlorarbeit.error.ErrorMessages;
+import de.bachlorarbeit.exception.EnablerNotFoundException;
 import de.bachlorarbeit.exception.MissingDataException;
 import de.bachlorarbeit.helpers.DBConnection;
 import de.bachlorarbeit.helpers.Converter;
@@ -94,21 +95,41 @@ public class TaskService {
         List<JSONObject> capLevelsForEnabler = new ArrayList<JSONObject>();
         for(int enablerId=1; enablerId<=enablers.size();enablerId++){
             JSONObject capLevelForEnabler = new JSONObject();
-            List<JSONObject> indicators= databaseService.getTableFromEnabler(enablerId);
-            List<JSONObject> enabler= databaseService.getTable("enabler");
-            for(int i=0;i<enabler.size();i++){
-                String en_id= (String) enabler.get(i).get("ENABLER_ID");
-                int id=Integer.parseInt(en_id);
-                if(enablerId==id){
-                    capLevelForEnabler.put("name", enabler.get(i).get("NAME"));
-                }
-            }
+            List<JSONObject> indicators= this.getIndicatorValuesForEnabler(enablerId);
             int level= calculateCapabilityLevelForEnabler(enablerId, indicators);
+
+            capLevelForEnabler.put("name", enablers.get(enablerId-1).get("NAME"));
             capLevelForEnabler.put("enabler",enablerId);
             capLevelForEnabler.put("capabilityLevel",level);
             capLevelsForEnabler.add(capLevelForEnabler);
         }
         return capLevelsForEnabler;
+    }
+
+    /**
+     * Gets indicators and also their value(fulfilled/unfulfilled) for the given enabler_id
+     * @param enabler_id
+     * @return json filled with indicators, their value
+     * @throws SQLException
+     */
+    public List<JSONObject> getIndicatorValuesForEnabler(int enabler_id) throws SQLException {
+        Statement query = connection.createStatement();
+        try {
+            String sql = "SELECT max_contribution, indicator.indicator_id, indicator_value.type AS answer_type, " +
+                    "indicator.indicator_type AS indicator_type, indicator.enabler_id  "+
+                    "FROM indicator " +
+                    "INNER JOIN indicator_value ON indicator.indicator_id=indicator_value.indicator_id WHERE indicator.enabler_id="+enabler_id;
+            ResultSet s = query.executeQuery(sql);
+            List<JSONObject> resultList = converter.convertToJson(s);
+            if(resultList.size()==0){
+                throw new EnablerNotFoundException(ErrorMessages.EnablerNotFound(enabler_id));
+            }else{
+                return resultList;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     /**

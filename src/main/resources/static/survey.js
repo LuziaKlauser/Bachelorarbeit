@@ -1,8 +1,9 @@
 
 function createSurvey() {
+    var id =getSurveyId();
     $.ajax({
         type: "GET",
-        url: '/data/survey/'+getSurveyId(),
+        url: '/data/survey/'+id,
         success: function (data) {
             // Call this function on success
             createForm(data);
