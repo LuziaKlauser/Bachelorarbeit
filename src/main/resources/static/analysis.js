@@ -6,7 +6,7 @@ $(document).ready(function () {
     });
     $("#checkIndicators").click(function (event) {
         event.preventDefault();
-        getAnswers();
+        getIndicatorValues();
     });
 
 });
@@ -173,12 +173,12 @@ function createMaturityLevelInformation(data, maturityLevel){
         }
     }
 }
-function getAnswers(){
+function getIndicatorValues(){
     $.ajax({
         type: "GET",
         url: '/data/indicator-value/enabler',
         success: function (data) {
-            createAnswersTables(data);
+            createIndicatorValuesTables(data);
             return data;
         },
         error: function () {
@@ -186,7 +186,7 @@ function getAnswers(){
         }
     });
 }
-function createAnswersTables(data){
+function createIndicatorValuesTables(data){
     var divNo = document.getElementById("tableNo");
     var divYes = document.getElementById("tableYes");
     divYes.innerHTML = "";
