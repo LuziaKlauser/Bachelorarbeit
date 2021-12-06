@@ -9,37 +9,11 @@
 			"name": "data",
 			"item": [
 				{
-					"name": "/data/{tableName}",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "",
-								"value": "",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "{{baseUrl}}/data/:tableName",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"data",
-								":tableName"
-							],
-							"variable": [
-								{
-									"key": "tableName",
-									"value": "enabler"
-								}
-							]
-						}
-					},
-					"response": [
+					"name": "Access",
+					"item": [
 						{
-							"name": "200 OK",
-							"originalRequest": {
+							"name": "/data/{tableName}",
+							"request": {
 								"method": "GET",
 								"header": [
 									{
@@ -60,124 +34,129 @@
 									"variable": [
 										{
 											"key": "tableName",
-											"value": "enable"
+											"value": "enabler"
 										}
 									]
 								}
 							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
+							"response": [
 								{
-									"key": "Content-Type",
-									"value": "application/json"
+									"name": "200 OK",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "",
+												"value": "",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/data/:tableName",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"data",
+												":tableName"
+											],
+											"variable": [
+												{
+													"key": "tableName",
+													"value": "enable"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Transfer-Encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "Date",
+											"value": "Wed, 29 Sep 2021 13:39:24 GMT"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=60"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										}
+									],
+									"cookie": [],
+									"body": "[\n    {\n        \"ENABLER_ID\": \"1\",\n        \"NAME\": \"Principles, Policies and Frameworks\"\n    },\n    {\n        \"ENABLER_ID\": \"2\",\n        \"NAME\": \"Processes\"\n    },\n    {\n        \"ENABLER_ID\": \"3\",\n        \"NAME\": \"Organizational structures\"\n    },\n    {\n        \"ENABLER_ID\": \"4\",\n        \"NAME\": \"Information\"\n    },\n    {\n        \"ENABLER_ID\": \"5\",\n        \"NAME\": \"Culture, ethics and behaviour\"\n    },\n    {\n        \"ENABLER_ID\": \"6\",\n        \"NAME\": \"Peoples, skills and competences\"\n    },\n    {\n        \"ENABLER_ID\": \"7\",\n        \"NAME\": \"Services, infrastructure and applications\"\n    }\n]"
 								},
 								{
-									"key": "Transfer-Encoding",
-									"value": "chunked"
-								},
-								{
-									"key": "Date",
-									"value": "Wed, 29 Sep 2021 13:39:24 GMT"
-								},
-								{
-									"key": "Keep-Alive",
-									"value": "timeout=60"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
+									"name": "404 NOT FOUND",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "",
+												"value": "",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/data/:tableName",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"data",
+												":tableName"
+											],
+											"variable": [
+												{
+													"key": "tableName",
+													"value": "a"
+												}
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Transfer-Encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 04 Nov 2021 17:07:30 GMT"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=60"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"timestamp\": \"2021-11-04T17:07:30Z\",\n    \"status\": 404,\n    \"error\": \"Not Found\",\n    \"message\": \"There is no table with the name a\",\n    \"path\": \"/data/a\"\n}"
 								}
-							],
-							"cookie": [],
-							"body": "[\n    {\n        \"ENABLER_ID\": \"1\",\n        \"NAME\": \"Principles, Policies and Frameworks\"\n    },\n    {\n        \"ENABLER_ID\": \"2\",\n        \"NAME\": \"Processes\"\n    },\n    {\n        \"ENABLER_ID\": \"3\",\n        \"NAME\": \"Organizational structures\"\n    },\n    {\n        \"ENABLER_ID\": \"4\",\n        \"NAME\": \"Information\"\n    },\n    {\n        \"ENABLER_ID\": \"5\",\n        \"NAME\": \"Culture, ethics and behaviour\"\n    },\n    {\n        \"ENABLER_ID\": \"6\",\n        \"NAME\": \"Peoples, skills and competences\"\n    },\n    {\n        \"ENABLER_ID\": \"7\",\n        \"NAME\": \"Services, infrastructure and applications\"\n    }\n]"
+							]
 						},
 						{
-							"name": "404 NOT FOUND",
-							"originalRequest": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "",
-										"value": "",
-										"type": "text"
-									}
-								],
-								"url": {
-									"raw": "{{baseUrl}}/data/:tableName",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"data",
-										":tableName"
-									],
-									"variable": [
-										{
-											"key": "tableName",
-											"value": "a"
-										}
-									]
-								}
-							},
-							"status": "Not Found",
-							"code": 404,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "application/json"
-								},
-								{
-									"key": "Transfer-Encoding",
-									"value": "chunked"
-								},
-								{
-									"key": "Date",
-									"value": "Thu, 04 Nov 2021 17:07:30 GMT"
-								},
-								{
-									"key": "Keep-Alive",
-									"value": "timeout=60"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"timestamp\": \"2021-11-04T17:07:30Z\",\n    \"status\": 404,\n    \"error\": \"Not Found\",\n    \"message\": \"There is no table with the name a\",\n    \"path\": \"/data/a\"\n}"
-						}
-					]
-				},
-				{
-					"name": "/data/survey/{surveyId}",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{baseUrl}}/data/survey/:surveyId",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"data",
-								"survey",
-								":surveyId"
-							],
-							"variable": [
-								{
-									"key": "surveyId",
-									"value": "1"
-								}
-							]
-						}
-					},
-					"response": [
-						{
-							"name": "200 OK",
-							"originalRequest": {
+							"name": "/data/survey/{surveyId}",
+							"request": {
 								"method": "GET",
 								"header": [],
 								"url": {
@@ -198,173 +177,316 @@
 									]
 								}
 							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
+							"response": [
 								{
-									"key": "Content-Type",
-									"value": "application/json"
+									"name": "200 OK",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/data/survey/:surveyId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"data",
+												"survey",
+												":surveyId"
+											],
+											"variable": [
+												{
+													"key": "surveyId",
+													"value": "1"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Transfer-Encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "Date",
+											"value": "Wed, 29 Sep 2021 13:44:20 GMT"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=60"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										}
+									],
+									"cookie": [],
+									"body": "[\n    {\n        \"INDICATOR_ID\": \"2\",\n        \"QUESTION\": \"Are initiatives to raise awareness for DF activities in place and continuously monitored ?\"\n    },\n    {\n        \"INDICATOR_ID\": \"3\",\n        \"QUESTION\": \"Do Governance and Management understand DFR initiatives?\"\n    },\n    {\n        \"INDICATOR_ID\": \"4\",\n        \"QUESTION\": \"Are Principles and policies according to a DF investigation present?\"\n    },\n    {\n        \"INDICATOR_ID\": \"5\",\n        \"QUESTION\": \"Do Governance and Management pursue DFR initiatives?\"\n    },\n    {\n        \"INDICATOR_ID\": \"6\",\n        \"QUESTION\": \"Do Governance and Management are completely involved in planning DFR initiatives?\"\n    },\n    {\n        \"INDICATOR_ID\": \"7\",\n        \"QUESTION\": \"Do Governance and Management support DFR related organisational changes?\"\n    },\n    {\n        \"INDICATOR_ID\": \"8\",\n        \"QUESTION\": \"Is a change management in place?\"\n    },\n    {\n        \"INDICATOR_ID\": \"9\",\n        \"QUESTION\": \"Does the Staff take principles to DF related actions seriously?\"\n    },\n    {\n        \"INDICATOR_ID\": \"10\",\n        \"QUESTION\": \"Are principles clearly formulated?\"\n    },\n    {\n        \"INDICATOR_ID\": \"11\",\n        \"QUESTION\": \"Are the responsibilities for the case of a DF investigation known?\"\n    },\n    {\n        \"INDICATOR_ID\": \"12\",\n        \"QUESTION\": \"Are responsibilities for the case of a DF investigation defined?\"\n    },\n    {\n        \"INDICATOR_ID\": \"13\",\n        \"QUESTION\": \"Are DF related decision making guidelines included in job-descriptions or roles?\"\n    },\n    {\n        \"INDICATOR_ID\": \"14\",\n        \"QUESTION\": \"Are Rights within Information Systems defined?\"\n    },\n    {\n        \"INDICATOR_ID\": \"15\",\n        \"QUESTION\": \"Are rights within Information Systems defined and adjusted to prevent potential destroying or tamp\"\n    },\n    {\n        \"INDICATOR_ID\": \"16\",\n        \"QUESTION\": \"Is the Identity management system in place?\"\n    },\n    {\n        \"INDICATOR_ID\": \"17\",\n        \"QUESTION\": \"Are escalation rules defined?\"\n    },\n    {\n        \"INDICATOR_ID\": \"18\",\n        \"QUESTION\": \"Are escalation rules defined, reviewed and monitored?\"\n    },\n    {\n        \"INDICATOR_ID\": \"19\",\n        \"QUESTION\": \"Is a basic understanding of the DF investigation process present?\"\n    },\n    {\n        \"INDICATOR_ID\": \"20\",\n        \"QUESTION\": \"Is a deep understanding of the DF investigation process is present?\"\n    },\n    {\n        \"INDICATOR_ID\": \"21\",\n        \"QUESTION\": \"Is the support for the DF investigation process continuously improved?\"\n    },\n    {\n        \"INDICATOR_ID\": \"22\",\n        \"QUESTION\": \"Are related sub-processes to DF documented?\"\n    },\n    {\n        \"INDICATOR_ID\": \"23\",\n        \"QUESTION\": \"Is a guideline to prevent business interruption in the case of a DF investigation defined?\"\n    },\n    {\n        \"INDICATOR_ID\": \"24\",\n        \"QUESTION\": \"Are process models of business processes present?\"\n    },\n    {\n        \"INDICATOR_ID\": \"25\",\n        \"QUESTION\": \"Are DF related processes partially automated?\"\n    },\n    {\n        \"INDICATOR_ID\": \"26\",\n        \"QUESTION\": \"Are DF related processes partially automated?\"\n    },\n    {\n        \"INDICATOR_ID\": \"27\",\n        \"QUESTION\": \"Are documents about the right handling of digital evidences in general present?\"\n    },\n    {\n        \"INDICATOR_ID\": \"28\",\n        \"QUESTION\": \"Are documents about the right handling of digital evidences of all devices and systems within the organization present?\"\n    },\n    {\n        \"INDICATOR_ID\": \"29\",\n        \"QUESTION\": \"Are documents about the right handling of digital evidences of all devices and systems within the organization present and frequently reviewed?\"\n    },\n    {\n        \"INDICATOR_ID\": \"30\",\n        \"QUESTION\": \"Are information about DF investigations available and accessible?\"\n    },\n    {\n        \"INDICATOR_ID\": \"31\",\n        \"QUESTION\": \"Can employee contribute findings and knowledge regarding DF?\"\n    },\n    {\n        \"INDICATOR_ID\": \"32\",\n        \"QUESTION\": \"Can employee contribute findings and knowledge regarding DF?\"\n    },\n    {\n        \"INDICATOR_ID\": \"33\",\n        \"QUESTION\": \"Is the usage of tools for DF is documented?\"\n    },\n    {\n        \"INDICATOR_ID\": \"34\",\n        \"QUESTION\": \"Is the usage of tools for DF documented and continuously reviewed?\"\n    },\n    {\n        \"INDICATOR_ID\": \"35\",\n        \"QUESTION\": \"Is information about the usage of digital evidences in a law court present?\"\n    },\n    {\n        \"INDICATOR_ID\": \"36\",\n        \"QUESTION\": \"Is information about the usage of digital evidences in a law court present and frequently updated?\"\n    },\n    {\n        \"INDICATOR_ID\": \"37\",\n        \"QUESTION\": \"Do employees get frequent updates according DF related topics (e.g.: e-Mail, letter)?\"\n    },\n    {\n        \"INDICATOR_ID\": \"38\",\n        \"QUESTION\": \"Do employees get timely updates according DF related topics (e.g.: e-Mail, letter)?\"\n    }\n]"
 								},
 								{
-									"key": "Transfer-Encoding",
-									"value": "chunked"
-								},
-								{
-									"key": "Date",
-									"value": "Wed, 29 Sep 2021 13:44:20 GMT"
-								},
-								{
-									"key": "Keep-Alive",
-									"value": "timeout=60"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
+									"name": "404 NOT FOUND",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/data/survey/:surveyId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"data",
+												"survey",
+												":surveyId"
+											],
+											"variable": [
+												{
+													"key": "surveyId",
+													"value": "6"
+												}
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Transfer-Encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 04 Nov 2021 17:07:01 GMT"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=60"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"timestamp\": \"2021-11-04T17:07:01Z\",\n    \"status\": 404,\n    \"error\": \"Not Found\",\n    \"message\": \"There is no survey with the id 6\",\n    \"path\": \"/data/survey/6\"\n}"
 								}
-							],
-							"cookie": [],
-							"body": "[\n    {\n        \"INDICATOR_ID\": \"2\",\n        \"QUESTION\": \"Are initiatives to raise awareness for DF activities in place and continuously monitored ?\"\n    },\n    {\n        \"INDICATOR_ID\": \"3\",\n        \"QUESTION\": \"Do Governance and Management understand DFR initiatives?\"\n    },\n    {\n        \"INDICATOR_ID\": \"4\",\n        \"QUESTION\": \"Are Principles and policies according to a DF investigation present?\"\n    },\n    {\n        \"INDICATOR_ID\": \"5\",\n        \"QUESTION\": \"Do Governance and Management pursue DFR initiatives?\"\n    },\n    {\n        \"INDICATOR_ID\": \"6\",\n        \"QUESTION\": \"Do Governance and Management are completely involved in planning DFR initiatives?\"\n    },\n    {\n        \"INDICATOR_ID\": \"7\",\n        \"QUESTION\": \"Do Governance and Management support DFR related organisational changes?\"\n    },\n    {\n        \"INDICATOR_ID\": \"8\",\n        \"QUESTION\": \"Is a change management in place?\"\n    },\n    {\n        \"INDICATOR_ID\": \"9\",\n        \"QUESTION\": \"Does the Staff take principles to DF related actions seriously?\"\n    },\n    {\n        \"INDICATOR_ID\": \"10\",\n        \"QUESTION\": \"Are principles clearly formulated?\"\n    },\n    {\n        \"INDICATOR_ID\": \"11\",\n        \"QUESTION\": \"Are the responsibilities for the case of a DF investigation known?\"\n    },\n    {\n        \"INDICATOR_ID\": \"12\",\n        \"QUESTION\": \"Are responsibilities for the case of a DF investigation defined?\"\n    },\n    {\n        \"INDICATOR_ID\": \"13\",\n        \"QUESTION\": \"Are DF related decision making guidelines included in job-descriptions or roles?\"\n    },\n    {\n        \"INDICATOR_ID\": \"14\",\n        \"QUESTION\": \"Are Rights within Information Systems defined?\"\n    },\n    {\n        \"INDICATOR_ID\": \"15\",\n        \"QUESTION\": \"Are rights within Information Systems defined and adjusted to prevent potential destroying or tamp\"\n    },\n    {\n        \"INDICATOR_ID\": \"16\",\n        \"QUESTION\": \"Is the Identity management system in place?\"\n    },\n    {\n        \"INDICATOR_ID\": \"17\",\n        \"QUESTION\": \"Are escalation rules defined?\"\n    },\n    {\n        \"INDICATOR_ID\": \"18\",\n        \"QUESTION\": \"Are escalation rules defined, reviewed and monitored?\"\n    },\n    {\n        \"INDICATOR_ID\": \"19\",\n        \"QUESTION\": \"Is a basic understanding of the DF investigation process present?\"\n    },\n    {\n        \"INDICATOR_ID\": \"20\",\n        \"QUESTION\": \"Is a deep understanding of the DF investigation process is present?\"\n    },\n    {\n        \"INDICATOR_ID\": \"21\",\n        \"QUESTION\": \"Is the support for the DF investigation process continuously improved?\"\n    },\n    {\n        \"INDICATOR_ID\": \"22\",\n        \"QUESTION\": \"Are related sub-processes to DF documented?\"\n    },\n    {\n        \"INDICATOR_ID\": \"23\",\n        \"QUESTION\": \"Is a guideline to prevent business interruption in the case of a DF investigation defined?\"\n    },\n    {\n        \"INDICATOR_ID\": \"24\",\n        \"QUESTION\": \"Are process models of business processes present?\"\n    },\n    {\n        \"INDICATOR_ID\": \"25\",\n        \"QUESTION\": \"Are DF related processes partially automated?\"\n    },\n    {\n        \"INDICATOR_ID\": \"26\",\n        \"QUESTION\": \"Are DF related processes partially automated?\"\n    },\n    {\n        \"INDICATOR_ID\": \"27\",\n        \"QUESTION\": \"Are documents about the right handling of digital evidences in general present?\"\n    },\n    {\n        \"INDICATOR_ID\": \"28\",\n        \"QUESTION\": \"Are documents about the right handling of digital evidences of all devices and systems within the organization present?\"\n    },\n    {\n        \"INDICATOR_ID\": \"29\",\n        \"QUESTION\": \"Are documents about the right handling of digital evidences of all devices and systems within the organization present and frequently reviewed?\"\n    },\n    {\n        \"INDICATOR_ID\": \"30\",\n        \"QUESTION\": \"Are information about DF investigations available and accessible?\"\n    },\n    {\n        \"INDICATOR_ID\": \"31\",\n        \"QUESTION\": \"Can employee contribute findings and knowledge regarding DF?\"\n    },\n    {\n        \"INDICATOR_ID\": \"32\",\n        \"QUESTION\": \"Can employee contribute findings and knowledge regarding DF?\"\n    },\n    {\n        \"INDICATOR_ID\": \"33\",\n        \"QUESTION\": \"Is the usage of tools for DF is documented?\"\n    },\n    {\n        \"INDICATOR_ID\": \"34\",\n        \"QUESTION\": \"Is the usage of tools for DF documented and continuously reviewed?\"\n    },\n    {\n        \"INDICATOR_ID\": \"35\",\n        \"QUESTION\": \"Is information about the usage of digital evidences in a law court present?\"\n    },\n    {\n        \"INDICATOR_ID\": \"36\",\n        \"QUESTION\": \"Is information about the usage of digital evidences in a law court present and frequently updated?\"\n    },\n    {\n        \"INDICATOR_ID\": \"37\",\n        \"QUESTION\": \"Do employees get frequent updates according DF related topics (e.g.: e-Mail, letter)?\"\n    },\n    {\n        \"INDICATOR_ID\": \"38\",\n        \"QUESTION\": \"Do employees get timely updates according DF related topics (e.g.: e-Mail, letter)?\"\n    }\n]"
+							]
 						},
 						{
-							"name": "404 NOT FOUND",
-							"originalRequest": {
+							"name": "/data/indicator-value/surveyId/time",
+							"request": {
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{baseUrl}}/data/survey/:surveyId",
+									"raw": "{{baseUrl}}/data/indicator-value/surveyId/time",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"data",
+										"indicator-value",
+										"surveyId",
+										"time"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "200 OK",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/data/indicator-value/surveyId/time",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"data",
+												"indicator-value",
+												"surveyId",
+												"time"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Transfer-Encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 04 Nov 2021 15:58:53 GMT"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=60"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										}
+									],
+									"cookie": [],
+									"body": "[\n    {\n        \"SURVEY_ID\": \"1\",\n        \"TIME\": \"2021-11-04\"\n    },\n    {\n        \"SURVEY_ID\": \"2\",\n        \"TIME\": \"2021-11-04\"\n    }\n]"
+								}
+							]
+						},
+						{
+							"name": "/data/survey/surveyId",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/data/survey/surveyId",
 									"host": [
 										"{{baseUrl}}"
 									],
 									"path": [
 										"data",
 										"survey",
-										":surveyId"
-									],
-									"variable": [
-										{
-											"key": "surveyId",
-											"value": "6"
-										}
+										"surveyId"
 									]
 								}
 							},
-							"status": "Not Found",
-							"code": 404,
-							"_postman_previewlanguage": "json",
-							"header": [
+							"response": [
 								{
-									"key": "Content-Type",
-									"value": "application/json"
-								},
-								{
-									"key": "Transfer-Encoding",
-									"value": "chunked"
-								},
-								{
-									"key": "Date",
-									"value": "Thu, 04 Nov 2021 17:07:01 GMT"
-								},
-								{
-									"key": "Keep-Alive",
-									"value": "timeout=60"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
+									"name": "200 OK",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/data/survey/surveyId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"data",
+												"survey",
+												"surveyId"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Transfer-Encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "Date",
+											"value": "Wed, 06 Oct 2021 11:57:23 GMT"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=60"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										}
+									],
+									"cookie": [],
+									"body": "[\n    {\n        \"SURVEY_ID\": \"1\"\n    },\n    {\n        \"SURVEY_ID\": \"2\"\n    }\n]"
 								}
-							],
-							"cookie": [],
-							"body": "{\n    \"timestamp\": \"2021-11-04T17:07:01Z\",\n    \"status\": 404,\n    \"error\": \"Not Found\",\n    \"message\": \"There is no survey with the id 6\",\n    \"path\": \"/data/survey/6\"\n}"
-						}
-					]
-				},
-				{
-					"name": "/data/indicator-value/check",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{baseUrl}}/data/indicator-value/check",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"data",
-								"indicator-value",
-								"check"
 							]
-						}
-					},
-					"response": [
+						},
 						{
-							"name": "200 OK",
-							"originalRequest": {
+							"name": "/data/indicator-value/enabler",
+							"request": {
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{baseUrl}}/data/answer/check",
+									"raw": "{{baseUrl}}/data/indicator-value/enabler",
 									"host": [
 										"{{baseUrl}}"
 									],
 									"path": [
 										"data",
-										"answer",
-										"check"
+										"indicator-value",
+										"enabler"
 									]
 								}
 							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
+							"response": [
 								{
-									"key": "Content-Type",
-									"value": "application/json"
-								},
-								{
-									"key": "Transfer-Encoding",
-									"value": "chunked"
-								},
-								{
-									"key": "Date",
-									"value": "Wed, 29 Sep 2021 13:45:52 GMT"
-								},
-								{
-									"key": "Keep-Alive",
-									"value": "timeout=60"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
+									"name": "200 OK",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/data/indicator-value/enabler",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"data",
+												"indicator-value",
+												"enabler"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Transfer-Encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 04 Nov 2021 16:01:07 GMT"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=60"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										}
+									],
+									"cookie": [],
+									"body": "[\n    {\n        \"DESCRIPTION\": \"Governance and Management are completely involved in planning DFR initiatives\",\n        \"ENABLER_NAME\": \"Principles, Policies and Frameworks\",\n        \"ENABLER_ID\": \"1\",\n        \"TYPE\": \"yes\"\n    },\n    {\n        \"DESCRIPTION\": \"Governance and Management support DFR related organizational changes\",\n        \"ENABLER_NAME\": \"Principles, Policies and Frameworks\",\n        \"ENABLER_ID\": \"1\",\n        \"TYPE\": \"yes\"\n    },\n    {\n        \"DESCRIPTION\": \"A change management is in place\",\n        \"ENABLER_NAME\": \"Principles, Policies and Frameworks\",\n        \"ENABLER_ID\": \"1\",\n        \"TYPE\": \"yes\"\n    },\n    {\n        \"DESCRIPTION\": \"Initiatives to raise awareness for DF activities are in place\",\n        \"ENABLER_NAME\": \"Principles, Policies and Frameworks\",\n        \"ENABLER_ID\": \"1\",\n        \"TYPE\": \"yes\"\n    },\n    {\n        \"DESCRIPTION\": \"Employees take the principles of DF related actions seriously\",\n        \"ENABLER_NAME\": \"Principles, Policies and Frameworks\",\n        \"ENABLER_ID\": \"1\",\n        \"TYPE\": \"yes\"\n    },\n    {\n        \"DESCRIPTION\": \"Initiatives to raise awareness for DF activities are in place\",\n        \"ENABLER_NAME\": \"Principles, Policies and Frameworks\",\n        \"ENABLER_ID\": \"1\",\n        \"TYPE\": \"yes\"\n    },\n    {\n        \"DESCRIPTION\": \"Principles are clearly formulated\",\n        \"ENABLER_NAME\": \"Principles, Policies and Frameworks\",\n        \"ENABLER_ID\": \"1\",\n        \"TYPE\": \"yes\"\n    },\n    {\n        \"DESCRIPTION\": \"Governance and Management understand DFR initiatives\",\n        \"ENABLER_NAME\": \"Principles, Policies and Frameworks\",\n        \"ENABLER_ID\": \"1\",\n        \"TYPE\": \"yes\"\n    },\n    {\n        \"DESCRIPTION\": \"Principles and policies according to a DF investigation are present\",\n        \"ENABLER_NAME\": \"Principles, Policies and Frameworks\",\n        \"ENABLER_ID\": \"1\",\n        \"TYPE\": \"yes\"\n    },\n    {\n        \"DESCRIPTION\": \"Governance and Management pursue DFR initiatives\",\n        \"ENABLER_NAME\": \"Principles, Policies and Frameworks\",\n        \"ENABLER_ID\": \"1\",\n        \"TYPE\": \"yes\"\n    },\n    {\n        \"DESCRIPTION\": \"Related sub-processes to DF are documented\",\n        \"ENABLER_NAME\": \"Processes\",\n        \"ENABLER_ID\": \"2\",\n        \"TYPE\": \"yes\"\n    },\n    {\n        \"DESCRIPTION\": \"Guidelines to prevent business interruption in the case of a DF investigation are defined\",\n        \"ENABLER_NAME\": \"Processes\",\n        \"ENABLER_ID\": \"2\",\n        \"TYPE\": \"yes\"\n    },\n    {\n        \"DESCRIPTION\": \"Process models of business processes are present\",\n        \"ENABLER_NAME\": \"Processes\",\n        \"ENABLER_ID\": \"2\",\n        \"TYPE\": \"yes\"\n    },\n    {\n        \"DESCRIPTION\": \"DF related processes are partially automated\",\n        \"ENABLER_NAME\": \"Processes\",\n        \"ENABLER_ID\": \"2\",\n        \"TYPE\": \"yes\"\n    },\n    {\n        \"DESCRIPTION\": \"DF related processes are partially automated\",\n        \"ENABLER_NAME\": \"Processes\",\n        \"ENABLER_ID\": \"2\",\n        \"TYPE\": \"yes\"\n    },\n    {\n        \"DESCRIPTION\": \"A basic understanding of the DF investigation process is present\",\n        \"ENABLER_NAME\": \"Processes\",\n        \"ENABLER_ID\": \"2\",\n        \"TYPE\": \"yes\"\n    },\n    {\n        \"DESCRIPTION\": \"A deep understanding of the DF investigation process is present\",\n        \"ENABLER_NAME\": \"Processes\",\n        \"ENABLER_ID\": \"2\",\n        \"TYPE\": \"yes\"\n    },\n    {\n        \"DESCRIPTION\": \"The support for the DF investigation process is continuously improved\",\n        \"ENABLER_NAME\": \"Processes\",\n        \"ENABLER_ID\": \"2\",\n        \"TYPE\": \"yes\"\n    },\n    {\n        \"DESCRIPTION\": \"Rights within Information Systems are defined\",\n        \"ENABLER_NAME\": \"Organizational structures\",\n        \"ENABLER_ID\": \"3\",\n        \"TYPE\": \"yes\"\n    },\n    {\n        \"DESCRIPTION\": \"Rights within Information Systems are defined and adjusted to prevent potential destroying or tampering of evidences\",\n        \"ENABLER_NAME\": \"Organizational structures\",\n        \"ENABLER_ID\": \"3\",\n        \"TYPE\": \"yes\"\n    },\n    {\n        \"DESCRIPTION\": \"An Identity Management System is in place\",\n        \"ENABLER_NAME\": \"Organizational structures\",\n        \"ENABLER_ID\": \"3\",\n        \"TYPE\": \"yes\"\n    },\n    {\n        \"DESCRIPTION\": \"Escalation rules are defined\",\n        \"ENABLER_NAME\": \"Organizational structures\",\n        \"ENABLER_ID\": \"3\",\n        \"TYPE\": \"yes\"\n    },\n    {\n        \"DESCRIPTION\": \"Escalation rules are defined, reviewed and monitored\",\n        \"ENABLER_NAME\": \"Organizational structures\",\n        \"ENABLER_ID\": \"3\",\n        \"TYPE\": \"yes\"\n    },\n    {\n        \"DESCRIPTION\": \"Responsibilities for the case of a DF investigation are known\",\n        \"ENABLER_NAME\": \"Organizational structures\",\n        \"ENABLER_ID\": \"3\",\n        \"TYPE\": \"yes\"\n    },\n    {\n        \"DESCRIPTION\": \"Responsibilities for the case of a DF investigation are defined\",\n        \"ENABLER_NAME\": \"Organizational structures\",\n        \"ENABLER_ID\": \"3\",\n        \"TYPE\": \"yes\"\n    },\n    {\n        \"DESCRIPTION\": \"DF related decision-making guidelines are included in job-descriptions or roles\",\n        \"ENABLER_NAME\": \"Organizational structures\",\n        \"ENABLER_ID\": \"3\",\n        \"TYPE\": \"yes\"\n    },\n    {\n        \"DESCRIPTION\": \"Information about DF investigations are available and accessible\",\n        \"ENABLER_NAME\": \"Information\",\n        \"ENABLER_ID\": \"4\",\n        \"TYPE\": \"yes\"\n    },\n    {\n        \"DESCRIPTION\": \"Employees get timely updates according DF related topics (e.g.: e-Mail, letter)\",\n        \"ENABLER_NAME\": \"Information\",\n        \"ENABLER_ID\": \"4\",\n        \"TYPE\": \"yes\"\n    },\n    {\n        \"DESCRIPTION\": \"Employee can contribute findings and knowledge regarding DF\",\n        \"ENABLER_NAME\": \"Information\",\n        \"ENABLER_ID\": \"4\",\n        \"TYPE\": \"yes\"\n    },\n    {\n        \"DESCRIPTION\": \"Employee can contribute findings and knowledge regarding DF\",\n        \"ENABLER_NAME\": \"Information\",\n        \"ENABLER_ID\": \"4\",\n        \"TYPE\": \"yes\"\n    },\n    {\n        \"DESCRIPTION\": \"The usage of tools for DF is documented\",\n        \"ENABLER_NAME\": \"Information\",\n        \"ENABLER_ID\": \"4\",\n        \"TYPE\": \"yes\"\n    },\n    {\n        \"DESCRIPTION\": \"The usage of tools for DF is documented and continuously reviewed\",\n        \"ENABLER_NAME\": \"Information\",\n        \"ENABLER_ID\": \"4\",\n        \"TYPE\": \"yes\"\n    },\n    {\n        \"DESCRIPTION\": \"Documents about the right handling of digital evidences in general are present\",\n        \"ENABLER_NAME\": \"Information\",\n        \"ENABLER_ID\": \"4\",\n        \"TYPE\": \"yes\"\n    },\n    {\n        \"DESCRIPTION\": \"Information about the usage of digital evidences in a law court is present\",\n        \"ENABLER_NAME\": \"Information\",\n        \"ENABLER_ID\": \"4\",\n        \"TYPE\": \"yes\"\n    },\n    {\n        \"DESCRIPTION\": \"Documents about the right handling of digital evidences of all devices and systems within the organization are present\",\n        \"ENABLER_NAME\": \"Information\",\n        \"ENABLER_ID\": \"4\",\n        \"TYPE\": \"yes\"\n    },\n    {\n        \"DESCRIPTION\": \"Information about the usage of digital evidences in a law court is present and frequently updated\",\n        \"ENABLER_NAME\": \"Information\",\n        \"ENABLER_ID\": \"4\",\n        \"TYPE\": \"yes\"\n    },\n    {\n        \"DESCRIPTION\": \"Documents about the right handling of digital evidences of all devices and systems within the organization are present and frequently reviewed\",\n        \"ENABLER_NAME\": \"Information\",\n        \"ENABLER_ID\": \"4\",\n        \"TYPE\": \"yes\"\n    },\n    {\n        \"DESCRIPTION\": \"Employees get frequent updates according DF related topics (e.g.: e-Mail, letter)\",\n        \"ENABLER_NAME\": \"Information\",\n        \"ENABLER_ID\": \"4\",\n        \"TYPE\": \"yes\"\n    },\n    {\n        \"DESCRIPTION\": \"DF related activities are accepted within employees\",\n        \"ENABLER_NAME\": \"Culture, ethics and behaviour\",\n        \"ENABLER_ID\": \"5\",\n        \"TYPE\": \"yes\"\n    },\n    {\n        \"DESCRIPTION\": \"pecific guidelines for potential fraud related situations are present\",\n        \"ENABLER_NAME\": \"Culture, ethics and behaviour\",\n        \"ENABLER_ID\": \"5\",\n        \"TYPE\": \"yes\"\n    },\n    {\n        \"DESCRIPTION\": \"A fraud intolerant culture is present\",\n        \"ENABLER_NAME\": \"Culture, ethics and behaviour\",\n        \"ENABLER_ID\": \"5\",\n        \"TYPE\": \"yes\"\n    },\n    {\n        \"DESCRIPTION\": \"Specific guidelines for potential fraud related situations are present and reviewed\",\n        \"ENABLER_NAME\": \"Culture, ethics and behaviour\",\n        \"ENABLER_ID\": \"5\",\n        \"TYPE\": \"yes\"\n    },\n    {\n        \"DESCRIPTION\": \"A fraud intolerant culture is pursued\",\n        \"ENABLER_NAME\": \"Culture, ethics and behaviour\",\n        \"ENABLER_ID\": \"5\",\n        \"TYPE\": \"yes\"\n    },\n    {\n        \"DESCRIPTION\": \"Employees do not hinder a DF investigation\",\n        \"ENABLER_NAME\": \"Culture, ethics and behaviour\",\n        \"ENABLER_ID\": \"5\",\n        \"TYPE\": \"yes\"\n    },\n    {\n        \"DESCRIPTION\": \"Open handling of mistakes and issues is present\",\n        \"ENABLER_NAME\": \"Culture, ethics and behaviour\",\n        \"ENABLER_ID\": \"5\",\n        \"TYPE\": \"yes\"\n    },\n    {\n        \"DESCRIPTION\": \"Open handling of mistakes and issues is present\",\n        \"ENABLER_NAME\": \"Culture, ethics and behaviour\",\n        \"ENABLER_ID\": \"5\",\n        \"TYPE\": \"yes\"\n    },\n    {\n        \"DESCRIPTION\": \"Anti-fraud ethics are established\",\n        \"ENABLER_NAME\": \"Culture, ethics and behaviour\",\n        \"ENABLER_ID\": \"5\",\n        \"TYPE\": \"yes\"\n    },\n    {\n        \"DESCRIPTION\": \"A willingness to unveil fraud/crime is present\",\n        \"ENABLER_NAME\": \"Culture, ethics and behaviour\",\n        \"ENABLER_ID\": \"5\",\n        \"TYPE\": \"yes\"\n    },\n    {\n        \"DESCRIPTION\": \"Employees understand the importance of digital evidences\",\n        \"ENABLER_NAME\": \"Peoples, skills and competences\",\n        \"ENABLER_ID\": \"6\",\n        \"TYPE\": \"yes\"\n    },\n    {\n        \"DESCRIPTION\": \"Employees get informal DFR related training\",\n        \"ENABLER_NAME\": \"Peoples, skills and competences\",\n        \"ENABLER_ID\": \"6\",\n        \"TYPE\": \"yes\"\n    },\n    {\n        \"DESCRIPTION\": \"Employees get formal DFR related training\",\n        \"ENABLER_NAME\": \"Peoples, skills and competences\",\n        \"ENABLER_ID\": \"6\",\n        \"TYPE\": \"yes\"\n    },\n    {\n        \"DESCRIPTION\": \"The proper application of the knowledge is assessed regularly\",\n        \"ENABLER_NAME\": \"Peoples, skills and competences\",\n        \"ENABLER_ID\": \"6\",\n        \"TYPE\": \"yes\"\n    },\n    {\n        \"DESCRIPTION\": \"Human resource division ensures the right amount of DF skilled employees\",\n        \"ENABLER_NAME\": \"Peoples, skills and competences\",\n        \"ENABLER_ID\": \"6\",\n        \"TYPE\": \"yes\"\n    },\n    {\n        \"DESCRIPTION\": \"Human resource division ensures the right amount of DF skilled employees\",\n        \"ENABLER_NAME\": \"Peoples, skills and competences\",\n        \"ENABLER_ID\": \"6\",\n        \"TYPE\": \"yes\"\n    },\n    {\n        \"DESCRIPTION\": \"Services, infrastructure and applications are documented and continuously updated\",\n        \"ENABLER_NAME\": \"Services, infrastructure and applications\",\n        \"ENABLER_ID\": \"7\",\n        \"TYPE\": \"yes\"\n    },\n    {\n        \"DESCRIPTION\": \"Own tools for DF related tasks are developed in a forensically sound manner\",\n        \"ENABLER_NAME\": \"Services, infrastructure and applications\",\n        \"ENABLER_ID\": \"7\",\n        \"TYPE\": \"yes\"\n    },\n    {\n        \"DESCRIPTION\": \"Possibilities to retrieve log-files are known\",\n        \"ENABLER_NAME\": \"Services, infrastructure and applications\",\n        \"ENABLER_ID\": \"7\",\n        \"TYPE\": \"yes\"\n    },\n    {\n        \"DESCRIPTION\": \"Methods to adjust infrastructure and applications are present\",\n        \"ENABLER_NAME\": \"Services, infrastructure and applications\",\n        \"ENABLER_ID\": \"7\",\n        \"TYPE\": \"yes\"\n    },\n    {\n        \"DESCRIPTION\": \"Possibilities to retrieve log-files are known and the configuration is reviewed\",\n        \"ENABLER_NAME\": \"Services, infrastructure and applications\",\n        \"ENABLER_ID\": \"7\",\n        \"TYPE\": \"yes\"\n    },\n    {\n        \"DESCRIPTION\": \"Possibilities to retrieve log-files are known and the configuration is reviewed\",\n        \"ENABLER_NAME\": \"Services, infrastructure and applications\",\n        \"ENABLER_ID\": \"7\",\n        \"TYPE\": \"yes\"\n    },\n    {\n        \"DESCRIPTION\": \"An internal laboratory is present\",\n        \"ENABLER_NAME\": \"Services, infrastructure and applications\",\n        \"ENABLER_ID\": \"7\",\n        \"TYPE\": \"yes\"\n    },\n    {\n        \"DESCRIPTION\": \"A possibility to store and protect digital evidences is present\",\n        \"ENABLER_NAME\": \"Services, infrastructure and applications\",\n        \"ENABLER_ID\": \"7\",\n        \"TYPE\": \"yes\"\n    },\n    {\n        \"DESCRIPTION\": \"Tools and methods to produce forensically sound copies of hard drives and memory are present\",\n        \"ENABLER_NAME\": \"Services, infrastructure and applications\",\n        \"ENABLER_ID\": \"7\",\n        \"TYPE\": \"yes\"\n    },\n    {\n        \"DESCRIPTION\": \"Services, infrastructure and applications are documented\",\n        \"ENABLER_NAME\": \"Services, infrastructure and applications\",\n        \"ENABLER_ID\": \"7\",\n        \"TYPE\": \"yes\"\n    },\n    {\n        \"DESCRIPTION\": \"Tools and methods to produce forensically sound copies of hard drives and memory are present and reviewed frequently\",\n        \"ENABLER_NAME\": \"Services, infrastructure and applications\",\n        \"ENABLER_ID\": \"7\",\n        \"TYPE\": \"yes\"\n    }\n]"
 								}
-							],
-							"cookie": [],
-							"body": "{\n    \"message\": \"100 percent of all indicators are already answered\",\n    \"allanswers\": 100\n}"
+							]
 						}
 					]
 				},
 				{
-					"name": "/data/indicator-value/calculate",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{baseUrl}}/data/indicator-value/calculate",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"data",
-								"indicator-value",
-								"calculate"
-							]
-						}
-					},
-					"response": [
+					"name": "Calculate",
+					"item": [
 						{
-							"name": "200 OK",
-							"originalRequest": {
+							"name": "/data/indicator-value/calculate",
+							"request": {
 								"method": "GET",
 								"header": [],
 								"url": {
@@ -379,64 +501,194 @@
 									]
 								}
 							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
+							"response": [
 								{
-									"key": "Content-Type",
-									"value": "application/json"
-								},
-								{
-									"key": "Transfer-Encoding",
-									"value": "chunked"
-								},
-								{
-									"key": "Date",
-									"value": "Thu, 04 Nov 2021 15:56:43 GMT"
-								},
-								{
-									"key": "Keep-Alive",
-									"value": "timeout=60"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
+									"name": "200 OK",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/data/indicator-value/calculate",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"data",
+												"indicator-value",
+												"calculate"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Transfer-Encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 04 Nov 2021 15:56:43 GMT"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=60"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										}
+									],
+									"cookie": [],
+									"body": "5"
 								}
-							],
-							"cookie": [],
-							"body": "5"
+							]
+						},
+						{
+							"name": "/data/indicator-value/enabler/calculate",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/data/indicator-value/enabler/calculate",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"data",
+										"indicator-value",
+										"enabler",
+										"calculate"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "200 OK",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/data/indicator-value/enabler/calculate",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"data",
+												"indicator-value",
+												"enabler",
+												"calculate"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Transfer-Encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 04 Nov 2021 15:59:53 GMT"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=60"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										}
+									],
+									"cookie": [],
+									"body": "[\n    {\n        \"enabler\": 1,\n        \"name\": \"Principles, Policies and Frameworks\",\n        \"capabilityLevel\": 3\n    },\n    {\n        \"enabler\": 2,\n        \"name\": \"Processes\",\n        \"capabilityLevel\": 3\n    },\n    {\n        \"enabler\": 3,\n        \"name\": \"Organizational structures\",\n        \"capabilityLevel\": 3\n    },\n    {\n        \"enabler\": 4,\n        \"name\": \"Information\",\n        \"capabilityLevel\": 3\n    },\n    {\n        \"enabler\": 5,\n        \"name\": \"Culture, ethics and behaviour\",\n        \"capabilityLevel\": 3\n    },\n    {\n        \"enabler\": 6,\n        \"name\": \"Peoples, skills and competences\",\n        \"capabilityLevel\": 3\n    },\n    {\n        \"enabler\": 7,\n        \"name\": \"Services, infrastructure and applications\",\n        \"capabilityLevel\": 3\n    }\n]"
+								}
+							]
+						},
+						{
+							"name": "/data/indicator-value/check",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/data/indicator-value/check",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"data",
+										"indicator-value",
+										"check"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "200 OK",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/data/indicator-value/check",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"data",
+												"indicator-value",
+												"check"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Transfer-Encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "Date",
+											"value": "Tue, 09 Nov 2021 10:55:31 GMT"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=60"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"percent\": 100,\n    \"message\": \"100 percent of all indicators already have an indicator-value\"\n}"
+								}
+							]
 						}
 					]
 				},
 				{
-					"name": "/data/indicator-value/{surveyId}/delete",
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"url": {
-							"raw": "{{baseUrl}}/data/indicator-value/:surveyId/delete",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"data",
-								"indicator-value",
-								":surveyId",
-								"delete"
-							],
-							"variable": [
-								{
-									"key": "surveyId",
-									"value": "3"
-								}
-							]
-						}
-					},
-					"response": [
+					"name": "Delete",
+					"item": [
 						{
-							"name": "200 OK",
-							"originalRequest": {
+							"name": "/data/indicator-value/{surveyId}/delete",
+							"request": {
 								"method": "DELETE",
 								"header": [],
 								"url": {
@@ -458,349 +710,112 @@
 									]
 								}
 							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
+							"response": [
 								{
-									"key": "Content-Type",
-									"value": "application/json"
-								},
-								{
-									"key": "Transfer-Encoding",
-									"value": "chunked"
-								},
-								{
-									"key": "Date",
-									"value": "Thu, 04 Nov 2021 15:57:55 GMT"
-								},
-								{
-									"key": "Keep-Alive",
-									"value": "timeout=60"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"message\": \"Deletion successfull\"\n}"
-						},
-						{
-							"name": "404 NOT FOUND",
-							"originalRequest": {
-								"method": "DELETE",
-								"header": [],
-								"url": {
-									"raw": "{{baseUrl}}/data/indicator-value/:surveyId/delete",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"data",
-										"indicator-value",
-										":surveyId",
-										"delete"
-									],
-									"variable": [
-										{
-											"key": "surveyId",
-											"value": "6"
+									"name": "200 OK",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/data/indicator-value/:surveyId/delete",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"data",
+												"indicator-value",
+												":surveyId",
+												"delete"
+											],
+											"variable": [
+												{
+													"key": "surveyId",
+													"value": "3"
+												}
+											]
 										}
-									]
-								}
-							},
-							"status": "Not Found",
-							"code": 404,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "application/json"
-								},
-								{
-									"key": "Transfer-Encoding",
-									"value": "chunked"
-								},
-								{
-									"key": "Date",
-									"value": "Thu, 04 Nov 2021 17:08:07 GMT"
-								},
-								{
-									"key": "Keep-Alive",
-									"value": "timeout=60"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"timestamp\": \"2021-11-04T17:08:07Z\",\n    \"status\": 404,\n    \"error\": \"Not Found\",\n    \"message\": \"There is no survey with the id 6\",\n    \"path\": \"/data/indicator-value/6/delete\"\n}"
-						}
-					]
-				},
-				{
-					"name": "/data/indicator-value/surveyId/time",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{baseUrl}}/data/indicator-value/surveyId/time",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"data",
-								"indicator-value",
-								"surveyId",
-								"time"
-							]
-						}
-					},
-					"response": [
-						{
-							"name": "200 OK",
-							"originalRequest": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{baseUrl}}/data/indicator-value/surveyId/time",
-									"host": [
-										"{{baseUrl}}"
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Transfer-Encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 04 Nov 2021 15:57:55 GMT"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=60"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										}
 									],
-									"path": [
-										"data",
-										"indicator-value",
-										"surveyId",
-										"time"
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "application/json"
+									"cookie": [],
+									"body": "{\n    \"Deletion successful. 10 entries deleted\"\n}"
 								},
 								{
-									"key": "Transfer-Encoding",
-									"value": "chunked"
-								},
-								{
-									"key": "Date",
-									"value": "Thu, 04 Nov 2021 15:58:53 GMT"
-								},
-								{
-									"key": "Keep-Alive",
-									"value": "timeout=60"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								}
-							],
-							"cookie": [],
-							"body": "[\n    {\n        \"SURVEY_ID\": \"1\",\n        \"TIME\": \"2021-11-04\"\n    },\n    {\n        \"SURVEY_ID\": \"2\",\n        \"TIME\": \"2021-11-04\"\n    }\n]"
-						}
-					]
-				},
-				{
-					"name": "/data/indicator-value/enabler/calculate",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{baseUrl}}/data/indicator-value/enabler/calculate",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"data",
-								"indicator-value",
-								"enabler",
-								"calculate"
-							]
-						}
-					},
-					"response": [
-						{
-							"name": "200 OK",
-							"originalRequest": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{baseUrl}}/data/indicator-value/enabler/calculate",
-									"host": [
-										"{{baseUrl}}"
+									"name": "404 NOT FOUND",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/data/indicator-value/:surveyId/delete",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"data",
+												"indicator-value",
+												":surveyId",
+												"delete"
+											],
+											"variable": [
+												{
+													"key": "surveyId",
+													"value": "6"
+												}
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Transfer-Encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 04 Nov 2021 17:08:07 GMT"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=60"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										}
 									],
-									"path": [
-										"data",
-										"indicator-value",
-										"enabler",
-										"calculate"
-									]
+									"cookie": [],
+									"body": "{\n    \"timestamp\": \"2021-11-04T17:08:07Z\",\n    \"status\": 404,\n    \"error\": \"Not Found\",\n    \"message\": \"There is no survey with the id 6\",\n    \"path\": \"/data/indicator-value/6/delete\"\n}"
 								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "application/json"
-								},
-								{
-									"key": "Transfer-Encoding",
-									"value": "chunked"
-								},
-								{
-									"key": "Date",
-									"value": "Thu, 04 Nov 2021 15:59:53 GMT"
-								},
-								{
-									"key": "Keep-Alive",
-									"value": "timeout=60"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								}
-							],
-							"cookie": [],
-							"body": "[\n    {\n        \"enabler\": 1,\n        \"name\": \"Principles, Policies and Frameworks\",\n        \"capabilityLevel\": 3\n    },\n    {\n        \"enabler\": 2,\n        \"name\": \"Processes\",\n        \"capabilityLevel\": 3\n    },\n    {\n        \"enabler\": 3,\n        \"name\": \"Organizational structures\",\n        \"capabilityLevel\": 3\n    },\n    {\n        \"enabler\": 4,\n        \"name\": \"Information\",\n        \"capabilityLevel\": 3\n    },\n    {\n        \"enabler\": 5,\n        \"name\": \"Culture, ethics and behaviour\",\n        \"capabilityLevel\": 3\n    },\n    {\n        \"enabler\": 6,\n        \"name\": \"Peoples, skills and competences\",\n        \"capabilityLevel\": 3\n    },\n    {\n        \"enabler\": 7,\n        \"name\": \"Services, infrastructure and applications\",\n        \"capabilityLevel\": 3\n    }\n]"
-						}
-					]
-				},
-				{
-					"name": "/data/survey/surveyId",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{baseUrl}}/data/survey/surveyId",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"data",
-								"survey",
-								"surveyId"
 							]
-						}
-					},
-					"response": [
-						{
-							"name": "200 OK",
-							"originalRequest": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{baseUrl}}/data/survey/surveyId",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"data",
-										"survey",
-										"surveyId"
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "application/json"
-								},
-								{
-									"key": "Transfer-Encoding",
-									"value": "chunked"
-								},
-								{
-									"key": "Date",
-									"value": "Wed, 06 Oct 2021 11:57:23 GMT"
-								},
-								{
-									"key": "Keep-Alive",
-									"value": "timeout=60"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								}
-							],
-							"cookie": [],
-							"body": "[\n    {\n        \"SURVEY_ID\": \"1\"\n    },\n    {\n        \"SURVEY_ID\": \"2\"\n    }\n]"
-						}
-					]
-				},
-				{
-					"name": "/data/indicator-value/enabler",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{baseUrl}}/data/indicator-value/enabler",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"data",
-								"indicator-value",
-								"enabler"
-							]
-						}
-					},
-					"response": [
-						{
-							"name": "200 OK",
-							"originalRequest": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{baseUrl}}/data/indicator-value/enabler",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"data",
-										"indicator-value",
-										"enabler"
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "application/json"
-								},
-								{
-									"key": "Transfer-Encoding",
-									"value": "chunked"
-								},
-								{
-									"key": "Date",
-									"value": "Thu, 04 Nov 2021 16:01:07 GMT"
-								},
-								{
-									"key": "Keep-Alive",
-									"value": "timeout=60"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								}
-							],
-							"cookie": [],
-							"body": "[\n    {\n        \"DESCRIPTION\": \"Governance and Management are completely involved in planning DFR initiatives\",\n        \"ENABLER_NAME\": \"Principles, Policies and Frameworks\",\n        \"ENABLER_ID\": \"1\",\n        \"TYPE\": \"yes\"\n    },\n    {\n        \"DESCRIPTION\": \"Governance and Management support DFR related organizational changes\",\n        \"ENABLER_NAME\": \"Principles, Policies and Frameworks\",\n        \"ENABLER_ID\": \"1\",\n        \"TYPE\": \"yes\"\n    },\n    {\n        \"DESCRIPTION\": \"A change management is in place\",\n        \"ENABLER_NAME\": \"Principles, Policies and Frameworks\",\n        \"ENABLER_ID\": \"1\",\n        \"TYPE\": \"yes\"\n    },\n    {\n        \"DESCRIPTION\": \"Initiatives to raise awareness for DF activities are in place\",\n        \"ENABLER_NAME\": \"Principles, Policies and Frameworks\",\n        \"ENABLER_ID\": \"1\",\n        \"TYPE\": \"yes\"\n    },\n    {\n        \"DESCRIPTION\": \"Employees take the principles of DF related actions seriously\",\n        \"ENABLER_NAME\": \"Principles, Policies and Frameworks\",\n        \"ENABLER_ID\": \"1\",\n        \"TYPE\": \"yes\"\n    },\n    {\n        \"DESCRIPTION\": \"Initiatives to raise awareness for DF activities are in place\",\n        \"ENABLER_NAME\": \"Principles, Policies and Frameworks\",\n        \"ENABLER_ID\": \"1\",\n        \"TYPE\": \"yes\"\n    },\n    {\n        \"DESCRIPTION\": \"Principles are clearly formulated\",\n        \"ENABLER_NAME\": \"Principles, Policies and Frameworks\",\n        \"ENABLER_ID\": \"1\",\n        \"TYPE\": \"yes\"\n    },\n    {\n        \"DESCRIPTION\": \"Governance and Management understand DFR initiatives\",\n        \"ENABLER_NAME\": \"Principles, Policies and Frameworks\",\n        \"ENABLER_ID\": \"1\",\n        \"TYPE\": \"yes\"\n    },\n    {\n        \"DESCRIPTION\": \"Principles and policies according to a DF investigation are present\",\n        \"ENABLER_NAME\": \"Principles, Policies and Frameworks\",\n        \"ENABLER_ID\": \"1\",\n        \"TYPE\": \"yes\"\n    },\n    {\n        \"DESCRIPTION\": \"Governance and Management pursue DFR initiatives\",\n        \"ENABLER_NAME\": \"Principles, Policies and Frameworks\",\n        \"ENABLER_ID\": \"1\",\n        \"TYPE\": \"yes\"\n    },\n    {\n        \"DESCRIPTION\": \"Related sub-processes to DF are documented\",\n        \"ENABLER_NAME\": \"Processes\",\n        \"ENABLER_ID\": \"2\",\n        \"TYPE\": \"yes\"\n    },\n    {\n        \"DESCRIPTION\": \"Guidelines to prevent business interruption in the case of a DF investigation are defined\",\n        \"ENABLER_NAME\": \"Processes\",\n        \"ENABLER_ID\": \"2\",\n        \"TYPE\": \"yes\"\n    },\n    {\n        \"DESCRIPTION\": \"Process models of business processes are present\",\n        \"ENABLER_NAME\": \"Processes\",\n        \"ENABLER_ID\": \"2\",\n        \"TYPE\": \"yes\"\n    },\n    {\n        \"DESCRIPTION\": \"DF related processes are partially automated\",\n        \"ENABLER_NAME\": \"Processes\",\n        \"ENABLER_ID\": \"2\",\n        \"TYPE\": \"yes\"\n    },\n    {\n        \"DESCRIPTION\": \"DF related processes are partially automated\",\n        \"ENABLER_NAME\": \"Processes\",\n        \"ENABLER_ID\": \"2\",\n        \"TYPE\": \"yes\"\n    },\n    {\n        \"DESCRIPTION\": \"A basic understanding of the DF investigation process is present\",\n        \"ENABLER_NAME\": \"Processes\",\n        \"ENABLER_ID\": \"2\",\n        \"TYPE\": \"yes\"\n    },\n    {\n        \"DESCRIPTION\": \"A deep understanding of the DF investigation process is present\",\n        \"ENABLER_NAME\": \"Processes\",\n        \"ENABLER_ID\": \"2\",\n        \"TYPE\": \"yes\"\n    },\n    {\n        \"DESCRIPTION\": \"The support for the DF investigation process is continuously improved\",\n        \"ENABLER_NAME\": \"Processes\",\n        \"ENABLER_ID\": \"2\",\n        \"TYPE\": \"yes\"\n    },\n    {\n        \"DESCRIPTION\": \"Rights within Information Systems are defined\",\n        \"ENABLER_NAME\": \"Organizational structures\",\n        \"ENABLER_ID\": \"3\",\n        \"TYPE\": \"yes\"\n    },\n    {\n        \"DESCRIPTION\": \"Rights within Information Systems are defined and adjusted to prevent potential destroying or tampering of evidences\",\n        \"ENABLER_NAME\": \"Organizational structures\",\n        \"ENABLER_ID\": \"3\",\n        \"TYPE\": \"yes\"\n    },\n    {\n        \"DESCRIPTION\": \"An Identity Management System is in place\",\n        \"ENABLER_NAME\": \"Organizational structures\",\n        \"ENABLER_ID\": \"3\",\n        \"TYPE\": \"yes\"\n    },\n    {\n        \"DESCRIPTION\": \"Escalation rules are defined\",\n        \"ENABLER_NAME\": \"Organizational structures\",\n        \"ENABLER_ID\": \"3\",\n        \"TYPE\": \"yes\"\n    },\n    {\n        \"DESCRIPTION\": \"Escalation rules are defined, reviewed and monitored\",\n        \"ENABLER_NAME\": \"Organizational structures\",\n        \"ENABLER_ID\": \"3\",\n        \"TYPE\": \"yes\"\n    },\n    {\n        \"DESCRIPTION\": \"Responsibilities for the case of a DF investigation are known\",\n        \"ENABLER_NAME\": \"Organizational structures\",\n        \"ENABLER_ID\": \"3\",\n        \"TYPE\": \"yes\"\n    },\n    {\n        \"DESCRIPTION\": \"Responsibilities for the case of a DF investigation are defined\",\n        \"ENABLER_NAME\": \"Organizational structures\",\n        \"ENABLER_ID\": \"3\",\n        \"TYPE\": \"yes\"\n    },\n    {\n        \"DESCRIPTION\": \"DF related decision-making guidelines are included in job-descriptions or roles\",\n        \"ENABLER_NAME\": \"Organizational structures\",\n        \"ENABLER_ID\": \"3\",\n        \"TYPE\": \"yes\"\n    },\n    {\n        \"DESCRIPTION\": \"Information about DF investigations are available and accessible\",\n        \"ENABLER_NAME\": \"Information\",\n        \"ENABLER_ID\": \"4\",\n        \"TYPE\": \"yes\"\n    },\n    {\n        \"DESCRIPTION\": \"Employees get timely updates according DF related topics (e.g.: e-Mail, letter)\",\n        \"ENABLER_NAME\": \"Information\",\n        \"ENABLER_ID\": \"4\",\n        \"TYPE\": \"yes\"\n    },\n    {\n        \"DESCRIPTION\": \"Employee can contribute findings and knowledge regarding DF\",\n        \"ENABLER_NAME\": \"Information\",\n        \"ENABLER_ID\": \"4\",\n        \"TYPE\": \"yes\"\n    },\n    {\n        \"DESCRIPTION\": \"Employee can contribute findings and knowledge regarding DF\",\n        \"ENABLER_NAME\": \"Information\",\n        \"ENABLER_ID\": \"4\",\n        \"TYPE\": \"yes\"\n    },\n    {\n        \"DESCRIPTION\": \"The usage of tools for DF is documented\",\n        \"ENABLER_NAME\": \"Information\",\n        \"ENABLER_ID\": \"4\",\n        \"TYPE\": \"yes\"\n    },\n    {\n        \"DESCRIPTION\": \"The usage of tools for DF is documented and continuously reviewed\",\n        \"ENABLER_NAME\": \"Information\",\n        \"ENABLER_ID\": \"4\",\n        \"TYPE\": \"yes\"\n    },\n    {\n        \"DESCRIPTION\": \"Documents about the right handling of digital evidences in general are present\",\n        \"ENABLER_NAME\": \"Information\",\n        \"ENABLER_ID\": \"4\",\n        \"TYPE\": \"yes\"\n    },\n    {\n        \"DESCRIPTION\": \"Information about the usage of digital evidences in a law court is present\",\n        \"ENABLER_NAME\": \"Information\",\n        \"ENABLER_ID\": \"4\",\n        \"TYPE\": \"yes\"\n    },\n    {\n        \"DESCRIPTION\": \"Documents about the right handling of digital evidences of all devices and systems within the organization are present\",\n        \"ENABLER_NAME\": \"Information\",\n        \"ENABLER_ID\": \"4\",\n        \"TYPE\": \"yes\"\n    },\n    {\n        \"DESCRIPTION\": \"Information about the usage of digital evidences in a law court is present and frequently updated\",\n        \"ENABLER_NAME\": \"Information\",\n        \"ENABLER_ID\": \"4\",\n        \"TYPE\": \"yes\"\n    },\n    {\n        \"DESCRIPTION\": \"Documents about the right handling of digital evidences of all devices and systems within the organization are present and frequently reviewed\",\n        \"ENABLER_NAME\": \"Information\",\n        \"ENABLER_ID\": \"4\",\n        \"TYPE\": \"yes\"\n    },\n    {\n        \"DESCRIPTION\": \"Employees get frequent updates according DF related topics (e.g.: e-Mail, letter)\",\n        \"ENABLER_NAME\": \"Information\",\n        \"ENABLER_ID\": \"4\",\n        \"TYPE\": \"yes\"\n    },\n    {\n        \"DESCRIPTION\": \"DF related activities are accepted within employees\",\n        \"ENABLER_NAME\": \"Culture, ethics and behaviour\",\n        \"ENABLER_ID\": \"5\",\n        \"TYPE\": \"yes\"\n    },\n    {\n        \"DESCRIPTION\": \"pecific guidelines for potential fraud related situations are present\",\n        \"ENABLER_NAME\": \"Culture, ethics and behaviour\",\n        \"ENABLER_ID\": \"5\",\n        \"TYPE\": \"yes\"\n    },\n    {\n        \"DESCRIPTION\": \"A fraud intolerant culture is present\",\n        \"ENABLER_NAME\": \"Culture, ethics and behaviour\",\n        \"ENABLER_ID\": \"5\",\n        \"TYPE\": \"yes\"\n    },\n    {\n        \"DESCRIPTION\": \"Specific guidelines for potential fraud related situations are present and reviewed\",\n        \"ENABLER_NAME\": \"Culture, ethics and behaviour\",\n        \"ENABLER_ID\": \"5\",\n        \"TYPE\": \"yes\"\n    },\n    {\n        \"DESCRIPTION\": \"A fraud intolerant culture is pursued\",\n        \"ENABLER_NAME\": \"Culture, ethics and behaviour\",\n        \"ENABLER_ID\": \"5\",\n        \"TYPE\": \"yes\"\n    },\n    {\n        \"DESCRIPTION\": \"Employees do not hinder a DF investigation\",\n        \"ENABLER_NAME\": \"Culture, ethics and behaviour\",\n        \"ENABLER_ID\": \"5\",\n        \"TYPE\": \"yes\"\n    },\n    {\n        \"DESCRIPTION\": \"Open handling of mistakes and issues is present\",\n        \"ENABLER_NAME\": \"Culture, ethics and behaviour\",\n        \"ENABLER_ID\": \"5\",\n        \"TYPE\": \"yes\"\n    },\n    {\n        \"DESCRIPTION\": \"Open handling of mistakes and issues is present\",\n        \"ENABLER_NAME\": \"Culture, ethics and behaviour\",\n        \"ENABLER_ID\": \"5\",\n        \"TYPE\": \"yes\"\n    },\n    {\n        \"DESCRIPTION\": \"Anti-fraud ethics are established\",\n        \"ENABLER_NAME\": \"Culture, ethics and behaviour\",\n        \"ENABLER_ID\": \"5\",\n        \"TYPE\": \"yes\"\n    },\n    {\n        \"DESCRIPTION\": \"A willingness to unveil fraud/crime is present\",\n        \"ENABLER_NAME\": \"Culture, ethics and behaviour\",\n        \"ENABLER_ID\": \"5\",\n        \"TYPE\": \"yes\"\n    },\n    {\n        \"DESCRIPTION\": \"Employees understand the importance of digital evidences\",\n        \"ENABLER_NAME\": \"Peoples, skills and competences\",\n        \"ENABLER_ID\": \"6\",\n        \"TYPE\": \"yes\"\n    },\n    {\n        \"DESCRIPTION\": \"Employees get informal DFR related training\",\n        \"ENABLER_NAME\": \"Peoples, skills and competences\",\n        \"ENABLER_ID\": \"6\",\n        \"TYPE\": \"yes\"\n    },\n    {\n        \"DESCRIPTION\": \"Employees get formal DFR related training\",\n        \"ENABLER_NAME\": \"Peoples, skills and competences\",\n        \"ENABLER_ID\": \"6\",\n        \"TYPE\": \"yes\"\n    },\n    {\n        \"DESCRIPTION\": \"The proper application of the knowledge is assessed regularly\",\n        \"ENABLER_NAME\": \"Peoples, skills and competences\",\n        \"ENABLER_ID\": \"6\",\n        \"TYPE\": \"yes\"\n    },\n    {\n        \"DESCRIPTION\": \"Human resource division ensures the right amount of DF skilled employees\",\n        \"ENABLER_NAME\": \"Peoples, skills and competences\",\n        \"ENABLER_ID\": \"6\",\n        \"TYPE\": \"yes\"\n    },\n    {\n        \"DESCRIPTION\": \"Human resource division ensures the right amount of DF skilled employees\",\n        \"ENABLER_NAME\": \"Peoples, skills and competences\",\n        \"ENABLER_ID\": \"6\",\n        \"TYPE\": \"yes\"\n    },\n    {\n        \"DESCRIPTION\": \"Services, infrastructure and applications are documented and continuously updated\",\n        \"ENABLER_NAME\": \"Services, infrastructure and applications\",\n        \"ENABLER_ID\": \"7\",\n        \"TYPE\": \"yes\"\n    },\n    {\n        \"DESCRIPTION\": \"Own tools for DF related tasks are developed in a forensically sound manner\",\n        \"ENABLER_NAME\": \"Services, infrastructure and applications\",\n        \"ENABLER_ID\": \"7\",\n        \"TYPE\": \"yes\"\n    },\n    {\n        \"DESCRIPTION\": \"Possibilities to retrieve log-files are known\",\n        \"ENABLER_NAME\": \"Services, infrastructure and applications\",\n        \"ENABLER_ID\": \"7\",\n        \"TYPE\": \"yes\"\n    },\n    {\n        \"DESCRIPTION\": \"Methods to adjust infrastructure and applications are present\",\n        \"ENABLER_NAME\": \"Services, infrastructure and applications\",\n        \"ENABLER_ID\": \"7\",\n        \"TYPE\": \"yes\"\n    },\n    {\n        \"DESCRIPTION\": \"Possibilities to retrieve log-files are known and the configuration is reviewed\",\n        \"ENABLER_NAME\": \"Services, infrastructure and applications\",\n        \"ENABLER_ID\": \"7\",\n        \"TYPE\": \"yes\"\n    },\n    {\n        \"DESCRIPTION\": \"Possibilities to retrieve log-files are known and the configuration is reviewed\",\n        \"ENABLER_NAME\": \"Services, infrastructure and applications\",\n        \"ENABLER_ID\": \"7\",\n        \"TYPE\": \"yes\"\n    },\n    {\n        \"DESCRIPTION\": \"An internal laboratory is present\",\n        \"ENABLER_NAME\": \"Services, infrastructure and applications\",\n        \"ENABLER_ID\": \"7\",\n        \"TYPE\": \"yes\"\n    },\n    {\n        \"DESCRIPTION\": \"A possibility to store and protect digital evidences is present\",\n        \"ENABLER_NAME\": \"Services, infrastructure and applications\",\n        \"ENABLER_ID\": \"7\",\n        \"TYPE\": \"yes\"\n    },\n    {\n        \"DESCRIPTION\": \"Tools and methods to produce forensically sound copies of hard drives and memory are present\",\n        \"ENABLER_NAME\": \"Services, infrastructure and applications\",\n        \"ENABLER_ID\": \"7\",\n        \"TYPE\": \"yes\"\n    },\n    {\n        \"DESCRIPTION\": \"Services, infrastructure and applications are documented\",\n        \"ENABLER_NAME\": \"Services, infrastructure and applications\",\n        \"ENABLER_ID\": \"7\",\n        \"TYPE\": \"yes\"\n    },\n    {\n        \"DESCRIPTION\": \"Tools and methods to produce forensically sound copies of hard drives and memory are present and reviewed frequently\",\n        \"ENABLER_NAME\": \"Services, infrastructure and applications\",\n        \"ENABLER_ID\": \"7\",\n        \"TYPE\": \"yes\"\n    }\n]"
 						}
 					]
 				}
@@ -939,109 +954,6 @@
 					]
 				},
 				{
-					"name": "/survey/upload",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"url": {
-							"raw": "{{baseUrl}}/survey/upload",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"survey",
-								"upload"
-							]
-						}
-					},
-					"response": [
-						{
-							"name": "200 OK",
-							"originalRequest": {
-								"method": "POST",
-								"header": [],
-								"url": {
-									"raw": "{{baseUrl}}/survey/upload",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"survey",
-										"upload"
-									]
-								}
-							},
-							"status": "Created",
-							"code": 201,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "application/json"
-								},
-								{
-									"key": "Content-Length",
-									"value": "28"
-								},
-								{
-									"key": "Date",
-									"value": "Wed, 29 Sep 2021 13:52:39 GMT"
-								},
-								{
-									"key": "Keep-Alive",
-									"value": "timeout=60"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								}
-							],
-							"cookie": [],
-							"body": "Survey successfully uploaded"
-						},
-						{
-							"name": "400 Bad Request",
-							"originalRequest": {
-								"method": "POST",
-								"header": [],
-								"url": {
-									"raw": "{{baseUrl}}/survey/upload",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"survey",
-										"upload"
-									]
-								}
-							},
-							"status": "Bad Request",
-							"code": 400,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "application/json"
-								},
-								{
-									"key": "Transfer-Encoding",
-									"value": "chunked"
-								},
-								{
-									"key": "Date",
-									"value": "Thu, 04 Nov 2021 16:27:07 GMT"
-								},
-								{
-									"key": "Connection",
-									"value": "close"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"timestamp\": \"2021-11-04T16:27:07Z\",\n    \"status\": 400,\n    \"error\": \"Bad Request\",\n    \"message\": \"Request can't be executed because data is missing\",\n    \"path\": \"/survey/upload\"\n}"
-						}
-					]
-				},
-				{
 					"name": "/survey/{surveyId}/send",
 					"request": {
 						"method": "POST",
@@ -1173,6 +1085,109 @@
 							],
 							"cookie": [],
 							"body": "{\n    \"timestamp\": \"2021-11-04T16:29:04Z\",\n    \"status\": 404,\n    \"error\": \"Not Found\",\n    \"message\": \"There is no survey with the id 4\",\n    \"path\": \"/survey/4/send\"\n}"
+						}
+					]
+				},
+				{
+					"name": "/survey/upload",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/survey/upload",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"survey",
+								"upload"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200 OK",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/survey/upload",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"survey",
+										"upload"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "28"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 29 Sep 2021 13:52:39 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "Survey successfully uploaded"
+						},
+						{
+							"name": "400 Bad Request",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/survey/upload",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"survey",
+										"upload"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 04 Nov 2021 16:27:07 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"timestamp\": \"2021-11-04T16:27:07Z\",\n    \"status\": 400,\n    \"error\": \"Bad Request\",\n    \"message\": \"Request can't be executed because data is missing\",\n    \"path\": \"/survey/upload\"\n}"
 						}
 					]
 				}

@@ -1,0 +1,1112 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "DFReadiness",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/data/{tableName}": {
+      "get": {
+        "tags": [
+          "data.Access"
+        ],
+        "summary": "",
+        "parameters": [
+          {
+            "name": "tableName",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200 OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "example": [
+                    {
+                      "ENABLER_ID": "1",
+                      "NAME": "Principles, Policies and Frameworks"
+                    },
+                    {
+                      "ENABLER_ID": "2",
+                      "NAME": "Processes"
+                    },
+                    {
+                      "ENABLER_ID": "3",
+                      "NAME": "Organizational structures"
+                    },
+                    {
+                      "ENABLER_ID": "4",
+                      "NAME": "Information"
+                    },
+                    {
+                      "ENABLER_ID": "5",
+                      "NAME": "Culture, ethics and behaviour"
+                    },
+                    {
+                      "ENABLER_ID": "6",
+                      "NAME": "Peoples, skills and competences"
+                    },
+                    {
+                      "ENABLER_ID": "7",
+                      "NAME": "Services, infrastructure and applications"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "404 NOT FOUND",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "example": {
+                    "timestamp": "2021-11-04T17:07:30Z",
+                    "status": 404,
+                    "error": "Not Found",
+                    "message": "There is no table with the name a",
+                    "path": "/data/a"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/data/survey/{surveyId}": {
+      "get": {
+        "tags": [
+          "data.Access"
+        ],
+        "summary": "",
+        "parameters": [
+          {
+            "name": "surveyId",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200 OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "example": [
+                    {
+                      "INDICATOR_ID": "2",
+                      "QUESTION": "Are initiatives to raise awareness for DF activities in place and continuously monitored ?"
+                    },
+                    {
+                      "INDICATOR_ID": "3",
+                      "QUESTION": "Do Governance and Management understand DFR initiatives?"
+                    },
+                    {
+                      "INDICATOR_ID": "4",
+                      "QUESTION": "Are Principles and policies according to a DF investigation present?"
+                    },
+                    {
+                      "INDICATOR_ID": "5",
+                      "QUESTION": "Do Governance and Management pursue DFR initiatives?"
+                    },
+                    {
+                      "INDICATOR_ID": "6",
+                      "QUESTION": "Do Governance and Management are completely involved in planning DFR initiatives?"
+                    },
+                    {
+                      "INDICATOR_ID": "7",
+                      "QUESTION": "Do Governance and Management support DFR related organisational changes?"
+                    },
+                    {
+                      "INDICATOR_ID": "8",
+                      "QUESTION": "Is a change management in place?"
+                    },
+                    {
+                      "INDICATOR_ID": "9",
+                      "QUESTION": "Does the Staff take principles to DF related actions seriously?"
+                    },
+                    {
+                      "INDICATOR_ID": "10",
+                      "QUESTION": "Are principles clearly formulated?"
+                    },
+                    {
+                      "INDICATOR_ID": "11",
+                      "QUESTION": "Are the responsibilities for the case of a DF investigation known?"
+                    },
+                    {
+                      "INDICATOR_ID": "12",
+                      "QUESTION": "Are responsibilities for the case of a DF investigation defined?"
+                    },
+                    {
+                      "INDICATOR_ID": "13",
+                      "QUESTION": "Are DF related decision making guidelines included in job-descriptions or roles?"
+                    },
+                    {
+                      "INDICATOR_ID": "14",
+                      "QUESTION": "Are Rights within Information Systems defined?"
+                    },
+                    {
+                      "INDICATOR_ID": "15",
+                      "QUESTION": "Are rights within Information Systems defined and adjusted to prevent potential destroying or tamp"
+                    },
+                    {
+                      "INDICATOR_ID": "16",
+                      "QUESTION": "Is the Identity management system in place?"
+                    },
+                    {
+                      "INDICATOR_ID": "17",
+                      "QUESTION": "Are escalation rules defined?"
+                    },
+                    {
+                      "INDICATOR_ID": "18",
+                      "QUESTION": "Are escalation rules defined, reviewed and monitored?"
+                    },
+                    {
+                      "INDICATOR_ID": "19",
+                      "QUESTION": "Is a basic understanding of the DF investigation process present?"
+                    },
+                    {
+                      "INDICATOR_ID": "20",
+                      "QUESTION": "Is a deep understanding of the DF investigation process is present?"
+                    },
+                    {
+                      "INDICATOR_ID": "21",
+                      "QUESTION": "Is the support for the DF investigation process continuously improved?"
+                    },
+                    {
+                      "INDICATOR_ID": "22",
+                      "QUESTION": "Are related sub-processes to DF documented?"
+                    },
+                    {
+                      "INDICATOR_ID": "23",
+                      "QUESTION": "Is a guideline to prevent business interruption in the case of a DF investigation defined?"
+                    },
+                    {
+                      "INDICATOR_ID": "24",
+                      "QUESTION": "Are process models of business processes present?"
+                    },
+                    {
+                      "INDICATOR_ID": "25",
+                      "QUESTION": "Are DF related processes partially automated?"
+                    },
+                    {
+                      "INDICATOR_ID": "26",
+                      "QUESTION": "Are DF related processes partially automated?"
+                    },
+                    {
+                      "INDICATOR_ID": "27",
+                      "QUESTION": "Are documents about the right handling of digital evidences in general present?"
+                    },
+                    {
+                      "INDICATOR_ID": "28",
+                      "QUESTION": "Are documents about the right handling of digital evidences of all devices and systems within the organization present?"
+                    },
+                    {
+                      "INDICATOR_ID": "29",
+                      "QUESTION": "Are documents about the right handling of digital evidences of all devices and systems within the organization present and frequently reviewed?"
+                    },
+                    {
+                      "INDICATOR_ID": "30",
+                      "QUESTION": "Are information about DF investigations available and accessible?"
+                    },
+                    {
+                      "INDICATOR_ID": "31",
+                      "QUESTION": "Can employee contribute findings and knowledge regarding DF?"
+                    },
+                    {
+                      "INDICATOR_ID": "32",
+                      "QUESTION": "Can employee contribute findings and knowledge regarding DF?"
+                    },
+                    {
+                      "INDICATOR_ID": "33",
+                      "QUESTION": "Is the usage of tools for DF is documented?"
+                    },
+                    {
+                      "INDICATOR_ID": "34",
+                      "QUESTION": "Is the usage of tools for DF documented and continuously reviewed?"
+                    },
+                    {
+                      "INDICATOR_ID": "35",
+                      "QUESTION": "Is information about the usage of digital evidences in a law court present?"
+                    },
+                    {
+                      "INDICATOR_ID": "36",
+                      "QUESTION": "Is information about the usage of digital evidences in a law court present and frequently updated?"
+                    },
+                    {
+                      "INDICATOR_ID": "37",
+                      "QUESTION": "Do employees get frequent updates according DF related topics (e.g.: e-Mail, letter)?"
+                    },
+                    {
+                      "INDICATOR_ID": "38",
+                      "QUESTION": "Do employees get timely updates according DF related topics (e.g.: e-Mail, letter)?"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "404 NOT FOUND",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "example": {
+                    "timestamp": "2021-11-04T17:07:01Z",
+                    "status": 404,
+                    "error": "Not Found",
+                    "message": "There is no survey with the id 6",
+                    "path": "/data/survey/6"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/data/indicator-value/surveyId/time": {
+      "get": {
+        "tags": [
+          "data.Access"
+        ],
+        "summary": "",
+        "responses": {
+          "200": {
+            "description": "200 OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "example": [
+                    {
+                      "SURVEY_ID": "1",
+                      "TIME": "2021-11-04"
+                    },
+                    {
+                      "SURVEY_ID": "2",
+                      "TIME": "2021-11-04"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/data/survey/surveyId": {
+      "get": {
+        "tags": [
+          "data.Access"
+        ],
+        "summary": "",
+        "responses": {
+          "200": {
+            "description": "200 OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "example": [
+                    {
+                      "SURVEY_ID": "1"
+                    },
+                    {
+                      "SURVEY_ID": "2"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/data/indicator-value/enabler": {
+      "get": {
+        "tags": [
+          "data.Access"
+        ],
+        "summary": "",
+        "responses": {
+          "200": {
+            "description": "200 OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "example": [
+                    {
+                      "DESCRIPTION": "Governance and Management are completely involved in planning DFR initiatives",
+                      "ENABLER_NAME": "Principles, Policies and Frameworks",
+                      "ENABLER_ID": "1",
+                      "TYPE": "yes"
+                    },
+                    {
+                      "DESCRIPTION": "Governance and Management support DFR related organizational changes",
+                      "ENABLER_NAME": "Principles, Policies and Frameworks",
+                      "ENABLER_ID": "1",
+                      "TYPE": "yes"
+                    },
+                    {
+                      "DESCRIPTION": "A change management is in place",
+                      "ENABLER_NAME": "Principles, Policies and Frameworks",
+                      "ENABLER_ID": "1",
+                      "TYPE": "yes"
+                    },
+                    {
+                      "DESCRIPTION": "Initiatives to raise awareness for DF activities are in place",
+                      "ENABLER_NAME": "Principles, Policies and Frameworks",
+                      "ENABLER_ID": "1",
+                      "TYPE": "yes"
+                    },
+                    {
+                      "DESCRIPTION": "Employees take the principles of DF related actions seriously",
+                      "ENABLER_NAME": "Principles, Policies and Frameworks",
+                      "ENABLER_ID": "1",
+                      "TYPE": "yes"
+                    },
+                    {
+                      "DESCRIPTION": "Initiatives to raise awareness for DF activities are in place",
+                      "ENABLER_NAME": "Principles, Policies and Frameworks",
+                      "ENABLER_ID": "1",
+                      "TYPE": "yes"
+                    },
+                    {
+                      "DESCRIPTION": "Principles are clearly formulated",
+                      "ENABLER_NAME": "Principles, Policies and Frameworks",
+                      "ENABLER_ID": "1",
+                      "TYPE": "yes"
+                    },
+                    {
+                      "DESCRIPTION": "Governance and Management understand DFR initiatives",
+                      "ENABLER_NAME": "Principles, Policies and Frameworks",
+                      "ENABLER_ID": "1",
+                      "TYPE": "yes"
+                    },
+                    {
+                      "DESCRIPTION": "Principles and policies according to a DF investigation are present",
+                      "ENABLER_NAME": "Principles, Policies and Frameworks",
+                      "ENABLER_ID": "1",
+                      "TYPE": "yes"
+                    },
+                    {
+                      "DESCRIPTION": "Governance and Management pursue DFR initiatives",
+                      "ENABLER_NAME": "Principles, Policies and Frameworks",
+                      "ENABLER_ID": "1",
+                      "TYPE": "yes"
+                    },
+                    {
+                      "DESCRIPTION": "Related sub-processes to DF are documented",
+                      "ENABLER_NAME": "Processes",
+                      "ENABLER_ID": "2",
+                      "TYPE": "yes"
+                    },
+                    {
+                      "DESCRIPTION": "Guidelines to prevent business interruption in the case of a DF investigation are defined",
+                      "ENABLER_NAME": "Processes",
+                      "ENABLER_ID": "2",
+                      "TYPE": "yes"
+                    },
+                    {
+                      "DESCRIPTION": "Process models of business processes are present",
+                      "ENABLER_NAME": "Processes",
+                      "ENABLER_ID": "2",
+                      "TYPE": "yes"
+                    },
+                    {
+                      "DESCRIPTION": "DF related processes are partially automated",
+                      "ENABLER_NAME": "Processes",
+                      "ENABLER_ID": "2",
+                      "TYPE": "yes"
+                    },
+                    {
+                      "DESCRIPTION": "DF related processes are partially automated",
+                      "ENABLER_NAME": "Processes",
+                      "ENABLER_ID": "2",
+                      "TYPE": "yes"
+                    },
+                    {
+                      "DESCRIPTION": "A basic understanding of the DF investigation process is present",
+                      "ENABLER_NAME": "Processes",
+                      "ENABLER_ID": "2",
+                      "TYPE": "yes"
+                    },
+                    {
+                      "DESCRIPTION": "A deep understanding of the DF investigation process is present",
+                      "ENABLER_NAME": "Processes",
+                      "ENABLER_ID": "2",
+                      "TYPE": "yes"
+                    },
+                    {
+                      "DESCRIPTION": "The support for the DF investigation process is continuously improved",
+                      "ENABLER_NAME": "Processes",
+                      "ENABLER_ID": "2",
+                      "TYPE": "yes"
+                    },
+                    {
+                      "DESCRIPTION": "Rights within Information Systems are defined",
+                      "ENABLER_NAME": "Organizational structures",
+                      "ENABLER_ID": "3",
+                      "TYPE": "yes"
+                    },
+                    {
+                      "DESCRIPTION": "Rights within Information Systems are defined and adjusted to prevent potential destroying or tampering of evidences",
+                      "ENABLER_NAME": "Organizational structures",
+                      "ENABLER_ID": "3",
+                      "TYPE": "yes"
+                    },
+                    {
+                      "DESCRIPTION": "An Identity Management System is in place",
+                      "ENABLER_NAME": "Organizational structures",
+                      "ENABLER_ID": "3",
+                      "TYPE": "yes"
+                    },
+                    {
+                      "DESCRIPTION": "Escalation rules are defined",
+                      "ENABLER_NAME": "Organizational structures",
+                      "ENABLER_ID": "3",
+                      "TYPE": "yes"
+                    },
+                    {
+                      "DESCRIPTION": "Escalation rules are defined, reviewed and monitored",
+                      "ENABLER_NAME": "Organizational structures",
+                      "ENABLER_ID": "3",
+                      "TYPE": "yes"
+                    },
+                    {
+                      "DESCRIPTION": "Responsibilities for the case of a DF investigation are known",
+                      "ENABLER_NAME": "Organizational structures",
+                      "ENABLER_ID": "3",
+                      "TYPE": "yes"
+                    },
+                    {
+                      "DESCRIPTION": "Responsibilities for the case of a DF investigation are defined",
+                      "ENABLER_NAME": "Organizational structures",
+                      "ENABLER_ID": "3",
+                      "TYPE": "yes"
+                    },
+                    {
+                      "DESCRIPTION": "DF related decision-making guidelines are included in job-descriptions or roles",
+                      "ENABLER_NAME": "Organizational structures",
+                      "ENABLER_ID": "3",
+                      "TYPE": "yes"
+                    },
+                    {
+                      "DESCRIPTION": "Information about DF investigations are available and accessible",
+                      "ENABLER_NAME": "Information",
+                      "ENABLER_ID": "4",
+                      "TYPE": "yes"
+                    },
+                    {
+                      "DESCRIPTION": "Employees get timely updates according DF related topics (e.g.: e-Mail, letter)",
+                      "ENABLER_NAME": "Information",
+                      "ENABLER_ID": "4",
+                      "TYPE": "yes"
+                    },
+                    {
+                      "DESCRIPTION": "Employee can contribute findings and knowledge regarding DF",
+                      "ENABLER_NAME": "Information",
+                      "ENABLER_ID": "4",
+                      "TYPE": "yes"
+                    },
+                    {
+                      "DESCRIPTION": "Employee can contribute findings and knowledge regarding DF",
+                      "ENABLER_NAME": "Information",
+                      "ENABLER_ID": "4",
+                      "TYPE": "yes"
+                    },
+                    {
+                      "DESCRIPTION": "The usage of tools for DF is documented",
+                      "ENABLER_NAME": "Information",
+                      "ENABLER_ID": "4",
+                      "TYPE": "yes"
+                    },
+                    {
+                      "DESCRIPTION": "The usage of tools for DF is documented and continuously reviewed",
+                      "ENABLER_NAME": "Information",
+                      "ENABLER_ID": "4",
+                      "TYPE": "yes"
+                    },
+                    {
+                      "DESCRIPTION": "Documents about the right handling of digital evidences in general are present",
+                      "ENABLER_NAME": "Information",
+                      "ENABLER_ID": "4",
+                      "TYPE": "yes"
+                    },
+                    {
+                      "DESCRIPTION": "Information about the usage of digital evidences in a law court is present",
+                      "ENABLER_NAME": "Information",
+                      "ENABLER_ID": "4",
+                      "TYPE": "yes"
+                    },
+                    {
+                      "DESCRIPTION": "Documents about the right handling of digital evidences of all devices and systems within the organization are present",
+                      "ENABLER_NAME": "Information",
+                      "ENABLER_ID": "4",
+                      "TYPE": "yes"
+                    },
+                    {
+                      "DESCRIPTION": "Information about the usage of digital evidences in a law court is present and frequently updated",
+                      "ENABLER_NAME": "Information",
+                      "ENABLER_ID": "4",
+                      "TYPE": "yes"
+                    },
+                    {
+                      "DESCRIPTION": "Documents about the right handling of digital evidences of all devices and systems within the organization are present and frequently reviewed",
+                      "ENABLER_NAME": "Information",
+                      "ENABLER_ID": "4",
+                      "TYPE": "yes"
+                    },
+                    {
+                      "DESCRIPTION": "Employees get frequent updates according DF related topics (e.g.: e-Mail, letter)",
+                      "ENABLER_NAME": "Information",
+                      "ENABLER_ID": "4",
+                      "TYPE": "yes"
+                    },
+                    {
+                      "DESCRIPTION": "DF related activities are accepted within employees",
+                      "ENABLER_NAME": "Culture, ethics and behaviour",
+                      "ENABLER_ID": "5",
+                      "TYPE": "yes"
+                    },
+                    {
+                      "DESCRIPTION": "pecific guidelines for potential fraud related situations are present",
+                      "ENABLER_NAME": "Culture, ethics and behaviour",
+                      "ENABLER_ID": "5",
+                      "TYPE": "yes"
+                    },
+                    {
+                      "DESCRIPTION": "A fraud intolerant culture is present",
+                      "ENABLER_NAME": "Culture, ethics and behaviour",
+                      "ENABLER_ID": "5",
+                      "TYPE": "yes"
+                    },
+                    {
+                      "DESCRIPTION": "Specific guidelines for potential fraud related situations are present and reviewed",
+                      "ENABLER_NAME": "Culture, ethics and behaviour",
+                      "ENABLER_ID": "5",
+                      "TYPE": "yes"
+                    },
+                    {
+                      "DESCRIPTION": "A fraud intolerant culture is pursued",
+                      "ENABLER_NAME": "Culture, ethics and behaviour",
+                      "ENABLER_ID": "5",
+                      "TYPE": "yes"
+                    },
+                    {
+                      "DESCRIPTION": "Employees do not hinder a DF investigation",
+                      "ENABLER_NAME": "Culture, ethics and behaviour",
+                      "ENABLER_ID": "5",
+                      "TYPE": "yes"
+                    },
+                    {
+                      "DESCRIPTION": "Open handling of mistakes and issues is present",
+                      "ENABLER_NAME": "Culture, ethics and behaviour",
+                      "ENABLER_ID": "5",
+                      "TYPE": "yes"
+                    },
+                    {
+                      "DESCRIPTION": "Open handling of mistakes and issues is present",
+                      "ENABLER_NAME": "Culture, ethics and behaviour",
+                      "ENABLER_ID": "5",
+                      "TYPE": "yes"
+                    },
+                    {
+                      "DESCRIPTION": "Anti-fraud ethics are established",
+                      "ENABLER_NAME": "Culture, ethics and behaviour",
+                      "ENABLER_ID": "5",
+                      "TYPE": "yes"
+                    },
+                    {
+                      "DESCRIPTION": "A willingness to unveil fraud/crime is present",
+                      "ENABLER_NAME": "Culture, ethics and behaviour",
+                      "ENABLER_ID": "5",
+                      "TYPE": "yes"
+                    },
+                    {
+                      "DESCRIPTION": "Employees understand the importance of digital evidences",
+                      "ENABLER_NAME": "Peoples, skills and competences",
+                      "ENABLER_ID": "6",
+                      "TYPE": "yes"
+                    },
+                    {
+                      "DESCRIPTION": "Employees get informal DFR related training",
+                      "ENABLER_NAME": "Peoples, skills and competences",
+                      "ENABLER_ID": "6",
+                      "TYPE": "yes"
+                    },
+                    {
+                      "DESCRIPTION": "Employees get formal DFR related training",
+                      "ENABLER_NAME": "Peoples, skills and competences",
+                      "ENABLER_ID": "6",
+                      "TYPE": "yes"
+                    },
+                    {
+                      "DESCRIPTION": "The proper application of the knowledge is assessed regularly",
+                      "ENABLER_NAME": "Peoples, skills and competences",
+                      "ENABLER_ID": "6",
+                      "TYPE": "yes"
+                    },
+                    {
+                      "DESCRIPTION": "Human resource division ensures the right amount of DF skilled employees",
+                      "ENABLER_NAME": "Peoples, skills and competences",
+                      "ENABLER_ID": "6",
+                      "TYPE": "yes"
+                    },
+                    {
+                      "DESCRIPTION": "Human resource division ensures the right amount of DF skilled employees",
+                      "ENABLER_NAME": "Peoples, skills and competences",
+                      "ENABLER_ID": "6",
+                      "TYPE": "yes"
+                    },
+                    {
+                      "DESCRIPTION": "Services, infrastructure and applications are documented and continuously updated",
+                      "ENABLER_NAME": "Services, infrastructure and applications",
+                      "ENABLER_ID": "7",
+                      "TYPE": "yes"
+                    },
+                    {
+                      "DESCRIPTION": "Own tools for DF related tasks are developed in a forensically sound manner",
+                      "ENABLER_NAME": "Services, infrastructure and applications",
+                      "ENABLER_ID": "7",
+                      "TYPE": "yes"
+                    },
+                    {
+                      "DESCRIPTION": "Possibilities to retrieve log-files are known",
+                      "ENABLER_NAME": "Services, infrastructure and applications",
+                      "ENABLER_ID": "7",
+                      "TYPE": "yes"
+                    },
+                    {
+                      "DESCRIPTION": "Methods to adjust infrastructure and applications are present",
+                      "ENABLER_NAME": "Services, infrastructure and applications",
+                      "ENABLER_ID": "7",
+                      "TYPE": "yes"
+                    },
+                    {
+                      "DESCRIPTION": "Possibilities to retrieve log-files are known and the configuration is reviewed",
+                      "ENABLER_NAME": "Services, infrastructure and applications",
+                      "ENABLER_ID": "7",
+                      "TYPE": "yes"
+                    },
+                    {
+                      "DESCRIPTION": "Possibilities to retrieve log-files are known and the configuration is reviewed",
+                      "ENABLER_NAME": "Services, infrastructure and applications",
+                      "ENABLER_ID": "7",
+                      "TYPE": "yes"
+                    },
+                    {
+                      "DESCRIPTION": "An internal laboratory is present",
+                      "ENABLER_NAME": "Services, infrastructure and applications",
+                      "ENABLER_ID": "7",
+                      "TYPE": "yes"
+                    },
+                    {
+                      "DESCRIPTION": "A possibility to store and protect digital evidences is present",
+                      "ENABLER_NAME": "Services, infrastructure and applications",
+                      "ENABLER_ID": "7",
+                      "TYPE": "yes"
+                    },
+                    {
+                      "DESCRIPTION": "Tools and methods to produce forensically sound copies of hard drives and memory are present",
+                      "ENABLER_NAME": "Services, infrastructure and applications",
+                      "ENABLER_ID": "7",
+                      "TYPE": "yes"
+                    },
+                    {
+                      "DESCRIPTION": "Services, infrastructure and applications are documented",
+                      "ENABLER_NAME": "Services, infrastructure and applications",
+                      "ENABLER_ID": "7",
+                      "TYPE": "yes"
+                    },
+                    {
+                      "DESCRIPTION": "Tools and methods to produce forensically sound copies of hard drives and memory are present and reviewed frequently",
+                      "ENABLER_NAME": "Services, infrastructure and applications",
+                      "ENABLER_ID": "7",
+                      "TYPE": "yes"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/data/indicator-value/calculate": {
+      "get": {
+        "tags": [
+          "data.Calculate"
+        ],
+        "summary": "",
+        "responses": {
+          "200": {
+            "description": "200 OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "example": 5
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/data/indicator-value/enabler/calculate": {
+      "get": {
+        "tags": [
+          "data.Calculate"
+        ],
+        "summary": "",
+        "responses": {
+          "200": {
+            "description": "200 OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "example": [
+                    {
+                      "enabler": 1,
+                      "name": "Principles, Policies and Frameworks",
+                      "capabilityLevel": 3
+                    },
+                    {
+                      "enabler": 2,
+                      "name": "Processes",
+                      "capabilityLevel": 3
+                    },
+                    {
+                      "enabler": 3,
+                      "name": "Organizational structures",
+                      "capabilityLevel": 3
+                    },
+                    {
+                      "enabler": 4,
+                      "name": "Information",
+                      "capabilityLevel": 3
+                    },
+                    {
+                      "enabler": 5,
+                      "name": "Culture, ethics and behaviour",
+                      "capabilityLevel": 3
+                    },
+                    {
+                      "enabler": 6,
+                      "name": "Peoples, skills and competences",
+                      "capabilityLevel": 3
+                    },
+                    {
+                      "enabler": 7,
+                      "name": "Services, infrastructure and applications",
+                      "capabilityLevel": 3
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/data/indicator-value/check": {
+      "get": {
+        "tags": [
+          "data.Calculate"
+        ],
+        "summary": "",
+        "responses": {
+          "200": {
+            "description": "200 OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "example": {
+                    "percent": 100,
+                    "message": "100 percent of all indicators already have an indicator-value"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/data/indicator-value/{surveyId}/delete": {
+      "delete": {
+        "tags": [
+          "data.Delete"
+        ],
+        "summary": "",
+        "parameters": [
+          {
+            "name": "surveyId",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200 OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "example": "{\n    \"Deletion successful. 10 entries deleted\"\n}"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "404 NOT FOUND",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "example": {
+                    "timestamp": "2021-11-04T17:08:07Z",
+                    "status": 404,
+                    "error": "Not Found",
+                    "message": "There is no survey with the id 6",
+                    "path": "/data/indicator-value/6/delete"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/survey/{surveyId}": {
+      "get": {
+        "tags": [
+          "survey"
+        ],
+        "summary": "",
+        "parameters": [
+          {
+            "name": "surveyId",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200 OK",
+            "content": {
+              "application/html": {
+                "schema": {
+                  "type": "object",
+                  "example": "<!DOCTYPE html>\n<html lang=\"en\">\n    <head>\n        <meta charset=\"UTF-8\">\n        <script type=\"text/javascript\" src=\"..//survey.js\"></script>\n        <title>Survey</title>\n        <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n        <link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css\">\n        <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js\"></script>\n        <script src=\"https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js\"></script>\n        <script src=\"https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js\"></script>\n    </head>\n    <body>\n        <div class=\"jumbotron\" id=\"survey\">\n            <h1>Survey</h1>\n            <input type=\"button\" onclick=\"createSurvey()\" value=\"Start Survey\" id=\"surveyButton\"/>\n        </div>\n    </body>\n</html>"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "404 NOT FOUND",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "example": {
+                    "timestamp": "2021-11-04T17:08:56Z",
+                    "status": 404,
+                    "error": "Not Found",
+                    "message": "There is no survey with the id 6",
+                    "path": "/survey/6"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/survey/{surveyId}/send": {
+      "post": {
+        "tags": [
+          "survey"
+        ],
+        "summary": "",
+        "parameters": [
+          {
+            "name": "surveyId",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "200 OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "example": "Congratulations! Your mail has been send to the user."
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "404 NOT FOUND",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "example": {
+                    "timestamp": "2021-11-04T16:29:04Z",
+                    "status": 404,
+                    "error": "Not Found",
+                    "message": "There is no survey with the id 4",
+                    "path": "/survey/4/send"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/survey/upload": {
+      "post": {
+        "tags": [
+          "survey"
+        ],
+        "summary": "",
+        "responses": {
+          "201": {
+            "description": "200 OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "example": "Survey successfully uploaded"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400 Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "example": {
+                    "timestamp": "2021-11-04T16:27:07Z",
+                    "status": 400,
+                    "error": "Bad Request",
+                    "message": "Request can't be executed because data is missing",
+                    "path": "/survey/upload"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/DFRTool": {
+      "get": {
+        "tags": [
+          "DFRTool"
+        ],
+        "summary": "",
+        "responses": {
+          "200": {
+            "description": "200 OK",
+            "content": {
+              "application/html": {
+                "schema": {
+                  "type": "object",
+                  "example": "<!DOCTYPE html>\n<html>\n    <head>\n        <meta charset=\"UTF-8\">\n        <title>DFReadinessTool</title>\n        <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n        <link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css\">\n        <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js\"></script>\n        <script src=\"https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js\"></script>\n        <script src=\"https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js\"></script>\n    </head>\n    <body>\n        <div class=\"card\">\n            <img class=\"card-img-top\" src=\"forensic.jpg\" alt=\"Card image\">\n            <div class=\"card-img-overlay\">\r\n        \n                </br>\r\n        \n                </br>\n                <h1 id=\"Welcome2\" class=\"display-3 text-light\">Welcome</h1>\n                </br>\n                <p class=\"lead\">\n                    <a id=\"a_button_id2\" class=\"btn btn-light btn-lg\" href=\"#\" style=\"font-size:1em;\" onclick=\"window.location.href='/DFRTool/evaluation'\" role=\"button\">Start DFReadiness Tool</a>\n                </p>\n            </div>\n        </div>\n    </body>\n</html>"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/DFRTool/analysis": {
+      "get": {
+        "tags": [
+          "DFRTool"
+        ],
+        "summary": "",
+        "responses": {
+          "200": {
+            "description": "200 OK",
+            "content": {
+              "application/html": {
+                "schema": {
+                  "type": "object",
+                  "example": "<!DOCTYPE html>\n<html lang=\"en\">\n    <head>\n        <meta charset=\"UTF-8\">\n        <link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css\">\n        <title>DFReadinessTool</title>\n        <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js\"></script>\n        <script type=\"text/javascript\" src=\"..//analysis.js\"></script>\n        <script src=\"https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js\"></script>\n        <script src=\"https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js\"></script>\n        <script\r\n            src=\"https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js\">\r\n    </script>\n    </head>\n    <body onload=\"start()\">\r\n\n        </br>\n        <h1>DigitalForensicReadinessTool</h1>\n        </br>\n        <div>\n            <canvas id=\"myChart\" style=\"width:80%;max-width:1000px; margin:0 auto;\"></canvas>\n        </div>\n        <a href=\"#col\" class=\"btn btn-dark\" data-toggle=\"collapse\" id=\"moreInfo\">More information</a>\n        <div id=\"col\" class=\"collapse\">\n            <div class=\"jumbotron\" id=\"analysis\">\n                <div id=\"information\"></div>\n            </div>\n        </div>\n        <div class=\"mb-4\">\r\n    \n            </br>\n            <hr class=\"solid\">\r\n\n        </div>\n        <h2 id=\"Welcome\" class=\"text-danger\">Maturity Level</h2>\n        <div class=\"card-group\">\n            <div class=\"card bg-danger \">\n                <div class=\"card-body text-center\">\n                    <div class=\"display-5 text-light\">Your achieved Level:</div>\n                    <p class=\"display-2 text-light\" id=\"achievedLevel\">4</p>\n                </div>\n            </div>\n            <div class=\"card bg-light\">\n                <div class=\"col-ms\">\n                    <ul class=\"nav nav-tabs\" id=\"allLevels\">\n                        <li class=\"nav-item\">\n                            <a id=\"navLevel1\" class=\"nav-link text-dark\" href=\"#level1\">level 1</a>\n                        </li>\n                        <li class=\"nav-item\">\n                            <a id=\"navLevel2\" class=\"nav-link text-dark\" href=\"#level2\">Level 2</a>\n                        </li>\n                        <li class=\"nav-item\">\n                            <a id=\"navLevel3\" class=\"nav-link text-dark\" href=\"#level3\">Level 3</a>\n                        </li>\n                        <li class=\"nav-item\">\n                            <a  id=\"navLevel4\" class=\"nav-link text-dark\" href=\"#level4\">Level 4</a>\n                        </li>\n                        <li class=\"nav-item\">\n                            <a id=\"navLevel5\" class=\"nav-link text-dark\" href=\"#level5\">Level 5</a>\n                        </li>\n                    </ul>\n                </div>\n            </div>\n            <div class=\"card bg-light\">\n                <div class=\"card-body text-center\">\n                    <!-- Tab panes -->\n                    <div class=\"tab-content\" id=\"showLevel\">\n                        <div id=\"level1\" class=\"container tab-pane fade\"></div>\n                        <div id=\"level2\" class=\"container tab-pane fade\">\r\n                    </div>\n                        <div id=\"level3\" class=\"container tab-pane fade\"></div>\n                        <div id=\"level4\" class=\"container tab-pane fade\">\r\n                    </div>\n                        <div id=\"level5\" class=\"container tab-pane fade\">\r\n                    </div>\n                    </div>\n                </div>\n            </div>\n        </div>\n    </div>\n</div>\n</body>\n</html>"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/DFRTool/evaluation": {
+      "get": {
+        "tags": [
+          "DFRTool"
+        ],
+        "summary": "",
+        "responses": {
+          "200": {
+            "description": "200 OK",
+            "content": {
+              "application/html": {
+                "schema": {
+                  "type": "object",
+                  "example": "<!DOCTYPE html>\n<html lang=\"en\">\n    <head>\n        <meta charset=\"UTF-8\">\n        <link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css\">\n        <title>DFReadinessTool</title>\n        <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js\"></script>\n        <script type=\"text/javascript\" src=\"..//evaluation.js\"></script>\n        <script src=\"https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js\"></script>\n        <script src=\"https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js\"></script>\n    </head>\n    <body>\n        <body onload=\"start()\">\n            <div class=\"jumbotron\" id=\"evalutation\">\n                <h1>DigitalForensicReadinessTool</h1>\n                </br>\n                <h2>Progress Bar</h2>\n                <input type=\"button\" onclick=\"getStatus()\" value=\"Check status\" id=\"surveyButton\"/>\n                </br>\n                <div class=\"progress\" style=\"height:50px\">\n                    <div id=\"progress\" class=\"progress-bar bg-danger\" style=\"width:100%;height:50px\">100%</div>\n                </div>\n                </br>\r\n    \n                </br>\n                <div>\n                    <button id=\"calculateMaturity\" type=\"button\" class=\"btn btn-outline-danger btn-lg\" style=\"font-size:1em;\"\r\n                onclick=\"window.location.href='/DFRTool/analysis'\">Calculate Maturity Level\r\n        </button>\n                </div>\n                <div class=\"mb-4\">\r\n        \n                    </br>\n                    <hr class=\"solid\">\r\n    \n                </div>\n                <a href=\"#col\" class=\"btn btn-dark\" data-toggle=\"collapse\">More options</a>\n                <div id=\"col\" class=\"collapse\">\r\n        \n                    </br>\n                    <div class=\"container\">\n                        <h3>Get time of last update of each indicator:</h3>\n                        <br/>\n                        <div id=\"lastUpdate\"></div>\n                        <button class=\"btn btn-dark\" type=\"submit\" id=\"getTimeButton\">Get time</button>\n                        <div class=\"mb-4\">\r\n                \n                            </br>\n                            <hr class=\"solid\">\r\n            \n                        </div>\n                        <h3>Send Surveys:</h3>\n                        <br/>\n                        <form method=\"POST\" enctype=\"multipart/form-data\" id=\"sendMail\">\n                            <div id=\"surveyToSend\"></div>\n                            <br>\n                            <button class=\"btn btn-dark\" type=\"submit\" id=\"sendSurveyButton\">Send</button>\n                        </form>\n                        <div class=\"mb-4\">\r\n                \n                            </br>\n                            <hr class=\"solid\">\r\n            \n                        </div>\n                        <h3>Delete all answers to a survey:</h3>\n                        <br/>\n                        <form method=\"POST\" enctype=\"multipart/form-data\" id=\"deleteEntryForm\">\n                            <label for=\"deleteSurvey\">Id of the survey:</label>\n                            <br/>\n                            <input type=\"text\" name=\"deleteSurvey\" id=\"deleteSurvey\" placeholder=\"1\"/>\n                            <br/>\n                            <button class=\"btn btn-dark\" type=\"submit\" id=\"deleteButton\">Delete</button>\n                        </form>\n                    </div>\n                </div>\n            </div>\n            <br/>\n            <br/>\n            <br/>\n            <br/>\n        </body>\n    </html>"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "data.Access",
+      "description": {}
+    },
+    {
+      "name": "data.Calculate",
+      "description": {}
+    },
+    {
+      "name": "data.Delete",
+      "description": {}
+    },
+    {
+      "name": "survey",
+      "description": {}
+    },
+    {
+      "name": "DFRTool",
+      "description": {}
+    }
+  ],
+  "servers": [
+    {
+      "url": "http://localhost:8080"
+    }
+  ]
+}
