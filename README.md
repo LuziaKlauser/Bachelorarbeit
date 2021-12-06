@@ -14,11 +14,20 @@
         -->String jdbURL = *** ;
         -->String username = *** ;
         -->String password = *** ;
+        
 3) E-Mail for administration
    - create an e-mail-account in gmail; 
    - activate "less secure app access" in the account
    - add the e-mail settings to the file "application.properties where the placeholder *** are:
          -->spring.mail.username = ***
          -->spring.mail.password = ***
+         
 4) Execute the tool
    - run the class "Main" or run manually "Run Maven Build" to get executable Jar-File
+
+5) Open the URL "http://localhost:8080/DFRTool/" in the Browser to start the Digital Forensic Readiness Tool
+
+6) For Analysing API: "http://localhost:8080/documentation"
+   - Postman: import postman_collection.json in folder src/main/resources/static
+   - if you want to update the openapi.json with all APIs export the postman_collection.json into the project and run the Node.js script "convertPostmanToOpenspi.js", which is
+     located in the folder src/main/resources/postmanToOpenapi
