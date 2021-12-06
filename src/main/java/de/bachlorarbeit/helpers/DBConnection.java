@@ -10,9 +10,9 @@ import java.sql.*;
  */
 public class DBConnection {
     //Change jdbURL, username, password according to your DB-Connection
-    String jdbURL = "jdbc:mysql://localhost:3306/dfr";
-    String username = "root";
-    String password = "DFReadiness";
+    String jdbURL = "***";
+    String username = "***";
+    String password = "***";
     private Connection connection;
 
     public DBConnection(){
