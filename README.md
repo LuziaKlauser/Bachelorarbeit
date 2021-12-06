@@ -6,7 +6,7 @@
    - Change the E-Mail-Adresse in the entries from the table "Employee" as it must be E-Mails, where you have access
 
 2) Connection between IntelliJ and MySQL
-   - Add in the file "application.properties" your mySQL url, username and password where the placeholder "***" are:
+   - Add in the file "application.properties" your mySQL url, username and password where the placeholder *** are:
         -->spring.datasource.url=***
         -->spring.datasource.username=***
         -->spring.datasource.password=***
