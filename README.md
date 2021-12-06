@@ -25,7 +25,7 @@
 4) Execute the tool
    - run the class "Main" or run manually "Run Maven Build" to get executable Jar-File
 
-5) Open the URL "http://localhost:8080/DFRTool/" in the Browser to start the Digital Forensic Readiness Tool
+5) Open the URL "http://localhost:8080/DFRTool" in the Browser to start the Digital Forensic Readiness Tool
 
 6) For Analysing API: "http://localhost:8080/documentation"
    - Postman: import postman_collection.json in folder src/main/resources/static
