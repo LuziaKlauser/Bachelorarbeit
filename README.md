@@ -2,8 +2,8 @@
 
 1) Configuring the Database
    - Install the mySQL Workbench https://dev.mysql.com/downloads/installer/
-   - Execute the SQL Queries from the file "MySQLDatabase" to create all table with their entries
-   - Change the E-Mail-Adresse in the entries from the table "Employee" as it must be E-Mails, where you have access
+   - Execute the SQL Queries from the file "MySQLDatabase" to create all tables with their entries
+   - Change the e-mail-accounts in the entries from the table "Employee" as it must be E-Mails, where you have access
 
 2) Connection between IntelliJ and MySQL
    - Add in the file "application.properties" your mySQL url, username and password where the placeholder *** are:
