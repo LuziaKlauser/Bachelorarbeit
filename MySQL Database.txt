@@ -1,0 +1,329 @@
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Datenbank: `c0_vm3_BD1_a1`
+
+DROP DATABASE IF EXISTS `dfr`;
+CREATE DATABASE `dfr`;
+USE `dfr`;
+--
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `Enabler`
+--
+
+CREATE TABLE `Enabler` (
+  `enabler_id` int(10) UNSIGNED NOT NULL,
+  `name` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Daten für Tabelle `Enabler`
+--
+
+INSERT INTO `Enabler` (`enabler_id`, `name`) VALUES
+(1, 'Principles, Policies and Frameworks'),
+(2, 'Processes'),
+(3, 'Organizational structures'),
+(4, 'Information'),
+(5, 'Culture, ethics and behaviour'),
+(6, 'Peoples, skills and competences'),
+(7, 'Services, infrastructure and applications');
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `Capability_Level`
+--
+
+CREATE TABLE `Capability_Level` (
+  `capability_id` int(10) UNSIGNED NOT NULL,
+  `level` enum('0','1','2','3') NOT NULL,
+  `description` varchar(200) NOT NULL,
+  `maturity_id` int(10) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Daten für Tabelle 'Capability_Level'
+
+INSERT INTO `Capability_Level` (`capability_id`, `level`, `description`, `maturity_id`) VALUES
+(1, '3', 'A standardized process for DF activities is in place. The procedures underlie a continuous improvement', 5),
+(2, '2', 'DF initiatives and activities are managed and not ad-hoc\nperformed', 4),
+(3, '1', 'The intended goals in DF are reached', 3),
+(4, '0', 'The DF related objectives are not reached', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `Indicator`
+--
+
+CREATE TABLE `Indicator` (
+  `indicator_id` int(10) UNSIGNED NOT NULL,
+  `indicator_type` enum('verpflichtend','optional') NOT NULL,
+  `max_contribution` enum('1','2','3') NOT NULL,
+  `question` varchar(200) NOT NULL,
+  `description` varchar(200) NOT NULL,
+  `enabler_id` int(10) UNSIGNED NOT NULL,
+  `capability_id` int(10) UNSIGNED NOT NULL,
+  `survey_id` int(10) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Daten für Tabelle `Indikator`
+--
+
+INSERT INTO `Indicator` (`indicator_id`, `indicator_type`, `max_contribution`, `question`, `description`, `enabler_id`, `capability_id`, `survey_id`) VALUES
+(1, 'verpflichtend', '2', 'Are the initiatives to raise awareness for DF activities in place?', 'Initiatives to raise awareness for DF activities are in place', 1, 2,1),
+(2, 'verpflichtend', '3', 'Are initiatives to raise awareness for DF activities in place and continuously monitored ?','Initiatives to raise awareness for DF activities are in place', 1, 3,1),
+(3, 'verpflichtend', '1', 'Do Governance and Management understand DFR initiatives?','Governance and Management understand DFR initiatives', 1, 1,1),
+(4, 'verpflichtend', '2', 'Are Principles and policies according to a DF investigation present?','Principles and policies according to a DF investigation are present', 1, 2, 1),
+(5, 'verpflichtend', '1', 'Do Governance and Management pursue DFR initiatives?','Governance and Management pursue DFR initiatives', 1, 3, 1),
+(6, 'verpflichtend', '2', 'Do Governance and Management are completely involved in planning DFR initiatives?', 'Governance and Management are completely involved in planning DFR initiatives', 1, 2, 1),
+(7, 'verpflichtend', '3', 'Do Governance and Management support DFR related organisational changes?' ,'Governance and Management support DFR related organizational changes', 1, 3, 1),
+(8, 'optional', '3', 'Is a change management in place?', 'A change management is in place', 1, 3, 1),
+(9, 'verpflichtend', '2', 'Does the Staff take principles to DF related actions seriously?', 'Employees take the principles of DF related actions seriously', 1, 2, 1),
+(10, 'verpflichtend', '1', 'Are principles clearly formulated?', 'Principles are clearly formulated', 1, 2, 1),
+(11, 'verpflichtend', '1', 'Are the responsibilities for the case of a DF investigation known?', 'Responsibilities for the case of a DF investigation are known', 3, 1, 1),
+(12, 'verpflichtend', '2', 'Are responsibilities for the case of a DF investigation defined?', 'Responsibilities for the case of a DF investigation are defined', 3, 1, 1),
+(13, 'verpflichtend', '3', 'Are DF related decision making guidelines included in job-descriptions or roles?', 'DF related decision-making guidelines are included in job-descriptions or roles', 3, 3, 1),
+(14, 'verpflichtend', '1', 'Are Rights within Information Systems defined?', 'Rights within Information Systems are defined', 3, 1, 1),
+(15, 'verpflichtend', '2', 'Are rights within Information Systems defined and adjusted to prevent potential destroying or tamp', 'Rights within Information Systems are defined and adjusted to prevent potential destroying or tampering of evidences', 3, 2, 1),
+(16, 'optional', '3', 'Is the Identity management system in place?', 'An Identity Management System is in place', 3, 3, 1),
+(17, 'verpflichtend', '2', 'Are escalation rules defined?', 'Escalation rules are defined', 3, 2, 1),
+(18, 'verpflichtend', '3', 'Are escalation rules defined, reviewed and monitored?', 'Escalation rules are defined, reviewed and monitored', 3, 3, 1),
+(19, 'verpflichtend', '1', 'Is a basic understanding of the DF investigation process present?', 'A basic understanding of the DF investigation process is present', 2, 1, 1),
+(20, 'verpflichtend', '2', 'Is a deep understanding of the DF investigation process is present?', 'A deep understanding of the DF investigation process is present', 2, 2, 1),
+(21, 'verpflichtend', '3', 'Is the support for the DF investigation process continuously improved?', 'The support for the DF investigation process is continuously improved', 2, 3, 1),
+(22, 'verpflichtend', '2', 'Are related sub-processes to DF documented?', 'Related sub-processes to DF are documented', 2, 2, 1),
+(23, 'verpflichtend', '3', 'Is a guideline to prevent business interruption in the case of a DF investigation defined?', 'Guidelines to prevent business interruption in the case of a DF investigation are defined', 2, 3, 1),
+(24, 'optional', '3', 'Are process models of business processes present?', 'Process models of business processes are present', 2, 3, 1),
+(25, 'optional', '2', 'Are DF related processes partially automated?', 'DF related processes are partially automated', 2, 2, 1),
+(26, 'verpflichtend', '3', 'Are DF related processes partially automated?', 'DF related processes are partially automated', 2, 2, 1),
+(27, 'verpflichtend', '1', 'Are documents about the right handling of digital evidences in general present?', 'Documents about the right handling of digital evidences in general are present', 4, 1, 1),
+(28, 'verpflichtend', '2', 'Are documents about the right handling of digital evidences of all devices and systems within the organization present?', 'Documents about the right handling of digital evidences of all devices and systems within the organization are present', 4, 2, 1),
+(29, 'verpflichtend', '3', 'Are documents about the right handling of digital evidences of all devices and systems within the organization present and frequently reviewed?', 'Documents about the right handling of digital evidences of all devices and systems within the organization are present and frequently reviewed', 4, 3, 1),
+(30, 'verpflichtend', '1', 'Are information about DF investigations available and accessible?','Information about DF investigations are available and accessible', 4, 2, 1),
+(31, 'optional', '1', 'Can employee contribute findings and knowledge regarding DF?', 'Employee can contribute findings and knowledge regarding DF', 4, 2, 1),
+(32, 'optional', '2', 'Can employee contribute findings and knowledge regarding DF?', 'Employee can contribute findings and knowledge regarding DF', 4, 3, 1),
+(33, 'verpflichtend', '2', 'Is the usage of tools for DF is documented?', 'The usage of tools for DF is documented', 4, 2, 1),
+(34, 'verpflichtend', '3', 'Is the usage of tools for DF documented and continuously reviewed?', 'The usage of tools for DF is documented and continuously reviewed', 4, 3, 1),
+(35, 'verpflichtend', '2', 'Is information about the usage of digital evidences in a law court present?','Information about the usage of digital evidences in a law court is present', 4, 2, 1),
+(36, 'verpflichtend', '3', 'Is information about the usage of digital evidences in a law court present and frequently updated?', 'Information about the usage of digital evidences in a law court is present and frequently updated', 4, 3, 1),
+(37, 'optional', '2', 'Do employees get frequent updates according DF related topics (e.g.: e-Mail, letter)?', 'Employees get frequent updates according DF related topics (e.g.: e-Mail, letter)', 4, 2, 1),
+(38, 'verpflichtend', '3', 'Do employees get timely updates according DF related topics (e.g.: e-Mail, letter)?', 'Employees get timely updates according DF related topics (e.g.: e-Mail, letter)', 4, 3, 1),
+(39, 'verpflichtend', '2', 'Do employees understand the importance of digital evidences?', 'Employees understand the importance of digital evidences', 6, 2, 2),
+(40, 'verpflichtend', '1', 'Do employees get informal DFR related Training?', 'Employees get informal DFR related training', 6, 1, 2),
+(41, 'verpflichtend', '2', 'Do employees get formal DFR related training?', 'Employees get formal DFR related training', 6, 2, 2),
+(42, 'verpflichtend', '3', 'Is the proper application of the knowledge assessed regularly?', 'The proper application of the knowledge is assessed regularly', 6, 3, 2),
+(43, 'optional', '2', 'Does human resource division ensure the right amount of DF skilled employees?', 'Human resource division ensures the right amount of DF skilled employees', 6, 2, 2),
+(44, 'verpflichtend', '2', 'Does human resource division ensure the right amount of DF skilled employees?', 'Human resource division ensures the right amount of DF skilled employees', 6, 2, 2),
+(45, 'verpflichtend', '2', 'Are services, infrastructure and applications documented?', 'Services, infrastructure and applications are documented', 7, 2, 2),
+(46, 'verpflichtend', '3', 'Are Services, infrastructure and Applications documented and continuously updated?', 'Services, infrastructure and applications are documented and continuously updated', 7, 3, 2),
+(47, 'verpflichtend', '1', 'Are Possibilities to retrieve log-files known?', 'Possibilities to retrieve log-files are known', 7, 1, 2),
+(48, 'verpflichtend', '2', 'Are possibilities to retrieve log-files known and is configuration reviewed?', 'Possibilities to retrieve log-files are known and the configuration is reviewed', 7, 2, 2),
+(49, 'optional', '3', 'Are possibilities to retrieve log-files known and is configuration reviewed?', 'Possibilities to retrieve log-files are known and the configuration is reviewed', 7, 3, 2),
+(50, 'verpflichtend', '3', 'Is internal laboratory present?', 'An internal laboratory is present', 7, 3, 2),
+(51, 'verpflichtend', '2', 'Is the possibility to store and protect digital evidences present?', 'A possibility to store and protect digital evidences is present', 7, 2, 2),
+(52, 'optional', '2', 'Are tools and methods to produce forensically sound copies of hard drives and memory present?', 'Tools and methods to produce forensically sound copies of hard drives and memory are present', 7, 2, 2),
+(53, 'verpflichtend', '3', 'Are tools and methods to produce forensically sound copies of hard drives and memory present and reviewed frequently?', 'Tools and methods to produce forensically sound copies of hard drives and memory are present and reviewed frequently', 7, 3, 2),
+(54, 'verpflichtend', '3', 'Are own tools for DF related tasks  developed in a forensically sound manner?', 'Own tools for DF related tasks are developed in a forensically sound manner', 7, 3, 2),
+(55, 'verpflichtend', '3', 'Are methods to adjust infrastructure and applications present?', 'Methods to adjust infrastructure and applications are present', 7, 3, 2),
+(56, 'optional', '2', 'Is a fraud intolerant culture present?', 'A fraud intolerant culture is present', 5, 2, 3),
+(57, 'verpflichtend', '3', 'Is a fraud intolerant culture pursued?', 'A fraud intolerant culture is pursued', 5, 3, 3),
+(58, 'optional', '2', 'Is a open handling of mistakes and issues present?', 'Open handling of mistakes and issues is present', 5, 2, 3),
+(59, 'verpflichtend', '3', 'Is open handling of mistakes and issues present?', 'Open handling of mistakes and issues is present', 5, 3, 3),
+(60, 'verpflichtend', '3', 'Are anti-fraud ethics established?', 'Anti-fraud ethics are established', 5, 3, 3),
+(61, 'verpflichtend', '1', 'Is a willingness to unveil fraud / crime present?', 'A willingness to unveil fraud/crime is present', 5, 1, 3),
+(62, 'verpflichtend', '2', 'Are DF related activities accepted within employees?', 'DF related activities are accepted within employees', 5, 2, 3),
+(63, 'optional', '2', 'Are specific guidelines for potential fraud related situations present?', 'pecific guidelines for potential fraud related situations are present', 5, 2, 3),
+(64, 'verpflichtend', '2', 'Are specific guidelines for potential fraud related situations present and reviewed?', 'Specific guidelines for potential fraud related situations are present and reviewed', 5, 3, 3),
+(65, 'verpflichtend', '1', 'Do employees not hinder a DF Investigation? ', 'Employees do not hinder a DF investigation', 5, 1, 3);
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `Maturity_Level`
+--
+
+CREATE TABLE `Maturity_Level` (
+  `maturity_id` int(10) UNSIGNED NOT NULL,
+  `level` enum('1','2','3','4','5') NOT NULL,
+  `description` varchar(250) NOT NULL,
+  `label` varchar(45) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Daten für Tabelle `Maturity_Level`
+--
+
+INSERT INTO `Maturity_Level` (`maturity_id`, `level`, `description`, `label`) VALUES
+(1, '1', 'Ad-hoc/ just starting/ no formal Digital Investigations or forensics capability/ no documentation present/ no communication structure/ no training/ no regulations/ no DFR structure in place', 'non-existent (initial) '),
+(2, '2', 'Repeatable DR processes are in place/ informal training is performed/ minimal formalization/ basic (but incomplete) documentation/ low communication structure/ DF measure informally performed', 'basic (managed)'),
+(3, '3', 'Documented processes are present/ documented usage of tools and methods/ standardised DF procedures/ formal training/ formal regulations/ communication structure in place', 'intermediate (defined)'),
+(4, '4', 'DFR related process improvement measurements present/ documents are reviewed and checked/ frequent communication to all staff/ formal training with accreditation/ principles are followed and monitored', 'Advanced (quantitatively managed)'),
+(5, '5', 'DFR related process improvement measurements present and aligned with the governance of the organization/ process improvement is continuously done/ legislation an law are reviewed/ development of own tools', 'full (optimised)');
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `Employee`
+--
+
+CREATE TABLE `Employee` (
+  `employee_id` int(10) UNSIGNED NOT NULL,
+  `name` varchar(200) NOT NULL,
+  `email` varchar(200) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Daten für Tabelle `Employee`
+--
+
+INSERT INTO `Employee` (`employee_id`, `name`, `email`) VALUES
+(1, 'Hans_Müller', 'luzia.klauser@t-online.de'),
+(2, 'Tim_Bauer', 'luzia.klauser@t-online.de');
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `Department`
+--
+
+CREATE TABLE `Department` (
+  `department_id` int(10) UNSIGNED NOT NULL,
+  `name` varchar(200) NOT NULL,
+  `employee_id` int(10) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Daten für Tabelle `Department`
+--
+
+INSERT INTO `Department` (`department_id`, `name`, `employee_id`) VALUES
+(1, 'Department_1', 1),
+(2, 'Department_2', 2);
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `Survey`
+--
+
+CREATE TABLE `Survey` (
+  `survey_id` int(10) UNSIGNED NOT NULL,
+  `description` varchar(200) NOT NULL,
+  `department_id` int(10) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Daten für Tabelle `Survey`
+--
+
+INSERT INTO `Survey` (`survey_id`, `description`, `department_id`) VALUES
+(1, 'Survey 1', 1),
+(2, 'Survey 2', 2),
+(3, 'Survey 3', 2);
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `Indicator_Value`
+--
+
+CREATE TABLE `Indicator_Value` (
+  `value_id` int(10) UNSIGNED NOT NULL,
+  `type` enum('yes','no') NOT NULL,
+  `time` date,
+  `indicator_id` int(10) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Daten für Tabelle `Answer`
+--
+
+
+
+
+--
+-- Indizes der exportierten Tabellen
+--
+
+--
+-- Indizes für die Tabelle `Enabler`
+--
+ALTER TABLE `Enabler`
+  ADD PRIMARY KEY (`enabler_id`);
+
+
+--
+-- Indizes für die Tabelle `Maturity_Level`
+--
+ALTER TABLE `Maturity_Level`
+  ADD PRIMARY KEY (`maturity_id`);
+
+
+--
+-- Indizes für die Tabelle `Employee`
+--
+ALTER TABLE `Employee`
+  ADD PRIMARY KEY (`employee_id`);
+
+
+--
+-- Indizes für die Tabelle `Department`
+--
+ALTER TABLE `Department`
+  ADD FOREIGN KEY `employee_id`(`employee_id`) REFERENCES `Employee`(`employee_id`),
+  ADD PRIMARY KEY (`department_id`);
+
+--
+-- Indizes für die Tabelle `Survey`
+--
+ALTER TABLE `Survey`
+  ADD PRIMARY KEY (`survey_id`),
+  ADD FOREIGN KEY `department_id` (`department_id`) REFERENCES `department`(`department_id`);
+
+
+--
+-- Indizes für die Tabelle `Capability_Level`
+--
+ALTER TABLE `Capability_Level`
+  ADD PRIMARY KEY (`capability_id`),
+  ADD FOREIGN KEY `maturity_id` (`maturity_id`) REFERENCES `Maturity_Level`(`maturity_id`);
+
+--
+-- Indizes für die Tabelle `Indicator`
+--
+ALTER TABLE `Indicator`
+  ADD PRIMARY KEY (`indicator_id`),
+  ADD FOREIGN KEY `enabler_id` (`enabler_id`)  REFERENCES `Enabler`(`enabler_id`),
+  ADD FOREIGN KEY `survey_id` (`survey_id`) REFERENCES `Survey`(`survey_id`),
+  ADD FOREIGN KEY `capability_id` (`capability_id`) REFERENCES `Capability_Level`(`capability_id`);
+
+
+--
+-- Indizes für die Tabelle `Indicator_Value`
+--
+ALTER TABLE `Indicator_Value`
+  ADD PRIMARY KEY (`value_id`),
+  ADD FOREIGN KEY `indicator_id` (`indicator_id`) REFERENCES `Indicator`(`indicator_id`);
+
+
+
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+
