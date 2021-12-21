@@ -2,6 +2,7 @@
 
 1) Configuring the Database
    - Install the mySQL Workbench https://dev.mysql.com/downloads/installer/
+   - Create a MySQL Connection
    - Execute the SQL Queries from the file "MySQLDatabase" to create all tables with their entries
    - Change the e-mail-accounts in the entries from the table "Employee" as it must be E-Mails, where you have access
 
